@@ -23,14 +23,13 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="JavaHelloWorld" />
-        <module name="JuniorPowerProgramMavenParent" />
         <module name="Road to Associate Certification" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JavaHelloWorld" target="1.5" />
       <module name="JuniorPowerProgramMavenParent" target="1.8" />
-      <module name="Road to Associate Certification" target="1.5" />
+      <module name="Road to Associate Certification" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
