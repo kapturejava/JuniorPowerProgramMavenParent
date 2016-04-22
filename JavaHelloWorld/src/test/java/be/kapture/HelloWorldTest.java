@@ -1,6 +1,6 @@
-package test.java.be.kapture;
+package be.kapture;
 
-import main.java.be.kapture.HelloWorld;
+import be.kapture.HelloWorld;
 import org.junit.Before;
 import org.junit.Test;
 
