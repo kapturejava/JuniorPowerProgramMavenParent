@@ -7,6 +7,10 @@
     <artifactId>JuniorPowerProgramMavenParent</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>JavaHelloWorld</module>
+        <module>Road to Associate Certification</module>
+    </modules>
 
 
     <dependencies>
