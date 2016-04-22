@@ -24,7 +24,6 @@ public class HelloWorldTest {
     }
     @Test
     public void mainTest(){
-
         helloWorld.main(null);
         assertEquals("Hello World", output.toString());
     }
