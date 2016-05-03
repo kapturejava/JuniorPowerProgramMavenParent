@@ -9,7 +9,9 @@ import be.kapture.oefeningopexceptionsenpolymorphisme.exceptions.MadeUpException
 public class ClassB extends ClassA {
 
     public ClassB (int number){
+
         super(number);
+
     }
 
     public void setNumber(String number)throws MadeUpException{
@@ -25,3 +27,5 @@ public class ClassB extends ClassA {
         System.out.println("Printmethode uit classB: nummer = " + number);
     }
 }
+
+
