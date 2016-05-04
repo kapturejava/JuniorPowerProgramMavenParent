@@ -22,9 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="Front-end" />
         <module name="JavaHelloWorld" />
+        <module name="PersistanceLayer" />
         <module name="Road to Associate Certification" />
-        <module name="SkillsWeb" />
+        <module name="ServiceLayer" />
         <module name="SkillsWeb.Front-end" />
       </profile>
     </annotationProcessing>
@@ -32,6 +34,7 @@
       <module name="Front-end" target="1.8" />
       <module name="JavaHelloWorld" target="1.8" />
       <module name="JuniorPowerProgramMavenParent" target="1.8" />
+      <module name="PersistanceLayer" target="1.8" />
       <module name="Road to Associate Certification" target="1.8" />
       <module name="ServiceLayer" target="1.8" />
       <module name="SkillsWeb" target="1.8" />

@@ -43,6 +43,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/SkillsWeb/Front-end" />
+    <file type="web" url="file://$PROJECT_DIR$/SkillsWeb/PersistanceLayer" />
     <file type="web" url="file://$PROJECT_DIR$/SkillsWeb/ServiceLayer" />
   </component>
   <component name="MavenProjectsManager">
