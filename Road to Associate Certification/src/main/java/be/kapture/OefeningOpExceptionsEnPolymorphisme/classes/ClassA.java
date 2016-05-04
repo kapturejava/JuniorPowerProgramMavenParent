@@ -1,8 +1,5 @@
 package be.kapture.oefeningopexceptionsenpolymorphisme.classes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by cromhjo on 28/04/2016.
  */
