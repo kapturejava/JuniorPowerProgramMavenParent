@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SkillsWeb/Front-end/Front-end.iml" filepath="$PROJECT_DIR$/SkillsWeb/Front-end/Front-end.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaHelloWorld/JavaHelloWorld.iml" filepath="$PROJECT_DIR$/JavaHelloWorld/JavaHelloWorld.iml" />
       <module fileurl="file://$PROJECT_DIR$/JuniorPowerProgramMavenParent.iml" filepath="$PROJECT_DIR$/JuniorPowerProgramMavenParent.iml" />
       <module fileurl="file://$PROJECT_DIR$/Road to Associate Certification/Road to Associate Certification.iml" filepath="$PROJECT_DIR$/Road to Associate Certification/Road to Associate Certification.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SkillsWeb/SkillsWeb.iml" filepath="$PROJECT_DIR$/SkillsWeb/SkillsWeb.iml" />
     </modules>
   </component>
 </project>
