@@ -29,7 +29,6 @@
         <module name="Road to Associate Certification" />
         <module name="ServiceLayer" />
         <module name="SkillsWeb.Front-end" />
-        <module name="TestIgnoreFiles" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

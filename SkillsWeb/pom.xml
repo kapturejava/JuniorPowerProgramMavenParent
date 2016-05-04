@@ -16,7 +16,6 @@
         <module>ServiceLayer</module>
         <module>PersistanceLayer</module>
         <module>Back-end</module>
-        <module>TestIgnoreFiles</module>
     </modules>
 
     <build>
