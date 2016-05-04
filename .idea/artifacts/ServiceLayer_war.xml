@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ServiceLayer:war">
+    <output-path>$PROJECT_DIR$/SkillsWeb/ServiceLayer/target</output-path>
+    <root id="archive" name="SkillsWeb.ServiceLayer-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ServiceLayer:war exploded" />
+    </root>
+  </artifact>
+</component>
