@@ -30,6 +30,7 @@
       <module name="JavaHelloWorld" target="1.8" />
       <module name="JuniorPowerProgramMavenParent" target="1.8" />
       <module name="Road to Associate Certification" target="1.8" />
+      <module name="SkillsWeb" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -36,6 +36,20 @@ public class MainClass {
             System.out.println("classBObjectInARef throwed " + (e instanceof MadeUpException? ((MadeUpException) e).getClass().getSimpleName() : e.getClass().getSimpleName()));
         }
 
+        System.out.println("post en pre incrementoperatoren");
+        int i = 0;
+        int j = 0;
+        int z = 0;
+        int x = 3;
+        for (;i  < 10; i++) {
+            int result = ++x * 4 / x-- + ++x * x;
+            System.out.println("i = " + i);
+            System.out.println("j = " + j++);
+            System.out.println("z = " + ++z);
+            System.out.println("x = " + x);
+            System.out.println("result = " + result);
+        }
+
 
 
     }

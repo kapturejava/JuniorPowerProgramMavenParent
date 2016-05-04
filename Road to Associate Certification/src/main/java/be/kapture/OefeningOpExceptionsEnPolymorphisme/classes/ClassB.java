@@ -21,6 +21,7 @@ public class ClassB extends ClassA {
         catch (IllegalArgumentException e){
             throw new MadeUpException();
         }
+
     }
 
     public void printNumber(){
