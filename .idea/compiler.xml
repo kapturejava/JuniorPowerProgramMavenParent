@@ -29,6 +29,7 @@
         <module name="Road to Associate Certification" />
         <module name="ServiceLayer" />
         <module name="SkillsWeb.Front-end" />
+        <module name="TestIgnoreFiles" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -42,6 +43,7 @@
       <module name="ServiceLayer" target="1.8" />
       <module name="SkillsWeb" target="1.8" />
       <module name="SkillsWeb.Front-end" target="1.8" />
+      <module name="TestIgnoreFiles" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

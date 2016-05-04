@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/Road to Associate Certification/Road to Associate Certification.iml" filepath="$PROJECT_DIR$/Road to Associate Certification/Road to Associate Certification.iml" />
       <module fileurl="file://$PROJECT_DIR$/SkillsWeb/ServiceLayer/ServiceLayer.iml" filepath="$PROJECT_DIR$/SkillsWeb/ServiceLayer/ServiceLayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/SkillsWeb/SkillsWeb.iml" filepath="$PROJECT_DIR$/SkillsWeb/SkillsWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SkillsWeb/TestIgnoreFiles/TestIgnoreFiles.iml" filepath="$PROJECT_DIR$/SkillsWeb/TestIgnoreFiles/TestIgnoreFiles.iml" />
     </modules>
   </component>
 </project>
