@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170bcd9-f8ff-4185-8061-920fa19b0603" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_2_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_2_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_2_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_2_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_2_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_2_5_RELEASE.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkillsWeb/Back-end/Back-end.iml" afterPath="$PROJECT_DIR$/SkillsWeb/Back-end/Back-end.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkillsWeb/ServiceLayer/ServiceLayer.iml" afterPath="$PROJECT_DIR$/SkillsWeb/ServiceLayer/ServiceLayer.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkillsWeb/SkillsWeb.iml" afterPath="$PROJECT_DIR$/SkillsWeb/SkillsWeb.iml" />
     </list>
     <ignored path="JuniorPowerProgramMavenParent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -125,6 +118,7 @@
         <option value="$PROJECT_DIR$/SkillsWeb/pom.xml" />
         <option value="$PROJECT_DIR$/SkillsWeb/Front-end/pom.xml" />
         <option value="$PROJECT_DIR$/SkillsWeb/ServiceLayer/pom.xml" />
+        <option value="$PROJECT_DIR$/SkillsWeb/TestIgnoreFiles/pom.xml" />
       </list>
     </option>
   </component>
@@ -819,7 +813,7 @@
       <workItem from="1462339834369" duration="1994000" />
       <workItem from="1462341846216" duration="471000" />
       <workItem from="1462342378691" duration="967000" />
-      <workItem from="1462343377377" duration="17971000" />
+      <workItem from="1462343377377" duration="18097000" />
     </task>
     <task id="LOCAL-00001" summary="pom's aangepast">
       <created>1461310835211</created>
@@ -996,11 +990,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462366868261</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="testing ignorefiles">
+      <created>1462367076671</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1462367076671</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41640000" />
+    <option name="totallyTimeSpent" value="41766000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1013,7 +1014,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="8939" y="-21" width="4522" height="2422" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1026,7 +1027,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41747573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988268" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961166" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32475728" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32475728" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17655173" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
