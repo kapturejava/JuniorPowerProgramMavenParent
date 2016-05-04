@@ -42,6 +42,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/SkillsWeb/eenskijken" />
     <file type="web" url="file://$PROJECT_DIR$/SkillsWeb/Front-end" />
     <file type="web" url="file://$PROJECT_DIR$/SkillsWeb/PersistanceLayer" />
     <file type="web" url="file://$PROJECT_DIR$/SkillsWeb/ServiceLayer" />
@@ -54,6 +55,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/SkillsWeb/eenskijken/pom.xml" />
         <option value="$PROJECT_DIR$/SkillsWeb/pom.xml" />
       </set>
     </option>

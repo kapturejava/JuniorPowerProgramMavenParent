@@ -31,6 +31,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="eenskijken" target="1.8" />
       <module name="Front-end" target="1.8" />
       <module name="JavaHelloWorld" target="1.8" />
       <module name="JuniorPowerProgramMavenParent" target="1.8" />
