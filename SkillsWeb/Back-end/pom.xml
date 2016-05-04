@@ -9,16 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ServiceLayer</artifactId>
-    <packaging>war</packaging>
+    <artifactId>Back-end</artifactId>
+    <packaging>jar</packaging>
+
 
     <dependencies>
         <dependency>
-            <groupId>be.kapture</groupId>
-            <artifactId>Back-end</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>import</scope>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>[5.1.0,]</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.2.5.RELEASE</version>
         </dependency>
     </dependencies>
 

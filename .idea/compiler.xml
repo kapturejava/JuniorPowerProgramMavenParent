@@ -22,6 +22,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="Back-end" />
         <module name="Front-end" />
         <module name="JavaHelloWorld" />
         <module name="PersistanceLayer" />
@@ -31,6 +32,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Back-end" target="1.8" />
       <module name="eenskijken" target="1.8" />
       <module name="Front-end" target="1.8" />
       <module name="JavaHelloWorld" target="1.8" />
