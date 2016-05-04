@@ -14,7 +14,7 @@ public class ClassB extends ClassA {
 
     }
 
-    public void setNumber(String number)throws MadeUpException{
+    public void setNumber(String number)throws MadeUpException {
         try {
             this.number = Integer.parseInt(number);
         }
