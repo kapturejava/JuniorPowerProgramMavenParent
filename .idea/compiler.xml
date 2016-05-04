@@ -24,7 +24,6 @@
         <processorPath useClasspath="true" />
         <module name="JavaHelloWorld" />
         <module name="Road to Associate Certification" />
-        <module name="ServiceLayer" />
         <module name="SkillsWeb" />
         <module name="SkillsWeb.Front-end" />
       </profile>
