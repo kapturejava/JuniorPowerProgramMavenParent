@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170bcd9-f8ff-4185-8061-920fa19b0603" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SkillsWeb/PersistanceLayer/PersistanceLayer.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SkillsWeb/PersistanceLayer/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SkillsWeb/PersistanceLayer/target/PersistenceLayer-1.0-SNAPSHOT.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SkillsWeb/PersistanceLayer/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SkillsWeb/PersistanceLayer/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SkillsWeb/PersistanceLayer/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JuniorPowerProgramMavenParent.iws" />
@@ -56,8 +51,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="806">
+              <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -124,6 +119,7 @@
         <option value="$PROJECT_DIR$/SkillsWeb/ServiceLayer/pom.xml" />
         <option value="$PROJECT_DIR$/SkillsWeb/TestIgnoreFiles/pom.xml" />
         <option value="$PROJECT_DIR$/SkillsWeb/pom.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -722,7 +718,7 @@
       <workItem from="1462343377377" duration="17971000" />
       <workItem from="1462517174243" duration="829000" />
       <workItem from="1462518246061" duration="218000" />
-      <workItem from="1462518480536" duration="86000" />
+      <workItem from="1462518480536" duration="190000" />
     </task>
     <task id="LOCAL-00001" summary="pom's aangepast">
       <created>1461310835211</created>
@@ -906,11 +902,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462517372093</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="remove persistancelayer module">
+      <created>1462518587580</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1462518587580</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43072000" />
+    <option name="totallyTimeSpent" value="43176000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -923,7 +926,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="-13" width="3866" height="2106" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -937,7 +940,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32475728" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1763285" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1763285" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24988505" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -987,7 +990,8 @@
     <MESSAGE value="backup" />
     <MESSAGE value="trying to rename branch" />
     <MESSAGE value="testing ignorefiles" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing ignorefiles" />
+    <MESSAGE value="remove persistancelayer module" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove persistancelayer module" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1376,14 +1380,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SkillsWeb/Back-end/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -1396,6 +1392,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
           <folding />
         </state>
       </provider>
