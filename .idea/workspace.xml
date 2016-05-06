@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="627300a2-75e1-49bf-ac0f-65bca36ead4c" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="JuniorPowerProgramMavenParent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -286,7 +285,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1462533966514</updated>
-      <workItem from="1462533969447" duration="329000" />
+      <workItem from="1462533969447" duration="340000" />
     </task>
     <task id="LOCAL-00001" summary="workspace.xml out of git context">
       <created>1462534008568</created>
@@ -302,11 +301,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462534018971</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="workspace.xml out of git context">
+      <created>1462534303982</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1462534303982</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329000" />
+    <option name="totallyTimeSpent" value="340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
