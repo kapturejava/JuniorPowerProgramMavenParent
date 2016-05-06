@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170bcd9-f8ff-4185-8061-920fa19b0603" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JuniorPowerProgramMavenParent.iws" />
@@ -718,7 +717,7 @@
       <workItem from="1462343377377" duration="17971000" />
       <workItem from="1462517174243" duration="829000" />
       <workItem from="1462518246061" duration="218000" />
-      <workItem from="1462518480536" duration="190000" />
+      <workItem from="1462518480536" duration="208000" />
     </task>
     <task id="LOCAL-00001" summary="pom's aangepast">
       <created>1461310835211</created>
@@ -909,11 +908,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462518587580</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="gitignore intellij">
+      <created>1462518684106</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1462518684106</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43176000" />
+    <option name="totallyTimeSpent" value="43194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -991,7 +997,8 @@
     <MESSAGE value="trying to rename branch" />
     <MESSAGE value="testing ignorefiles" />
     <MESSAGE value="remove persistancelayer module" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove persistancelayer module" />
+    <MESSAGE value="gitignore intellij" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore intellij" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
