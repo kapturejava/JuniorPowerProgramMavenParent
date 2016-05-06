@@ -14,7 +14,6 @@
     <modules>
         <module>Front-end</module>
         <module>ServiceLayer</module>
-        <module>PersistanceLayer</module>
         <module>Back-end</module>
     </modules>
 
