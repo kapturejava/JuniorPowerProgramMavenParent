@@ -25,7 +25,6 @@
         <module name="Back-end" />
         <module name="Front-end" />
         <module name="JavaHelloWorld" />
-        <module name="PersistanceLayer" />
         <module name="Road to Associate Certification" />
         <module name="ServiceLayer" />
         <module name="SkillsWeb.Front-end" />

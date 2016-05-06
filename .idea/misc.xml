@@ -55,6 +55,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/SkillsWeb/PersistanceLayer/pom.xml" />
         <option value="$PROJECT_DIR$/SkillsWeb/TestIgnoreFiles/pom.xml" />
         <option value="$PROJECT_DIR$/SkillsWeb/eenskijken/pom.xml" />
         <option value="$PROJECT_DIR$/SkillsWeb/pom.xml" />
