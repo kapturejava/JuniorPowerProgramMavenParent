@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="PersistanceLayer:war">
-    <output-path>$PROJECT_DIR$/SkillsWeb/PersistanceLayer/target</output-path>
-    <root id="archive" name="PersistenceLayer-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="PersistanceLayer:war exploded" />
-    </root>
-  </artifact>
-</component>

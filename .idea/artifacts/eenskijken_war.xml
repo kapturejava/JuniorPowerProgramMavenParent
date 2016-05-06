@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="eenskijken:war">
-    <output-path>$PROJECT_DIR$/SkillsWeb/eenskijken/target</output-path>
-    <root id="archive" name="eenskijken.war">
-      <element id="artifact" artifact-name="eenskijken:war exploded" />
-    </root>
-  </artifact>
-</component>
