@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by cromhjo on 10/05/2016.
@@ -6,22 +9,15 @@ import java.util.*;
 public class ChessBoardService {
 
 
-
-    Set<Tile> occupiedTiles = new HashSet<>();
-
     public Collection<Tile> getOccupiedTiles(Tile tile, ChessBoard chessBoard) {
-        occupiedTiles.add(tile); //moet er voor beide opties staan
-
+        Set<Tile> occupiedTiles = new HashSet<>();
         //OPTIE 1
-        List<Tile> moves = chessBoard.doHorseMove(tile);
-        for (Tile t: moves){
-            if(occupiedTiles.add(t)){
-                occupiedTiles.addAll(getOccupiedTiles(t,chessBoard));
-            }
-        }
+        return getOccupiedTiles(tile, chessBoard, occupiedTiles);
 
         //OPTIE 2
-        /*Queue<Tile> toProcess = new LinkedList<>();
+        /*
+        occupiedTiles.add(tile);
+        Queue<Tile> toProcess = new LinkedList<>();
         Set<Tile> done = new HashSet<>();
         while (tile != null){
             List<Tile> moves = chessBoard.doHorseMove(tile);
@@ -33,9 +29,20 @@ public class ChessBoardService {
                 }
             }
             tile = toProcess.poll();
-        }*/
 
+        }
+        return occupiedTiles;
+        */
+    }
 
+    private Collection<Tile> getOccupiedTiles(Tile tile, ChessBoard chessBoard, Set<Tile> occupiedTiles) {
+        occupiedTiles.add(tile);
+        List<Tile> moves = chessBoard.doHorseMove(tile);
+        for (Tile t: moves){
+            if(!occupiedTiles.contains(t)){
+                getOccupiedTiles(t,chessBoard, occupiedTiles);
+            }
+        }
         return occupiedTiles;
     }
 }
