@@ -34,6 +34,7 @@
 
 ## Plugin-specific files:
 
+/.gitignore
 # IntelliJ
 /out/
 
