@@ -1,6 +1,6 @@
 package be.kapture.entities;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by cromhjo on 11/05/2016.
@@ -10,7 +10,7 @@ public class Person {
     private int id;
     private String firstName;
     private String lastName;
-    private List<Survey> surveys;
+    private Set<Survey> surveys;
 
     public int getId() {
         return id;
@@ -36,11 +36,11 @@ public class Person {
         this.lastName = lastname;
     }
 
-    public List<Survey> getSurveys() {
+    public Set<Survey> getSurveys() {
         return surveys;
     }
 
-    public void setSurveys(List<Survey> surveys) {
+    public void setSurveys(Set<Survey> surveys) {
         this.surveys = surveys;
     }
 }

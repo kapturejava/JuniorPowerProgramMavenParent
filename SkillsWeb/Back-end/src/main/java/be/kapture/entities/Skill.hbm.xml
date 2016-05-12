@@ -13,7 +13,9 @@
 		</id>
 		<property name="name" column="name" type="string" not-null="true" />
 		<property name="weight" column="weight" type="double" />
-		
+		<many-to-one name="skillGroup" class="be.kapture.entities.SkillGroup" fetch="select" >
+            <column name="skillgroup_id" not-null="true" />
+        </many-to-one>
 		<set name="surveyDetails" cascade="all">
 			<key column="skill_id" />
 			<one-to-many class="SurveyDetails" />
