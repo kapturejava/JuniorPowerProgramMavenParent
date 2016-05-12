@@ -27,4 +27,5 @@
 
     </dependencies>
 
+    <groupId>be.kapture.JuniorPowerProgramMavenParent</groupId>
 </project>
