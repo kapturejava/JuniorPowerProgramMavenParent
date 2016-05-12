@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="SkillGroup" table="SKILLGROUPS">
+		<meta attribute="class-description">
+			This class contains the skillgroup detail.
+		</meta>
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+		<property name="name" column="name" type="string" not-null="true" />
+		<many-to-one name="skillNature" class="be.kapture.entities.SkillNature" fetch="select" >
+            <column name="skillnature_id" not-null="true" />
+        </many-to-one>
+        <set name="skills" cascade="all">
+			<key column="skillgroup_id" />
+			<one-to-many class="Skill" />
+		</set>
+	</class>
+</hibernate-mapping>

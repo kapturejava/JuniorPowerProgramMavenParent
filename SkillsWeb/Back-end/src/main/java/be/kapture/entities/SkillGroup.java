@@ -42,5 +42,4 @@ public class SkillGroup {
 
     public void setSkills(Set<Skill> skills) {
         this.skills = skills;
-    }
-}
+    }}
