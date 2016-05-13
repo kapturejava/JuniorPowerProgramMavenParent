@@ -1,3 +1,4 @@
+package be.kapture.chesspuzzle;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 

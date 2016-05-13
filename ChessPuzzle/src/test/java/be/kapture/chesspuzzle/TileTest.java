@@ -1,3 +1,4 @@
+package be.kapture.chesspuzzle;
 import org.junit.Test;
 
 /**
