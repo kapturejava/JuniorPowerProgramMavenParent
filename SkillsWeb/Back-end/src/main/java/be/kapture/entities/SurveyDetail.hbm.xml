@@ -12,11 +12,11 @@
          <generator class="native"/>
       </id>
       <property name="score" column="score" type="int" />
-      <many-to-one name="survey" class="be.kapture.entities.Survey" fetch="select" >
-            <column name="survey_id" not-null="true" />
+      <many-to-one name="survey" class="Survey" fetch="select" >
+            <column name="survey_id" not-null="true"  />
       </many-to-one>
-      <many-to-one name="skill" class="be.kapture.entities.Skill" fetch="select" >
-            <column name="survey_id" not-null="true" />
+      <many-to-one name="skill" class="Skill" fetch="select" >
+            <column name="skill_id" not-null="true" />
       </many-to-one>      
       
    </class>

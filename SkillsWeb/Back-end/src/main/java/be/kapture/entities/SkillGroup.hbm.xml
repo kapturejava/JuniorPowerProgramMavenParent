@@ -12,7 +12,7 @@
 			<generator class="native" />
 		</id>
 		<property name="name" column="name" type="string" not-null="true" />
-		<many-to-one name="skillNature" class="be.kapture.entities.SkillNature" fetch="select" >
+		<many-to-one name="skillNature" class="SkillNature" fetch="select" >
             <column name="skillnature_id" not-null="true" />
         </many-to-one>
         <set name="skills" cascade="all">
