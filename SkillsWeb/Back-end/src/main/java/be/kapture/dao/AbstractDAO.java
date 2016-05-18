@@ -1,13 +1,13 @@
 package be.kapture.dao;
 
-import org.hibernate.SessionFactory;
+import org.hibernate.Session;
 
 import be.kapture.util.HibernateUtil;
 
 public abstract class AbstractDAO {
 	
-	protected SessionFactory getSessionFactory(){
-		return HibernateUtil.getSessionFactory();
-	}
+	protected Session getCurrentSession(){
+		return HibernateUtil.getSessionFactory().getCurrentSession();
+	}	
 
 }

@@ -7,40 +7,40 @@ import java.util.Set;
  */
 public class Person {
 
-    private int id;
-    private String firstName;
-    private String lastName;
-    private Set<Survey> surveys;
+	private int id;
+	private String firstName;
+	private String lastName;
+	private Set<Survey> surveys;
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setFirstName(String firstname) {
-        this.firstName = firstname;
-    }
+	public void setFirstName(String firstname) {
+		this.firstName = firstname;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setLastName(String lastname) {
-        this.lastName = lastname;
-    }
+	public void setLastName(String lastname) {
+		this.lastName = lastname;
+	}
 
-    public Set<Survey> getSurveys() {
-        return surveys;
-    }
+	public Set<Survey> getSurveys() {
+		return surveys;
+	}
 
-    public void setSurveys(Set<Survey> surveys) {
-        this.surveys = surveys;
-    }
+	public void setSurveys(Set<Survey> surveys) {
+		this.surveys = surveys;
+	}
 }
