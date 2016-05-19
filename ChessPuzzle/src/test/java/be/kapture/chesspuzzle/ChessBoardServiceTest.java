@@ -1,18 +1,16 @@
 package be.kapture.chesspuzzle;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import static be.kapture.chesspuzzle.ChessBoardService.NOT_FOUND;
 import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import org.hamcrest.Matchers;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Created by cromhjo on 10/05/2016.
