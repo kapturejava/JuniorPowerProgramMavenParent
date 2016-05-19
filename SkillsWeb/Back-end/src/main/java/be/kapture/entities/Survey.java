@@ -1,13 +1,15 @@
 package be.kapture.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 /**
  * Created by cromhjo on 11/05/2016.
  */
-public class Survey {
+public class Survey implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private Date date;
 	private Person person;

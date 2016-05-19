@@ -3,7 +3,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="SkillNature" table="SKILLNATURES">
+	<class name="be.kapture.entities.SkillNature" table="SKILLNATURES">
 		<meta attribute="class-description">
 			This class contains the skillnature detail.
 		</meta>
@@ -13,7 +13,7 @@
 		<property name="name" column="name" type="string" not-null="true" />
 		<set name="skillGroups" cascade="all">
 			<key column="skillnature_id" />
-			<one-to-many class="SkillGroup" />
+			<one-to-many class="be.kapture.entities.SkillGroup" />
 		</set>
 	</class>
 </hibernate-mapping>

@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name="Person" table="PERSONS">
+   <class name="be.kapture.entities.Person" table="PERSONS">
       <meta attribute="class-description">
          This class contains the person detail. 
       </meta>
@@ -15,7 +15,7 @@
       <property name="lastName" column="last_name" type="string" not-null="true" />
       <set name="surveys" cascade="all">
          <key column="person_id"/>
-         <one-to-many class="Survey"/>
+         <one-to-many class="be.kapture.entities.Survey"/>
       </set>
    </class>
 </hibernate-mapping>

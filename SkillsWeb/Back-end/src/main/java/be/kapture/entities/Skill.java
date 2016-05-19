@@ -1,12 +1,14 @@
 package be.kapture.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by cromhjo on 11/05/2016.
  */
-public class Skill {
-
+public class Skill implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String name;
 	private double weight;

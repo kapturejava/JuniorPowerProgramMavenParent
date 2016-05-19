@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="SkillGroup" table="SKILLGROUPS">
+	<class name="be.kapture.entities.SkillGroup" table="SKILLGROUPS">
 		<meta attribute="class-description">
 			This class contains the skillgroup detail.
 		</meta>
@@ -12,12 +12,12 @@
 			<generator class="native" />
 		</id>
 		<property name="name" column="name" type="string" not-null="true" />
-		<many-to-one name="skillNature" class="SkillNature" fetch="select" >
+		<many-to-one name="skillNature" class="be.kapture.entities.SkillNature" fetch="select" >
             <column name="skillnature_id" not-null="true" />
         </many-to-one>
         <set name="skills" cascade="all">
 			<key column="skillgroup_id" />
-			<one-to-many class="Skill" />
+			<one-to-many class="be.kapture.entities.Skill" />
 		</set>
 	</class>
 </hibernate-mapping>

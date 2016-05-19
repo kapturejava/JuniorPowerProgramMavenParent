@@ -1,11 +1,14 @@
 package be.kapture.entities;
 
+import java.io.Serializable;
+
 /**
  * Created by cromhjo on 11/05/2016.
  */
-public class SurveyDetail {
+public class SurveyDetail implements Serializable{
 
-    private int id;
+	private static final long serialVersionUID = 1L;
+	private int id;
     private int score;
     private Survey survey;
     private Skill skill;
