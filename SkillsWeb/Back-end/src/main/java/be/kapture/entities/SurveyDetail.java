@@ -36,6 +36,44 @@ public class SurveyDetail implements Serializable{
 	public void setSkill(Skill skill) {
 		this.skill = skill;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + score;
+		result = prime * result + ((skill == null) ? 0 : skill.hashCode());
+		result = prime * result + ((survey == null) ? 0 : survey.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SurveyDetail other = (SurveyDetail) obj;
+		if (score != other.score)
+			return false;
+		if (skill == null) {
+			if (other.skill != null)
+				return false;
+		} else if (!skill.equals(other.skill))
+			return false;
+		if (survey == null) {
+			if (other.survey != null)
+				return false;
+		} else if (!survey.equals(other.survey))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "SurveyDetail [id=" + id + ", score=" + score + ", survey=" + survey + ", skill=" + skill + "]";
+	}
+	
+	
     
     
     

@@ -1,23 +1,25 @@
 package be.kapture.dao;
 
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 
 import be.kapture.util.HibernateUtil;
 
 public abstract class AbstractDAOTest {
 	
-	protected Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	protected static Session session = HibernateUtil.getSession();
 	
-	@Before
-	public void before(){
-		session.getTransaction().begin();
+	@BeforeClass
+	public static void beforeClass(){
+		session.beginTransaction();
 	}
 	
-	@After
-	public void after(){
-		session.getTransaction().rollback();		
+	@AfterClass
+	public static void afterClass(){
+		session.getTransaction().rollback();
 	}
+	
+	
 
 }

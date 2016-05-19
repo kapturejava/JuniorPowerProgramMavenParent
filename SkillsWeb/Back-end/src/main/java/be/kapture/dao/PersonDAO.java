@@ -6,8 +6,7 @@ public class PersonDAO extends AbstractDAO {
 
 	@Override
 	public Person read(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getCurrentSession().get(Person.class, id);
 	}
 
 	

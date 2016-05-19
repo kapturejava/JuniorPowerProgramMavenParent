@@ -9,7 +9,7 @@ public abstract class AbstractDAO {
 	
 	
 	protected Session getCurrentSession(){
-		return HibernateUtil.getSessionFactory().getCurrentSession();
+		return HibernateUtil.getSession();
 	}
 	
 	protected <T> void create(T t){

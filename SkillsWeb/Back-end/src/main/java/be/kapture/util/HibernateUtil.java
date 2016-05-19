@@ -1,5 +1,6 @@
 package be.kapture.util;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -10,6 +11,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class HibernateUtil {
 
 	private static final SessionFactory sessionFactory = buildSessionFactory();
+	private static final ThreadLocal<Session> sessionManagers 	= buildSessionManagers();
 
 	private static SessionFactory buildSessionFactory() {
 		try {
@@ -37,11 +39,17 @@ public class HibernateUtil {
 		}
 	}
 
-	public static SessionFactory getSessionFactory() {
-		return sessionFactory;
+	private static ThreadLocal<Session> buildSessionManagers() {		
+		ThreadLocal<Session> sessionManagers =  new ThreadLocal<>();
+		sessionManagers.set(sessionFactory.getCurrentSession());
+		return sessionManagers;
 	}
 
-	public static void shutdown() {
-		sessionFactory.close();
+	public static Session getSession() {
+		return sessionManagers.get();
 	}
+	
+	
+
+	
 }

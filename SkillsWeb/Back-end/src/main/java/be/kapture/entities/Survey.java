@@ -46,4 +46,42 @@ public class Survey implements Serializable{
 	public void setSurveyDetails(Set<SurveyDetail> surveyDetails) {
 		this.surveyDetails = surveyDetails;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((person == null) ? 0 : person.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Survey other = (Survey) obj;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (person == null) {
+			if (other.person != null)
+				return false;
+		} else if (!person.equals(other.person))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Survey [id=" + id + ", date=" + date + ", person=" + person + ", surveyDetails=" + surveyDetails + "]";
+	}
+	
+	
 }
