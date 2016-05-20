@@ -4,25 +4,33 @@ import org.hibernate.Session;
 
 import be.kapture.util.HibernateUtil;
 
-public abstract class AbstractDAO {
+public abstract class AbstractDAO<T> {
+
+	final Class<T> typeParameterClass;
+
+	protected AbstractDAO(Class<T> typeParameterClass) {
+		this.typeParameterClass = typeParameterClass;
+	}
 
 	protected Session getCurrentSession() {
 		return HibernateUtil.getSession();
 	}
 
-	protected <T> void create(T t) {
+	protected void create(T t) {
 		getCurrentSession().save(t);
 	}
 
-	protected <T> void update(T t) {
+	protected void update(T t) {
 		getCurrentSession().update(t);
 	}
 
-	protected <T> void delete(T t) {
+	protected void delete(T t) {
 		getCurrentSession().delete(t);
 
 	}
 
-	public abstract Object read(int id);
+	protected T read(int id) {
+		return (T) getCurrentSession().get(typeParameterClass, id);
+	}
 
 }

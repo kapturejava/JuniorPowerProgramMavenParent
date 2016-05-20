@@ -15,7 +15,7 @@ public class PersonDAOTest extends AbstractDAOTest {
 	}
 
 	@Test
-	public void create() {
+	public void create_And_Read() {
 		personDAO.create(person);
 		int id = person.getId();
 		assertSame(person, personDAO.read(id));

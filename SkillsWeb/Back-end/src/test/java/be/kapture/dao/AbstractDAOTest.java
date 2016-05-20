@@ -35,7 +35,6 @@ public abstract class AbstractDAOTest {
 		skillGroup.setName("skillgroupname");
 		skillNature.setName("skillnaturename");
 		survey.setDate(Date.valueOf(LocalDate.now()));
-
 	}
 	
 	protected void buildAllFields(){	
@@ -60,6 +59,7 @@ public abstract class AbstractDAOTest {
 	@AfterClass
 	public static void afterClass(){
 		session.getTransaction().rollback();
+		session = HibernateUtil.getSession();
 	}
 	
 	@Test
@@ -69,7 +69,7 @@ public abstract class AbstractDAOTest {
 	public abstract void delete();
 	
 	@Test
-	public abstract void create();
+	public abstract void create_And_Read();
 	
 	@Test
 	public abstract void read_With_Negative_Id_Returns_Null();

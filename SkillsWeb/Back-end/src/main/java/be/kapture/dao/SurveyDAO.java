@@ -1,11 +1,15 @@
 package be.kapture.dao;
 
-public class SurveyDAO extends AbstractDAO {
+import be.kapture.entities.Survey;
 
-	@Override
-	public Object read(int id) {
-		// TODO Auto-generated method stub
-		return null;
+public class SurveyDAO extends AbstractDAO<Survey> {
+
+	protected SurveyDAO(Class<Survey> typeParameterClass) {
+		super(typeParameterClass);
+	}
+
+	public SurveyDAO() {
+		this(Survey.class);
 	}
 
 }

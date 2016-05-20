@@ -42,7 +42,13 @@ public class HibernateUtil {
 	}
 
 	public static Session getSession() {
-		return sessionManagers.get();
+		Session session = sessionManagers.get();
+		if(!session.isOpen()){
+			sessionManagers.remove();
+			session = sessionFactory.getCurrentSession();
+			sessionManagers.set(session);			
+		}
+		return session;
 	}
 
 }

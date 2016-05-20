@@ -33,7 +33,7 @@ public class SkillDAOTest extends AbstractDAOTest{
 	}
 
 	@Override
-	public void create() {
+	public void create_And_Read() {
 		skillDAO.create(skill);
 		int id = skill.getId();
 		assertSame(skill, skillDAO.read(id));

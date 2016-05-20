@@ -2,11 +2,14 @@ package be.kapture.dao;
 
 import be.kapture.entities.Skill;
 
-public class SkillDAO extends AbstractDAO {
+public class SkillDAO extends AbstractDAO<Skill> {
 
-	@Override
-	public Skill read(int id) {
-		return getCurrentSession().get(Skill.class, id);
+	protected SkillDAO(Class<Skill> typeParameterClass) {
+		super(typeParameterClass);
+	}
+
+	public SkillDAO() {
+		this(Skill.class);
 	}
 
 }

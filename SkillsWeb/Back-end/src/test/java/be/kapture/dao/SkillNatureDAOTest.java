@@ -1,7 +1,6 @@
 package be.kapture.dao;
 
-public class SkillNatureDAOTest {
+public class SkillNatureDAOTest{
 
-	//TODO
-
+	
 }

@@ -1,11 +1,15 @@
 package be.kapture.dao;
 
-public class SkillNatureDAO extends AbstractDAO {
+import be.kapture.entities.SkillNature;
 
-	@Override
-	public Object read(int id) {
-		// TODO Auto-generated method stub
-		return null;
+public class SkillNatureDAO extends AbstractDAO<SkillNature> {
+
+	protected SkillNatureDAO(Class<SkillNature> typeParameterClass) {
+		super(typeParameterClass);
+	}
+
+	public SkillNatureDAO() {
+		this(SkillNature.class);
 	}
 
 }

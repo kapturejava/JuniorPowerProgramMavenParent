@@ -35,7 +35,7 @@ public class SkillGroupDAOTest extends AbstractDAOTest{
 	}
 
 	@Override
-	public void create() {
+	public void create_And_Read() {
 		skillGroupDAO.create(skillGroup);
 		int id = skillGroup.getId();
 		assertSame(skillGroup, skillGroupDAO.read(id));
