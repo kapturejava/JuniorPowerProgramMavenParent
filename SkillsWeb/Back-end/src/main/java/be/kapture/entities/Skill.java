@@ -1,19 +1,20 @@
 package be.kapture.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by cromhjo on 11/05/2016.
  */
-public class Skill implements Serializable{
-	
+public class Skill implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String name;
 	private double weight;
 	private SkillGroup skillGroup;
-	private Set<SurveyDetail> surveyDetails;
+	private Set<SurveyDetail> surveyDetails = new HashSet<>();
 
 	public int getId() {
 		return id;
@@ -44,7 +45,13 @@ public class Skill implements Serializable{
 	}
 
 	public void setSkillGroup(SkillGroup skillGroup) {
+		if (this.skillGroup != null && this.skillGroup.getSkills().contains(this)) {
+			this.skillGroup.removeSkill(this);
+		}
 		this.skillGroup = skillGroup;
+		if (skillGroup != null && !skillGroup.getSkills().contains(this)) {
+			skillGroup.addSkill(this);
+		}
 	}
 
 	public Set<SurveyDetail> getSurveyDetails() {
@@ -55,12 +62,28 @@ public class Skill implements Serializable{
 		this.surveyDetails = surveyDetails;
 	}
 
+	public void addSurveyDetail(SurveyDetail surveyDetail) {
+		surveyDetails.add(surveyDetail);
+		if (surveyDetail.getSkill() != this) {
+			surveyDetail.setSkill(this);
+		}
+	}
+
+	public void removeSurveyDetail(SurveyDetail surveyDetail) {
+		surveyDetails.remove(surveyDetail);
+		if (surveyDetail.getSkill() == this) {
+			surveyDetail.setSkill(null);
+		}
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((skillGroup == null) ? 0 : skillGroup.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(weight);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -78,21 +101,14 @@ public class Skill implements Serializable{
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (skillGroup == null) {
-			if (other.skillGroup != null)
-				return false;
-		} else if (!skillGroup.equals(other.skillGroup))
+		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Skill [id=" + id + ", name=" + name + ", weight=" + weight + ", skillGroup=" + skillGroup
-				+ ", surveyDetails=" + surveyDetails + "]";
+		return "Skill [id=" + id + ", name=" + name + ", weight=" + weight + ", skillGroup=" + skillGroup + "]";
 	}
-	
-	
-	
-	
+
 }

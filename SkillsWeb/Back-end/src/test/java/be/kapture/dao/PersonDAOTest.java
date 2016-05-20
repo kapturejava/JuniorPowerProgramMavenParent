@@ -3,22 +3,11 @@ package be.kapture.dao;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
-import org.junit.Before;
 import org.junit.Test;
-
-import be.kapture.entities.Person;
 
 public class PersonDAOTest extends AbstractDAOTest {
 
 	private PersonDAO personDAO = new PersonDAO();
-	private Person person;
-
-	@Before
-	public void before() {
-		person = new Person();
-		person.setFirstName("firstname");
-		person.setLastName("lastname");
-	}
 
 	@Test
 	public void read_With_Negative_Id_Returns_Null() {
@@ -28,7 +17,25 @@ public class PersonDAOTest extends AbstractDAOTest {
 	@Test
 	public void create() {
 		personDAO.create(person);
-		assertSame(personDAO.read(person.getId()), person);
+		int id = person.getId();
+		assertSame(person, personDAO.read(id));
+	}
+
+	@Test
+	public void update() {
+		personDAO.create(person);
+		int id = person.getId();
+		person.setFirstName("updateFirstname");
+		personDAO.update(person);
+		assertSame(person, personDAO.read(id));
+	}
+
+	@Test
+	public void delete() {
+		personDAO.create(person);
+		int id = person.getId();
+		personDAO.delete(person);
+		assertNull(personDAO.read(id));
 	}
 
 }

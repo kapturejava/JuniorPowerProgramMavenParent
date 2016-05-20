@@ -1,40 +1,46 @@
 package be.kapture.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by cromhjo on 11/05/2016.
  */
-public class SkillNature implements Serializable{
+public class SkillNature implements Serializable {
 	private static final long serialVersionUID = 1L;
-    private int id;
-    private String name;
-    private Set<SkillGroup> skillGroups;
+	private int id;
+	private String name;
+	private Set<SkillGroup> skillGroups = new HashSet<>();
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Set<SkillGroup> getSkillGroups() {
-        return skillGroups;
-    }
+	public Set<SkillGroup> getSkillGroups() {
+		return skillGroups;
+	}
 
-    public void setSkillGroups(Set<SkillGroup> skillGroups) {
-        this.skillGroups = skillGroups;
-    }
+	public void setSkillGroups(Set<SkillGroup> skillGroups) {
+		this.skillGroups = skillGroups;
+		for (SkillGroup skillGroup : skillGroups) {
+			if (!skillGroup.getSkillNature().equals(this)) {
+				skillGroup.setSkillNature(this);
+			}
+		}
+	}
 
 	@Override
 	public int hashCode() {
@@ -63,12 +69,22 @@ public class SkillNature implements Serializable{
 
 	@Override
 	public String toString() {
-		return "SkillNature [id=" + id + ", name=" + name + ", skillGroups=" + skillGroups + "]";
+		return "SkillNature [id=" + id + ", name=" + name + "]";
 	}
-	
-	
-    
-    
-    
-    
+
+	public void addSkillGroup(SkillGroup skillGroup) {
+		skillGroups.add(skillGroup);
+		if (skillGroup.getSkillNature() != this) {
+			skillGroup.setSkillNature(this);
+		}
+	}
+
+	public void removeSkillNature(SkillGroup skillGroup) {
+		skillGroups.remove(skillGroup);
+		if (skillGroup.getSkillNature() == this) {
+			skillGroup.setSkillNature(null);
+		}
+
+	}
+
 }

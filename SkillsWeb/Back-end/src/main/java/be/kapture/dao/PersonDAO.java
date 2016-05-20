@@ -9,11 +9,4 @@ public class PersonDAO extends AbstractDAO {
 		return getCurrentSession().get(Person.class, id);
 	}
 
-	
-	
-
-
-	
-	
-
 }

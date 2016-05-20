@@ -1,18 +1,19 @@
 package be.kapture.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by cromhjo on 11/05/2016.
  */
-public class Person implements Serializable{
-	
+public class Person implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String firstName;
 	private String lastName;
-	private Set<Survey> surveys;
+	private Set<Survey> surveys = new HashSet<>();
 
 	public int getId() {
 		return id;
@@ -46,13 +47,26 @@ public class Person implements Serializable{
 		this.surveys = surveys;
 	}
 
+	public void addSurvey(Survey survey) {
+		surveys.add(survey);
+		if (survey.getPerson() != this) {
+			survey.setPerson(this);
+		}
+	}
+
+	public void removeSurvey(Survey survey) {
+		surveys.remove(survey);
+		if (survey.getPerson() == this) {
+			survey.setPerson(null);
+		}
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((surveys == null) ? 0 : surveys.hashCode());
 		return result;
 	}
 
@@ -75,11 +89,6 @@ public class Person implements Serializable{
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (surveys == null) {
-			if (other.surveys != null)
-				return false;
-		} else if (!surveys.equals(other.surveys))
-			return false;
 		return true;
 	}
 
@@ -88,6 +97,5 @@ public class Person implements Serializable{
 		return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", surveys=" + surveys
 				+ "]";
 	}
-	
-	
+
 }

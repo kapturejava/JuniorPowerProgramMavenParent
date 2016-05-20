@@ -2,18 +2,19 @@ package be.kapture.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by cromhjo on 11/05/2016.
  */
-public class Survey implements Serializable{
+public class Survey implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private Date date;
 	private Person person;
-	private Set<SurveyDetail> surveyDetails;
+	private Set<SurveyDetail> surveyDetails = new HashSet<>();
 
 	public Date getDate() {
 		return date;
@@ -36,7 +37,13 @@ public class Survey implements Serializable{
 	}
 
 	public void setPerson(Person person) {
+		if (this.person != null && this.person.getSurveys().contains(this)) {
+			this.person.removeSurvey(this);
+		}
 		this.person = person;
+		if (person != null && !person.getSurveys().contains(this)) {
+			person.addSurvey(this);
+		}
 	}
 
 	public Set<SurveyDetail> getSurveyDetails() {
@@ -45,6 +52,20 @@ public class Survey implements Serializable{
 
 	public void setSurveyDetails(Set<SurveyDetail> surveyDetails) {
 		this.surveyDetails = surveyDetails;
+	}
+
+	public void addSurveyDetail(SurveyDetail surveyDetail) {
+		surveyDetails.add(surveyDetail);
+		if (surveyDetail.getSurvey() != this) {
+			surveyDetail.setSurvey(this);
+		}
+	}
+
+	public void removeSurveyDetail(SurveyDetail surveyDetail) {
+		surveyDetails.remove(surveyDetail);
+		if (surveyDetail.getSurvey() == this) {
+			surveyDetail.setSurvey(null);
+		}
 	}
 
 	@Override
@@ -82,6 +103,5 @@ public class Survey implements Serializable{
 	public String toString() {
 		return "Survey [id=" + id + ", date=" + date + ", person=" + person + ", surveyDetails=" + surveyDetails + "]";
 	}
-	
-	
+
 }
