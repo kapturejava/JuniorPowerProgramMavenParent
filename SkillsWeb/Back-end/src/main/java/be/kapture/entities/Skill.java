@@ -37,6 +37,9 @@ public class Skill implements Serializable {
 	}
 
 	public void setWeight(double weight) {
+		if(weight < 0 || weight > 100){
+			throw new IllegalArgumentException();
+		}
 		this.weight = weight;
 	}
 
