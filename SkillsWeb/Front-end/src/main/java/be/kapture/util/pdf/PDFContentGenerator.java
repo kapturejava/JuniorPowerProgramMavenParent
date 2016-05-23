@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 
 import be.kapture.dao.PersonDAO;
@@ -20,24 +21,27 @@ import be.kapture.entities.Survey;
 import be.kapture.entities.SurveyDetail;
 
 public class PDFContentGenerator extends PDFGenerator{
+	
+	PersonDAO personDAO = new PersonDAO();
 
 	@Override
 	protected void createContent(Document document) throws DocumentException {
 		createPersontable(document);
-		createSkillNatureTable(document);
-		createSKillGroupTable(document);
-		createSkillTable(document);
-		createSurveyTable(document);
-		createSurveyDetailTable(document);
+//		createSkillNatureTable(document);
+//		createSKillGroupTable(document);
+//		createSkillTable(document);
+//		createSurveyTable(document);
+//		createSurveyDetailTable(document);
 	}
 
 	private void createPersontable(Document document) throws DocumentException {
+		
 		PdfPTable table= new PdfPTable(3);
 		table.addCell("ID");
 		table.addCell("First Name");
 		table.addCell("Last Name");
 		table.setHeaderRows(1);
-		List<Person> personList = new PersonDAO().findAll();
+		List<Person> personList = personDAO.findAll();
 		for(Person p : personList){
 			table.addCell(""+p.getId());
 			table.addCell(p.getFirstName());

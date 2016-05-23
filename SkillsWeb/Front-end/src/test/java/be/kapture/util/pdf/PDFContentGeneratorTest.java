@@ -16,12 +16,12 @@ import be.kapture.util.HibernateUtil;
 
 public class PDFContentGeneratorTest {
 	
-	private PersonDAO personDAO;
+	
 	private PDFContentGenerator pdfContentGenerator = new PDFContentGenerator();
 	
 	@Before
 	public void before(){
-		personDAO = mock(PersonDAO.class);
+		pdfContentGenerator.personDAO = mock(PersonDAO.class);
 		Person person1 = new Person();
 		person1.setId(1);
 		person1.setFirstName("firstname1");
@@ -31,7 +31,9 @@ public class PDFContentGeneratorTest {
 		person2.setFirstName("firstname2");
 		person2.setLastName("lastname2");
 		
-		when(personDAO.findAll()).thenReturn(asList(person1, person2));		
+		when(pdfContentGenerator.personDAO.findAll()).thenReturn(asList(person1, person2));
+		
+			
 	}
 	
 	@Test	
