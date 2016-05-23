@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
@@ -41,6 +42,7 @@ public abstract class PDFGenerator {
         try {
         	PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
+            document.add(new Chunk(""));
             createContent(document);
             document.close();
             return file;
