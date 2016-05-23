@@ -7,7 +7,9 @@ import static org.mockito.Mockito.when;
 
 import java.io.File;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +29,7 @@ import be.kapture.entities.SurveyDetail;
 import be.kapture.util.HibernateUtil;
 
 public class PDFContentGeneratorTest {
-	
+
 	private Person person1 = new Person();
 	private Person person2 = new Person();
 	private Survey survey = new Survey();
@@ -35,12 +37,11 @@ public class PDFContentGeneratorTest {
 	private Skill skill = new Skill();
 	private SkillNature skillNature = new SkillNature();
 	private SkillGroup skillGroup = new SkillGroup();
-	
-	
+
 	private PDFContentGenerator pdfContentGenerator = new PDFContentGenerator();
-	
+
 	@Before
-	public void before(){
+	public void before() {
 		pdfContentGenerator.personDAO = mock(PersonDAO.class);
 		pdfContentGenerator.skillDAO = mock(SkillDAO.class);
 		pdfContentGenerator.skillNatureDAO = mock(SkillNatureDAO.class);
@@ -53,9 +54,9 @@ public class PDFContentGeneratorTest {
 		createSkillNatureMock();
 		createSkillGroupMock();
 		createSurveyMock();
-		createSurveyDetailMock();			
+		createSurveyDetailMock();
 	}
-	
+
 	private void createInstances() {
 		person1.setId(1);
 		person1.setFirstName("firstname1");
@@ -78,25 +79,25 @@ public class PDFContentGeneratorTest {
 		surveyDetail.setId(1);
 		surveyDetail.setScore(10);
 		surveyDetail.setSkill(skill);
-		surveyDetail.setSurvey(survey);		
+		surveyDetail.setSurvey(survey);
 	}
 
 	private void createSurveyDetailMock() {
-		when(pdfContentGenerator.surveyDetailDAO.findAll()).thenReturn(asList(surveyDetail));	
+		when(pdfContentGenerator.surveyDetailDAO.findAll()).thenReturn(asList(surveyDetail));
 	}
 
 	private void createSurveyMock() {
-		
-		when(pdfContentGenerator.surveyDAO.findAll()).thenReturn(asList(survey));	
+
+		when(pdfContentGenerator.surveyDAO.findAll()).thenReturn(asList(survey));
 	}
 
-	private void createPersonMock() {		
-		when(pdfContentGenerator.personDAO.findAll()).thenReturn(asList(person1, person2));		
+	private void createPersonMock() {
+		when(pdfContentGenerator.personDAO.findAll()).thenReturn(asList(person1, person2));
 	}
 
 	private void createSkillMock() {
 		when(pdfContentGenerator.skillDAO.findAll()).thenReturn(asList(skill));
-		
+
 	}
 
 	private void createSkillNatureMock() {
@@ -105,14 +106,18 @@ public class PDFContentGeneratorTest {
 
 	private void createSkillGroupMock() {
 		when(pdfContentGenerator.skillGroupDAO.findAll()).thenReturn(asList(skillGroup));
-		
+
 	}
 
-	@Test	
-	public void createContent(){
+	@Test
+	public void createContent() {
 		HibernateUtil.getSession().beginTransaction();
-		pdfContentGenerator.generate("testPDF");
-		assertTrue(new File("testPDF.pdf").exists());		
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+		String date = dateFormat.format(cal.getTime());
+		String filename = "ENTITIES " + date;
+		pdfContentGenerator.generate(filename);
+		assertTrue(new File(filename + ".pdf").exists());
 	}
 
 }

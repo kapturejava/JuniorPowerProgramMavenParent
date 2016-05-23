@@ -7,9 +7,8 @@ import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
 
 import be.kapture.dao.PersonDAO;
@@ -35,9 +34,8 @@ public class PDFContentGenerator extends PDFGenerator {
 	SkillDAO skillDAO = new SkillDAO();
 
 	@Override
-	protected void createContent(Document document) throws DocumentException {
-		document.add(new Phrase("ENTITIES " + LocalDateTime.now().toString(),
-				new Font(FontFamily.HELVETICA, 24, Font.BOLD)));
+	protected void createContent(Document document, String filename) throws DocumentException {
+		document.add(new Phrase(filename, new Font(FontFamily.HELVETICA, 24, Font.BOLD)));
 		createPersontable(document);
 		createSkillNatureTable(document);
 		createSKillGroupTable(document);
