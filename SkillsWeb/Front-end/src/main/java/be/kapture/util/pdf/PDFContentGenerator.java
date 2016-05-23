@@ -1,9 +1,15 @@
 package be.kapture.util.pdf;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.pdf.PdfPTable;
 
 import be.kapture.dao.PersonDAO;
@@ -25,16 +31,19 @@ public class PDFContentGenerator extends PDFGenerator {
 
 	@Override
 	protected void createContent(Document document) throws DocumentException {
+		document.add(new Phrase("ENTITIES " + LocalDateTime.now().toString(),
+				new Font(FontFamily.HELVETICA, 24, Font.BOLD)));
 		createPersontable(document);
-		// createSkillNatureTable(document);
-		// createSKillGroupTable(document);
-		// createSkillTable(document);
-		// createSurveyTable(document);
-		// createSurveyDetailTable(document);
+		createSkillNatureTable(document);
+		createSKillGroupTable(document);
+		createSkillTable(document);
+		createSurveyTable(document);
+		createSurveyDetailTable(document);
 	}
 
 	private void createPersontable(Document document) throws DocumentException {
-
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("Person"));
 		PdfPTable table = new PdfPTable(3);
 		table.addCell(PDFUtils.getTitleCell("ID"));
 		table.addCell(PDFUtils.getTitleCell("First Name"));
@@ -50,6 +59,8 @@ public class PDFContentGenerator extends PDFGenerator {
 	}
 
 	private void createSkillNatureTable(Document document) throws DocumentException {
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("SkillNature"));
 		PdfPTable table = new PdfPTable(2);
 		table.addCell(PDFUtils.getTitleCell("ID"));
 		table.addCell(PDFUtils.getTitleCell("Name"));
@@ -63,6 +74,8 @@ public class PDFContentGenerator extends PDFGenerator {
 	}
 
 	private void createSKillGroupTable(Document document) throws DocumentException {
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("SkillGroup"));
 		PdfPTable table = new PdfPTable(3);
 		table.addCell(PDFUtils.getTitleCell("ID"));
 		table.addCell(PDFUtils.getTitleCell("Name"));
@@ -78,6 +91,8 @@ public class PDFContentGenerator extends PDFGenerator {
 	}
 
 	private void createSkillTable(Document document) throws DocumentException {
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("Skill"));
 		PdfPTable table = new PdfPTable(4);
 		table.addCell(PDFUtils.getTitleCell("ID"));
 		table.addCell(PDFUtils.getTitleCell("Name"));
@@ -95,6 +110,8 @@ public class PDFContentGenerator extends PDFGenerator {
 	}
 
 	private void createSurveyTable(Document document) throws DocumentException {
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("Survey"));
 		PdfPTable table = new PdfPTable(3);
 		table.addCell(PDFUtils.getTitleCell("ID"));
 		table.addCell(PDFUtils.getTitleCell("Date"));
@@ -110,6 +127,8 @@ public class PDFContentGenerator extends PDFGenerator {
 	}
 
 	private void createSurveyDetailTable(Document document) throws DocumentException {
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("SurveyDetail"));
 		PdfPTable table = new PdfPTable(4);
 		table.addCell(PDFUtils.getTitleCell("ID"));
 		table.addCell(PDFUtils.getTitleCell("Score"));
