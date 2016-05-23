@@ -26,7 +26,6 @@ public abstract class AbstractDAO<T> {
 
 	public void delete(T t) {
 		getCurrentSession().delete(t);
-
 	}
 
 	public T read(int id) {
