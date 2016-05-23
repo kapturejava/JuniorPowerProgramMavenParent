@@ -1,12 +1,10 @@
 package be.kapture.util.pdf;
 
-import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Utilities;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 
@@ -286,16 +284,6 @@ public class PDFUtils {
 		cell.setHorizontalAlignment(horizontalAlignment);
 		cell.setPaddingLeft(5);
 		return cell;
-	}
-
-	public static void addEmptyRow(PdfPTable table) {
-		table.addCell(PDFUtils.getBlankCell(table.getNumberOfColumns()));
-		table.completeRow();
-	}
-
-	public static void addSmallEmptyRow(PdfPTable table) {
-		table.addCell(PDFUtils.getSmallBlankCell(table.getNumberOfColumns()));
-		table.completeRow();
 	}
 
 	public static PdfPTable getPdfPTable(float... relativeWidths) {
