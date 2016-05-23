@@ -1,10 +1,15 @@
 package be.kapture.util.pdf;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.pdf.PdfPTable;
 
 import be.kapture.dao.PersonDAO;
@@ -20,8 +25,8 @@ import be.kapture.entities.SkillNature;
 import be.kapture.entities.Survey;
 import be.kapture.entities.SurveyDetail;
 
-public class PDFContentGenerator extends PDFGenerator{
-	
+public class PDFContentGenerator extends PDFGenerator {
+
 	PersonDAO personDAO = new PersonDAO();
 	SurveyDetailDAO surveyDetailDAO = new SurveyDetailDAO();
 	SkillNatureDAO skillNatureDAO = new SkillNatureDAO();
@@ -31,6 +36,8 @@ public class PDFContentGenerator extends PDFGenerator{
 
 	@Override
 	protected void createContent(Document document) throws DocumentException {
+		document.add(new Phrase("ENTITIES " + LocalDateTime.now().toString(),
+				new Font(FontFamily.HELVETICA, 24, Font.BOLD)));
 		createPersontable(document);
 		createSkillNatureTable(document);
 		createSKillGroupTable(document);
@@ -40,93 +47,105 @@ public class PDFContentGenerator extends PDFGenerator{
 	}
 
 	private void createPersontable(Document document) throws DocumentException {
-		
-		PdfPTable table= new PdfPTable(3);
-		table.addCell("ID");
-		table.addCell("First Name");
-		table.addCell("Last Name");
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("Person"));
+		PdfPTable table = new PdfPTable(3);
+		table.addCell(PDFUtils.getTitleCell("ID"));
+		table.addCell(PDFUtils.getTitleCell("First Name"));
+		table.addCell(PDFUtils.getTitleCell("Last Name"));
 		table.setHeaderRows(1);
 		List<Person> personList = personDAO.findAll();
-		for(Person p : personList){
-			table.addCell(""+p.getId());
-			table.addCell(p.getFirstName());
-			table.addCell(p.getLastName());
+		for (Person p : personList) {
+			table.addCell(PDFUtils.getTableDetailCell("" + p.getId()));
+			table.addCell(PDFUtils.getTableDetailCell(p.getFirstName()));
+			table.addCell(PDFUtils.getTableDetailCell(p.getLastName()));
 		}
 		document.add(table);
 	}
+
 	private void createSkillNatureTable(Document document) throws DocumentException {
-		PdfPTable table= new PdfPTable(2);
-		table.addCell("ID");
-		table.addCell("Name");
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("SkillNature"));
+		PdfPTable table = new PdfPTable(2);
+		table.addCell(PDFUtils.getTitleCell("ID"));
+		table.addCell(PDFUtils.getTitleCell("Name"));
 		table.setHeaderRows(1);
 		List<SkillNature> skillNatureList = skillNatureDAO.findAll();
 		for (SkillNature skillNature : skillNatureList) {
-			table.addCell(""+skillNature.getId());
-			table.addCell(skillNature.getName());
+			table.addCell(PDFUtils.getTableDetailCell("" + skillNature.getId()));
+			table.addCell(PDFUtils.getTableDetailCell(skillNature.getName()));
 		}
 		document.add(table);
 	}
-	
+
 	private void createSKillGroupTable(Document document) throws DocumentException {
-		PdfPTable table= new PdfPTable(3);
-		table.addCell("ID");
-		table.addCell("Name");
-		table.addCell("SkillNature_ID");
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("SkillGroup"));
+		PdfPTable table = new PdfPTable(3);
+		table.addCell(PDFUtils.getTitleCell("ID"));
+		table.addCell(PDFUtils.getTitleCell("Name"));
+		table.addCell(PDFUtils.getTitleCell("SkillNature_ID"));
 		table.setHeaderRows(1);
 		List<SkillGroup> skillGroupList = skillGroupDAO.findAll();
-		for(SkillGroup s : skillGroupList){
-			table.addCell(""+s.getId());
-			table.addCell(s.getName());
-			table.addCell(""+s.getSkillNature().getId());
+		for (SkillGroup s : skillGroupList) {
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getId()));
+			table.addCell(PDFUtils.getTableDetailCell(s.getName()));
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getSkillNature().getId()));
 		}
 		document.add(table);
 	}
 
 	private void createSkillTable(Document document) throws DocumentException {
-		PdfPTable table= new PdfPTable(4);
-		table.addCell("ID");
-		table.addCell("Name");
-		table.addCell("Weight");
-		table.addCell("SkillGroup_ID");
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("Skill"));
+		PdfPTable table = new PdfPTable(4);
+		table.addCell(PDFUtils.getTitleCell("ID"));
+		table.addCell(PDFUtils.getTitleCell("Name"));
+		table.addCell(PDFUtils.getTitleCell("Weight"));
+		table.addCell(PDFUtils.getTitleCell("SkillGroup_ID"));
 		table.setHeaderRows(1);
 		List<Skill> skillList = skillDAO.findAll();
-		for(Skill s : skillList){
-			table.addCell(""+s.getId());
-			table.addCell(s.getName());
-			table.addCell(""+s.getWeight());
-			table.addCell(""+s.getSkillGroup().getId());
+		for (Skill s : skillList) {
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getId()));
+			table.addCell(PDFUtils.getTableDetailCell(s.getName()));
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getWeight()));
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getSkillGroup().getId()));
 		}
-		document.add(table);		
+		document.add(table);
 	}
 
 	private void createSurveyTable(Document document) throws DocumentException {
-		PdfPTable table= new PdfPTable(3);
-		table.addCell("ID");
-		table.addCell("Date");
-		table.addCell("Person_ID");
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("Survey"));
+		PdfPTable table = new PdfPTable(3);
+		table.addCell(PDFUtils.getTitleCell("ID"));
+		table.addCell(PDFUtils.getTitleCell("Date"));
+		table.addCell(PDFUtils.getTitleCell("Person_ID"));
 		table.setHeaderRows(1);
 		List<Survey> surveyList = surveyDAO.findAll();
-		for(Survey s : surveyList){
-			table.addCell(""+s.getId());
-			table.addCell(""+s.getDate());
-			table.addCell(""+s.getPerson().getId());
+		for (Survey s : surveyList) {
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getId()));
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getDate()));
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getPerson().getId()));
 		}
-		document.add(table);	
+		document.add(table);
 	}
 
 	private void createSurveyDetailTable(Document document) throws DocumentException {
-		PdfPTable table= new PdfPTable(4);
-		table.addCell("ID");
-		table.addCell("Score");
-		table.addCell("Survey_ID");
-		table.addCell("Skill_ID");
+		document.add(Chunk.NEWLINE);
+		document.add(PDFUtils.getTitlePhrase("SurveyDetail"));
+		PdfPTable table = new PdfPTable(4);
+		table.addCell(PDFUtils.getTitleCell("ID"));
+		table.addCell(PDFUtils.getTitleCell("Score"));
+		table.addCell(PDFUtils.getTitleCell("Survey_ID"));
+		table.addCell(PDFUtils.getTitleCell("Skill_ID"));
 		table.setHeaderRows(1);
 		List<SurveyDetail> surveyDetailList = surveyDetailDAO.findAll();
-		for(SurveyDetail s : surveyDetailList){
-			table.addCell(""+s.getId());
-			table.addCell(""+s.getScore());
-			table.addCell(""+s.getSurvey().getId());
-			table.addCell(""+s.getSkill().getId());
+		for (SurveyDetail s : surveyDetailList) {
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getId()));
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getScore()));
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getSurvey().getId()));
+			table.addCell(PDFUtils.getTableDetailCell("" + s.getSkill().getId()));
 		}
 		document.add(table);
 	}

@@ -27,7 +27,7 @@ public class PDFUtils {
 
 	public static final String COMPLETE_ROW = "0";
 
-	private static Phrase getTitlePhrase(String text) {
+	public static Phrase getTitlePhrase(String text) {
 		return new Phrase(text, TITLE);
 	}
 
