@@ -9,12 +9,10 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.PdfPageEvent;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public abstract class PDFGenerator {
 
-    private PdfWriter writer;
 
     public PDFGenerator() {
     }
@@ -38,24 +36,10 @@ public abstract class PDFGenerator {
             e1.printStackTrace();
         }
 
-        Document document = new Document(getPageSize(), getLeftMargin(), getRightMargin(), getTopMargin(), getBottomMargin());
+        Document document = new Document();
 
         try {
-            writer = PdfWriter.getInstance(document, new FileOutputStream(file));
-            writer.setBoxSize("footer", new Rectangle(36, 54, 559, 788));
-            PdfPageEvent pageEvent = getPageEvent();
-            if (pageEvent != null) {
-                writer.setPageEvent(pageEvent);
-            }
-
-            PdfPageEvent[] pageEvents = getPageEvents();
-            if (pageEvents != null) {
-                for (PdfPageEvent pageEvent2 : pageEvents) {
-                    if (pageEvent2 != null) {
-                        writer.setPageEvent(pageEvent2);
-                    }
-                }
-            }
+        	PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
             createContent(document);
             document.close();
@@ -70,11 +54,6 @@ public abstract class PDFGenerator {
 
     protected abstract void createContent(Document document) throws DocumentException;
 
-    protected abstract PdfPageEvent getPageEvent();
-
-    protected PdfPageEvent[] getPageEvents() {
-        return null;
-    }
 
     /**
      * Default PageSize.A4, kan veranderd worden naar PageSize.A4_LANDSCAPE

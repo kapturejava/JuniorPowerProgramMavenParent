@@ -5,7 +5,6 @@ import java.util.List;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfPageEvent;
 
 import be.kapture.dao.PersonDAO;
 import be.kapture.dao.SkillDAO;
@@ -24,7 +23,6 @@ public class PDFContentGenerator extends PDFGenerator{
 
 	@Override
 	protected void createContent(Document document) throws DocumentException {
-		document.newPage();
 		createPersontable(document);
 		createSkillNatureTable(document);
 		createSKillGroupTable(document);
@@ -123,13 +121,5 @@ public class PDFContentGenerator extends PDFGenerator{
 		}
 		document.add(table);
 	}
-
-	@Override
-	protected PdfPageEvent getPageEvent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 
 }
