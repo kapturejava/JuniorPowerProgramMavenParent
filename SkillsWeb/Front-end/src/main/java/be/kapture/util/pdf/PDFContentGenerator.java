@@ -23,15 +23,20 @@ import be.kapture.entities.SurveyDetail;
 public class PDFContentGenerator extends PDFGenerator{
 	
 	PersonDAO personDAO = new PersonDAO();
+	SurveyDetailDAO surveyDetailDAO = new SurveyDetailDAO();
+	SkillNatureDAO skillNatureDAO = new SkillNatureDAO();
+	SurveyDAO surveyDAO = new SurveyDAO();
+	SkillGroupDAO skillGroupDAO = new SkillGroupDAO();
+	SkillDAO skillDAO = new SkillDAO();
 
 	@Override
 	protected void createContent(Document document) throws DocumentException {
 		createPersontable(document);
-//		createSkillNatureTable(document);
-//		createSKillGroupTable(document);
-//		createSkillTable(document);
-//		createSurveyTable(document);
-//		createSurveyDetailTable(document);
+		createSkillNatureTable(document);
+		createSKillGroupTable(document);
+		createSkillTable(document);
+		createSurveyTable(document);
+		createSurveyDetailTable(document);
 	}
 
 	private void createPersontable(Document document) throws DocumentException {
@@ -54,7 +59,7 @@ public class PDFContentGenerator extends PDFGenerator{
 		table.addCell("ID");
 		table.addCell("Name");
 		table.setHeaderRows(1);
-		List<SkillNature> skillNatureList = new SkillNatureDAO().findAll();
+		List<SkillNature> skillNatureList = skillNatureDAO.findAll();
 		for (SkillNature skillNature : skillNatureList) {
 			table.addCell(""+skillNature.getId());
 			table.addCell(skillNature.getName());
@@ -68,7 +73,7 @@ public class PDFContentGenerator extends PDFGenerator{
 		table.addCell("Name");
 		table.addCell("SkillNature_ID");
 		table.setHeaderRows(1);
-		List<SkillGroup> skillGroupList = new SkillGroupDAO().findAll();
+		List<SkillGroup> skillGroupList = skillGroupDAO.findAll();
 		for(SkillGroup s : skillGroupList){
 			table.addCell(""+s.getId());
 			table.addCell(s.getName());
@@ -84,7 +89,7 @@ public class PDFContentGenerator extends PDFGenerator{
 		table.addCell("Weight");
 		table.addCell("SkillGroup_ID");
 		table.setHeaderRows(1);
-		List<Skill> skillList = new SkillDAO().findAll();
+		List<Skill> skillList = skillDAO.findAll();
 		for(Skill s : skillList){
 			table.addCell(""+s.getId());
 			table.addCell(s.getName());
@@ -100,7 +105,7 @@ public class PDFContentGenerator extends PDFGenerator{
 		table.addCell("Date");
 		table.addCell("Person_ID");
 		table.setHeaderRows(1);
-		List<Survey> surveyList = new SurveyDAO().findAll();
+		List<Survey> surveyList = surveyDAO.findAll();
 		for(Survey s : surveyList){
 			table.addCell(""+s.getId());
 			table.addCell(""+s.getDate());
@@ -116,7 +121,7 @@ public class PDFContentGenerator extends PDFGenerator{
 		table.addCell("Survey_ID");
 		table.addCell("Skill_ID");
 		table.setHeaderRows(1);
-		List<SurveyDetail> surveyDetailList = new SurveyDetailDAO().findAll();
+		List<SurveyDetail> surveyDetailList = surveyDetailDAO.findAll();
 		for(SurveyDetail s : surveyDetailList){
 			table.addCell(""+s.getId());
 			table.addCell(""+s.getScore());

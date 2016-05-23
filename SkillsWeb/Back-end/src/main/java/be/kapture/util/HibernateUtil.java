@@ -48,6 +48,7 @@ public class HibernateUtil {
 			session = sessionFactory.getCurrentSession();
 			sessionManagers.set(session);			
 		}
+		session.beginTransaction();
 		return session;
 	}
 
