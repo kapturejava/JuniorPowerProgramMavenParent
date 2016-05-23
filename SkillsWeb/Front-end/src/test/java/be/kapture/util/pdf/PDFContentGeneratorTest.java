@@ -7,9 +7,8 @@ import static org.mockito.Mockito.when;
 
 import java.io.File;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -112,10 +111,9 @@ public class PDFContentGeneratorTest {
 	@Test
 	public void createContent() {
 		HibernateUtil.getSession().beginTransaction();
-		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-		String date = dateFormat.format(cal.getTime());
-		String filename = "ENTITIES " + date;
+		LocalDateTime now = LocalDateTime.now();
+		String filename = "ENTITIES " + now.getDayOfMonth() + "-" + now.getMonth().getValue() + "-" + now.getYear()
+				+ " " + now.getHour() + "u" + now.getMinute() + "min" + now.getSecond() + "sec";
 		pdfContentGenerator.generate(filename);
 		assertTrue(new File(filename + ".pdf").exists());
 	}

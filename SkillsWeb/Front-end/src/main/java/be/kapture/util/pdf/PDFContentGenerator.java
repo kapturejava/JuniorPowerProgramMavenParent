@@ -1,6 +1,5 @@
 package be.kapture.util.pdf;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import com.itextpdf.text.Chunk;
@@ -35,6 +34,7 @@ public class PDFContentGenerator extends PDFGenerator {
 
 	@Override
 	protected void createContent(Document document, String filename) throws DocumentException {
+		document.addTitle(filename);
 		document.add(new Phrase(filename, new Font(FontFamily.HELVETICA, 24, Font.BOLD)));
 		createPersontable(document);
 		createSkillNatureTable(document);
