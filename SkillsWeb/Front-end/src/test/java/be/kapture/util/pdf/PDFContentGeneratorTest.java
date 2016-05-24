@@ -25,7 +25,6 @@ import be.kapture.entities.SkillGroup;
 import be.kapture.entities.SkillNature;
 import be.kapture.entities.Survey;
 import be.kapture.entities.SurveyDetail;
-import be.kapture.util.HibernateUtil;
 
 public class PDFContentGeneratorTest {
 
