@@ -110,7 +110,6 @@ public class PDFContentGeneratorTest {
 
 	@Test
 	public void createContent() {
-		HibernateUtil.getSession().beginTransaction();
 		LocalDateTime now = LocalDateTime.now();
 		String filename = "ENTITIES " + now.getDayOfMonth() + "-" + now.getMonth().getValue() + "-" + now.getYear()
 				+ " " + now.getHour() + "u" + now.getMinute() + "min" + now.getSecond() + "sec";
