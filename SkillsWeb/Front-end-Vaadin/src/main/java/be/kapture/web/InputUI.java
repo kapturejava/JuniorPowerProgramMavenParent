@@ -1,7 +1,11 @@
 package be.kapture.web;
 
+import be.kapture.web.components.SkillsetGrid;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Vaadin framework request entry point for URL mapping /*
@@ -18,14 +22,17 @@ public class InputUI extends UI {
         final TextField consultantName = new TextField();
         consultantName.setCaption("Enter your name: ");
 
+        List<String> dummySkills = Arrays.asList(new String[]{"Java", "HTML", "C++", "JavaScript", "Spring", "Hibernate", "SQL", "Windows", "IntelliJ"});
+        SkillsetGrid skillsetGrid = new SkillsetGrid(dummySkills);
+
         final Button nextPage = new Button("Next");
 
         nextPage.addClickListener(event -> {
             // GO TO NEXT PAGE
+
         });
 
-
-        layout.addComponents(consultantName, nextPage);
+        layout.addComponents(consultantName, skillsetGrid, nextPage);
 
         layout.setMargin(true);
         layout.setSpacing(true);
