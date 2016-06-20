@@ -16,14 +16,14 @@ public class InputUI extends UI {
 
     private final VerticalLayout layout = new VerticalLayout();
 
+    private static final List<String> DUMMY_SKILLS = Arrays.asList(new String[]{"Java", "HTML", "C++", "JavaScript", "Spring", "Hibernate", "SQL", "Windows", "IntelliJ"});
+
     @Override
     protected void init(VaadinRequest request) {
 
-        final TextField consultantName = new TextField();
-        consultantName.setCaption("Enter your name: ");
+        final TextField consultantName = new TextField("Enter consultant name:");
 
-        List<String> dummySkills = Arrays.asList(new String[]{"Java", "HTML", "C++", "JavaScript", "Spring", "Hibernate", "SQL", "Windows", "IntelliJ"});
-        SkillsetGrid skillsetGrid = new SkillsetGrid(dummySkills);
+        SkillsetGrid skillsetGrid = new SkillsetGrid(DUMMY_SKILLS);
 
         final Button nextPage = new Button("Next");
 
@@ -33,9 +33,18 @@ public class InputUI extends UI {
         });
 
         layout.addComponents(consultantName, skillsetGrid, nextPage);
-
         layout.setMargin(true);
         layout.setSpacing(true);
+
+        GridLayout retrieveGrid = new GridLayout(4, 1);
+        retrieveGrid.addComponent(new Label("Enter score to retrieve"), 0, 0);
+        TextField retrievedSkill = new TextField();
+        retrieveGrid.addComponent(retrievedSkill, 1, 0);
+        Button get = new Button("Get");
+        get.addClickListener(event -> Notification.show(String.valueOf(skillsetGrid.getSkillscore(retrievedSkill.getValue()))));
+        retrieveGrid.addComponent(get);
+
+        layout.addComponent(retrieveGrid);
 
         this.setContent(layout);
 
