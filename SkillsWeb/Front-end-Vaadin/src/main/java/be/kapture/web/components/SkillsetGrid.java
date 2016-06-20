@@ -1,5 +1,6 @@
 package be.kapture.web.components;
 
+import be.kapture.util.SkillNotFoundException;
 import com.vaadin.data.util.converter.Converter;
 import com.vaadin.ui.*;
 
@@ -35,7 +36,7 @@ public class SkillsetGrid extends GridLayout {
             Label label = new Label(skillsetEntry.getKey());
 
             // Add a textfield to take input
-            TextField textField = new TextField();
+            TextField textField = new TextField("");
             textField.setConverter(Integer.class);
             textField.setWidth(36F, Unit.PIXELS);
 
@@ -63,7 +64,10 @@ public class SkillsetGrid extends GridLayout {
         }
     }
 
-    public int getSkillscore(String skill) {
+    public int getSkillscore(String skill) throws SkillNotFoundException {
+        if (skillset.get(skill) == null) {
+            throw new SkillNotFoundException();
+        }
         return skillset.get(skill);
     }
 

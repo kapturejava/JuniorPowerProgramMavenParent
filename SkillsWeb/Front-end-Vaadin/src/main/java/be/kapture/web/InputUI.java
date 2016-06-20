@@ -1,5 +1,6 @@
 package be.kapture.web;
 
+import be.kapture.util.SkillNotFoundException;
 import be.kapture.web.components.SkillsetGrid;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.*;
@@ -41,7 +42,15 @@ public class InputUI extends UI {
         TextField retrievedSkill = new TextField();
         retrieveGrid.addComponent(retrievedSkill, 1, 0);
         Button get = new Button("Get");
-        get.addClickListener(event -> Notification.show(String.valueOf(skillsetGrid.getSkillscore(retrievedSkill.getValue()))));
+        get.addClickListener(event -> {
+            try {
+                String message = String.valueOf(skillsetGrid.getSkillscore(retrievedSkill.getValue()));
+                Notification.show(message);
+            } catch (SkillNotFoundException e) {
+                Notification.show("Skill not found.");
+                System.out.println("skill not found");
+            }
+        });
         retrieveGrid.addComponent(get);
 
         layout.addComponent(retrieveGrid);
