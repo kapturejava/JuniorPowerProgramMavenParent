@@ -1,5 +1,8 @@
 package be.kapture.checkers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -8,12 +11,12 @@ import static java.lang.Math.min;
  */
 class BoardLocation {
 
-    private static final int MINIMUM_COORDINATE = 0;
+    static final int MINIMUM_COORDINATE = 0;
     static final int MAXIMUM_COORDINATE = 7;
 
     private int x, y;
 
-    public BoardLocation(int x, int y) {
+    public BoardLocation(int x, int y) throws IllegalArgumentException {
         if (min(x,y) < MINIMUM_COORDINATE ) {
             throw new IllegalArgumentException();
         }
@@ -22,6 +25,43 @@ class BoardLocation {
         }
         this.x = x;
         this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public boolean isOnColorBlack(){
+        return (x+y) %2 ==0;
+    }
+
+    public List<BoardLocation> getDiagonalNeighbouringLocations() {
+        List<BoardLocation> neighbours = new ArrayList<>();
+        try {
+            neighbours.add(new BoardLocation(getX() - 1, getY() + - 1));
+        } catch (IllegalArgumentException ex) {
+
+        }
+        try {
+            neighbours.add(new BoardLocation(getX() - 1, getY() + 1));
+        } catch (IllegalArgumentException ex) {
+
+        }
+        try {
+            neighbours.add(new BoardLocation(getX() + 1, getY() - 1));
+        } catch (IllegalArgumentException ex) {
+
+        }
+        try {
+            neighbours.add(new BoardLocation(getX() + 1, getY() + 1));
+        } catch (IllegalArgumentException ex) {
+
+        }
+        return neighbours;
     }
 
     @Override
@@ -35,11 +75,6 @@ class BoardLocation {
         return y == that.y;
 
     }
-
-    public boolean isOnColorBlack(){
-        return (x+y) %2 ==0;
-    }
-
     @Override
     public int hashCode() {
         int result = x;
@@ -47,11 +82,5 @@ class BoardLocation {
         return result;
     }
 
-    public int getX() {
-        return x;
-    }
 
-    public int getY() {
-        return y;
-    }
 }

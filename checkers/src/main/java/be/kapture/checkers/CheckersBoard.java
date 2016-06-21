@@ -29,21 +29,24 @@ public class CheckersBoard {
     }
 
     public List<BoardLocation> canTake(Colour colour, BoardLocation boardLocation) {
+
         List<BoardLocation> possibleTakes = new ArrayList<>();
+        List<BoardLocation> diagonalNeighbouringLocations = boardLocation.getDiagonalNeighbouringLocations();
         Set<BoardLocation> enemyBoardLocations = boardLocationsMap.get(colour.changeColour());
 
-        try {
-            addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() - 1, boardLocation.getY() - 1));
-            addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() - 1, boardLocation.getY() + 1));
-            addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() + 1, boardLocation.getY() - 1));
-        } catch (IllegalArgumentException e){}
-        addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() + 1, boardLocation.getY() + 1));
+        for (BoardLocation diagonalNeighbouringLocation : diagonalNeighbouringLocations) {
+            addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, diagonalNeighbouringLocation);
+        }
+        /*addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() - 1, boardLocation.getY() - 1));
+        addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() - 1, boardLocation.getY() + 1));
+        addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() + 1, boardLocation.getY() - 1));
+        addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() + 1, boardLocation.getY() + 1));*/
 
         return possibleTakes;
     }
 
     public int getNrOfPawns() {//TODO
-        return  boardLocationsMap.get(BLACK).size()+ boardLocationsMap.get(WHITE).size();
+        return boardLocationsMap.get(BLACK).size() + boardLocationsMap.get(WHITE).size();
     }
 
     private void addIfEnemyPawnPresent(Set<BoardLocation> colourBoardLocations, List<BoardLocation> possibleTakes, BoardLocation testedLocation) {
