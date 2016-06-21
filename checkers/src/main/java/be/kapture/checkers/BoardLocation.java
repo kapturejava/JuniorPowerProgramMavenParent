@@ -16,7 +16,7 @@ class BoardLocation {
 
     private int x, y;
 
-    public BoardLocation(int x, int y) throws IllegalArgumentException {
+    BoardLocation(int x, int y) throws IllegalArgumentException {
         if (!isLegalCoordinate(x, y)) {
             throw new IllegalArgumentException();
         }
@@ -24,29 +24,23 @@ class BoardLocation {
         this.y = y;
     }
 
-    public int getX() {
+    int getX() {
         return x;
     }
 
-    public int getY() {
+    int getY() {
         return y;
     }
 
-    public boolean isOnColorBlack(){
+    boolean isOnColorBlack(){
         return (x+y) %2 ==0;
     }
 
     private static boolean isLegalCoordinate(int x, int y) {
-        if (min(x,y) < MINIMUM_COORDINATE ) {
-            return false;
-        }
-        if (max(x, y) > MAXIMUM_COORDINATE) {
-            return false;
-        }
-        return true;
+        return min(x, y) >= MINIMUM_COORDINATE && max(x, y) <= MAXIMUM_COORDINATE;
     }
 
-    public List<BoardLocation> getDiagonalNeighbouringLocations() {
+    List<BoardLocation> getDiagonalNeighbouringLocations() {
         List<BoardLocation> neighbours = new ArrayList<>();
 
         int oneColumnLeft = getX() - 1;
@@ -77,8 +71,7 @@ class BoardLocation {
 
         BoardLocation that = (BoardLocation) o;
 
-        if (x != that.x) return false;
-        return y == that.y;
+        return x == that.x && y == that.y;
 
     }
     @Override
