@@ -7,7 +7,7 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 /**
- * Created by thiboya on 20/06/2016.
+ * Created by Yannick Thibos on 20/06/2016.
  */
 class BoardLocation {
 
@@ -17,10 +17,7 @@ class BoardLocation {
     private int x, y;
 
     public BoardLocation(int x, int y) throws IllegalArgumentException {
-        if (min(x,y) < MINIMUM_COORDINATE ) {
-            throw new IllegalArgumentException();
-        }
-        if (max(x, y) > MAXIMUM_COORDINATE) {
+        if (!isLegalCoordinate(x, y)) {
             throw new IllegalArgumentException();
         }
         this.x = x;
@@ -39,28 +36,37 @@ class BoardLocation {
         return (x+y) %2 ==0;
     }
 
+    private static boolean isLegalCoordinate(int x, int y) {
+        if (min(x,y) < MINIMUM_COORDINATE ) {
+            return false;
+        }
+        if (max(x, y) > MAXIMUM_COORDINATE) {
+            return false;
+        }
+        return true;
+    }
+
     public List<BoardLocation> getDiagonalNeighbouringLocations() {
         List<BoardLocation> neighbours = new ArrayList<>();
-        try {
-            neighbours.add(new BoardLocation(getX() - 1, getY() + - 1));
-        } catch (IllegalArgumentException ex) {
 
-        }
-        try {
-            neighbours.add(new BoardLocation(getX() - 1, getY() + 1));
-        } catch (IllegalArgumentException ex) {
+        int oneColumnLeft = getX() - 1;
+        int oneColumnRight = getX() + 1;
+        int oneRowLower = getY() - 1;
+        int oneRowHigher = getY() + 1;
 
+        if (isLegalCoordinate(oneColumnLeft, oneRowLower)) {
+            neighbours.add(new BoardLocation(oneColumnLeft, oneRowLower));
         }
-        try {
-            neighbours.add(new BoardLocation(getX() + 1, getY() - 1));
-        } catch (IllegalArgumentException ex) {
+        if (isLegalCoordinate(oneColumnLeft, oneRowHigher)) {
+            neighbours.add(new BoardLocation(oneColumnLeft, oneRowHigher));
+        }
+        if (isLegalCoordinate(oneColumnRight, oneRowHigher)) {
+            neighbours.add(new BoardLocation(oneColumnRight, oneRowHigher));
+        }
+        if (isLegalCoordinate(oneColumnRight, oneRowLower)) {
+            neighbours.add(new BoardLocation((oneColumnRight), oneRowLower));
+        }
 
-        }
-        try {
-            neighbours.add(new BoardLocation(getX() + 1, getY() + 1));
-        } catch (IllegalArgumentException ex) {
-
-        }
         return neighbours;
     }
 
