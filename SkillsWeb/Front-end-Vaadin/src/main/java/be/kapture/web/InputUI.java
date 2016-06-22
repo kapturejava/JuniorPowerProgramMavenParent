@@ -1,7 +1,7 @@
 package be.kapture.web;
 
 import be.kapture.util.SkillNotFoundException;
-import be.kapture.web.components.SkillsetGrid;
+import be.kapture.web.components.SkillsetForm;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.*;
 
@@ -24,7 +24,7 @@ public class InputUI extends UI {
 
         final TextField consultantName = new TextField("Enter consultant name:");
 
-        SkillsetGrid skillsetGrid = new SkillsetGrid(DUMMY_SKILLS);
+        SkillsetForm skillsetForm = new SkillsetForm(DUMMY_SKILLS);
 
         final Button nextPage = new Button("Next");
 
@@ -33,7 +33,7 @@ public class InputUI extends UI {
 
         });
 
-        layout.addComponents(consultantName, skillsetGrid, nextPage);
+        layout.addComponents(consultantName, skillsetForm, nextPage);
         layout.setMargin(true);
         layout.setSpacing(true);
 
@@ -44,7 +44,7 @@ public class InputUI extends UI {
         Button get = new Button("Get");
         get.addClickListener(event -> {
             try {
-                String message = String.valueOf(skillsetGrid.getSkillscore(retrievedSkill.getValue()));
+                String message = String.valueOf(skillsetForm.getSkillscore(retrievedSkill.getValue()));
                 Notification.show(message);
             } catch (SkillNotFoundException e) {
                 Notification.show("Skill not found.");
