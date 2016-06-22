@@ -1,4 +1,4 @@
-package be.kapture.web.components;
+package be.kapture.web.forms;
 
 import be.kapture.util.SkillNotFoundException;
 import com.vaadin.data.util.converter.Converter.ConversionException;

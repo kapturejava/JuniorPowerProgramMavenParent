@@ -1,10 +1,12 @@
 package be.kapture.web;
 
 import be.kapture.util.SkillNotFoundException;
-import be.kapture.web.components.SkillsetForm;
+import be.kapture.web.forms.ConsultantSkillsRetrieverForm;
+import be.kapture.web.forms.SkillsetForm;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,28 +17,36 @@ import java.util.List;
  */
 public class InputUI extends UI {
 
-    private final VerticalLayout layout = new VerticalLayout();
+    private final HorizontalSplitPanel horizontalSplitPanel = new HorizontalSplitPanel();
 
-    private static final List<String> DUMMY_SKILLS = Arrays.asList(new String[]{"Java", "HTML", "C++", "JavaScript", "Spring", "Hibernate", "SQL", "Windows", "IntelliJ"});
+    private static final List<String> DUMMY_SKILLS = Arrays.asList("Java", "HTML", "C++", "JavaScript", "Spring", "Hibernate", "SQL", "Windows", "IntelliJ");
+    private static final List<String> DUMMY_SKILLGROUPS = Arrays.asList("Web front-end", "Java", "Softskills");
 
     @Override
     protected void init(VaadinRequest request) {
 
-        final TextField consultantName = new TextField("Enter consultant name:");
+        horizontalSplitPanel.setWidth("40%");
+        horizontalSplitPanel.setLocked(true);
+
+        VerticalLayout leftSplitPanelComponent = new VerticalLayout();
+        leftSplitPanelComponent.setMargin(true);
+        leftSplitPanelComponent.setSpacing(true);
+        leftSplitPanelComponent.addComponent(new ConsultantSkillsRetrieverForm());
+        leftSplitPanelComponent.addComponent(new ComboBox("Skillgroups", DUMMY_SKILLGROUPS));
+        horizontalSplitPanel.setFirstComponent(leftSplitPanelComponent);
 
         SkillsetForm skillsetForm = new SkillsetForm(DUMMY_SKILLS);
+        skillsetForm.setMargin(true);
+        skillsetForm.setSpacing(true);
+        horizontalSplitPanel.setSecondComponent(skillsetForm);
 
-        final Button nextPage = new Button("Next");
+        //addSkillscoreRetrieverForTestingPurposes(skillsetForm);
 
-        nextPage.addClickListener(event -> {
-            // GO TO NEXT PAGE
+        this.setContent(horizontalSplitPanel);
 
-        });
+    }
 
-        layout.addComponents(consultantName, skillsetForm, nextPage);
-        layout.setMargin(true);
-        layout.setSpacing(true);
-
+    private void addSkillscoreRetrieverForTestingPurposes(SkillsetForm skillsetForm) {
         GridLayout retrieveGrid = new GridLayout(4, 1);
         retrieveGrid.addComponent(new Label("Enter score to retrieve"), 0, 0);
         TextField retrievedSkill = new TextField();
@@ -53,9 +63,6 @@ public class InputUI extends UI {
         });
         retrieveGrid.addComponent(get);
 
-        layout.addComponent(retrieveGrid);
-
-        this.setContent(layout);
-
+        horizontalSplitPanel.addComponent(retrieveGrid);
     }
 }
