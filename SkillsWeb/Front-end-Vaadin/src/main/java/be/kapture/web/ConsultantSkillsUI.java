@@ -6,7 +6,6 @@ import be.kapture.web.forms.SkillsetForm;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,36 +14,23 @@ import java.util.List;
  *
  * Created by Yannick Thibos on 17/06/2016.
  */
-public class InputUI extends UI {
+public class ConsultantSkillsUI extends UI {
 
-    private final HorizontalSplitPanel horizontalSplitPanel = new HorizontalSplitPanel();
+    private final HorizontalLayout horizontalLayout = new HorizontalLayout();
 
-    private static final List<String> DUMMY_SKILLS = Arrays.asList("Java", "HTML", "C++", "JavaScript", "Spring", "Hibernate", "SQL", "Windows", "IntelliJ");
     private static final List<String> DUMMY_SKILLGROUPS = Arrays.asList("Web front-end", "Java", "Softskills");
 
     @Override
     protected void init(VaadinRequest request) {
 
-        horizontalSplitPanel.setWidth("40%");
-        horizontalSplitPanel.setLocked(true);
+        horizontalLayout.setMargin(true);
+        horizontalLayout.setSpacing(true);
 
-        VerticalLayout leftSplitPanelComponent = new VerticalLayout();
-        leftSplitPanelComponent.setMargin(true);
-        leftSplitPanelComponent.setSpacing(true);
-        leftSplitPanelComponent.addComponent(new ConsultantSkillsRetrieverForm());
-        leftSplitPanelComponent.addComponent(new ComboBox("Skillgroups", DUMMY_SKILLGROUPS));
-        horizontalSplitPanel.setFirstComponent(leftSplitPanelComponent);
+        horizontalLayout.addComponent(new ConsultantSkillsRetrieverForm());
 
-        SkillsetForm skillsetForm = new SkillsetForm(DUMMY_SKILLS);
-        skillsetForm.setMargin(true);
-        skillsetForm.setSpacing(true);
-        horizontalSplitPanel.setSecondComponent(skillsetForm);
-
-        //addSkillscoreRetrieverForTestingPurposes(skillsetForm);
-
-        this.setContent(horizontalSplitPanel);
-
+        setContent(horizontalLayout);
     }
+
 
     private void addSkillscoreRetrieverForTestingPurposes(SkillsetForm skillsetForm) {
         GridLayout retrieveGrid = new GridLayout(4, 1);
@@ -63,6 +49,6 @@ public class InputUI extends UI {
         });
         retrieveGrid.addComponent(get);
 
-        horizontalSplitPanel.addComponent(retrieveGrid);
+        horizontalLayout.addComponent(retrieveGrid);
     }
 }
