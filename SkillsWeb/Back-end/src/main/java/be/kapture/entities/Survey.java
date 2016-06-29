@@ -101,7 +101,7 @@ public class Survey implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Survey [id=" + id + ", date=" + date + ", person=" + person + ", surveyDetails=" + surveyDetails + "]";
+		return person + " @ " + date;
 	}
 
 }
