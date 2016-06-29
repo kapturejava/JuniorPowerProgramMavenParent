@@ -8,6 +8,8 @@ import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.util.Objects;
+
 public class HibernateUtil {
 
 	private static final SessionFactory sessionFactory = buildSessionFactory();
@@ -35,14 +37,21 @@ public class HibernateUtil {
 		}
 	}
 
+
 	private static ThreadLocal<Session> buildSessionManagers() {
 		ThreadLocal<Session> sessionManagers = new ThreadLocal<>();
+		System.out.println("sessionFactory.getCurrentSession == null ??");
+		System.out.println(sessionFactory.getCurrentSession() == null);
 		sessionManagers.set(sessionFactory.getCurrentSession());
 		return sessionManagers;
 	}
 
 	public static Session getSession() {
+		Objects.requireNonNull(sessionFactory, "sessionFactory was null");
+		Objects.requireNonNull(sessionManagers, "sessionManagers was null");
 		Session session = sessionManagers.get();
+		// TODO Fix NPE: for some reason - session is null and this requireNonNull is triggered!
+		Objects.requireNonNull(session, "session was null");
 		if(!session.isOpen()){
 			sessionManagers.remove();
 			session = sessionFactory.getCurrentSession();
