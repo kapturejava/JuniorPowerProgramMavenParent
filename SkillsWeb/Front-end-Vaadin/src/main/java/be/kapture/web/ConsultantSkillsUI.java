@@ -7,6 +7,7 @@ import be.kapture.entities.Survey;
 import be.kapture.util.SkillNotFoundException;
 import be.kapture.web.forms.ConsultantSkillsRetrieverForm;
 import be.kapture.web.forms.SkillsetForm;
+import be.kapture.web.forms.SurveyForm;
 import com.vaadin.annotations.Title;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
@@ -90,11 +91,23 @@ public class ConsultantSkillsUI extends UI {
 
         BeanItemContainer<Survey> surveyContainer = new BeanItemContainer<>(Survey.class);
         List<Survey> foundSurveys = surveyDAO.findByPersonId(consultantID);
-        System.out.println("------------------FOUND SURVEYS-----------------\n" + foundSurveys
-                + "\n");
         surveyContainer.addAll(foundSurveys);
         comboBox.setContainerDataSource(surveyContainer);
 
+        comboBox.addValueChangeListener(new SurveySelectionListener());
+
         return comboBox;
+    }
+
+    private class SurveySelectionListener implements ValueChangeListener {
+
+        @Override
+        public void valueChange(ValueChangeEvent event) {
+            if (event.getProperty().getValue() != null) {
+                Survey selectedSurvey = (Survey) event.getProperty().getValue();
+                horizontalSplitPanel.setSecondComponent(new SurveyForm(selectedSurvey));
+            }
+        }
+
     }
 }
