@@ -67,7 +67,7 @@ public class CheckersBoardTest {
     }
 
     @Test
-    public void canTake_LowerBorder() {
+    public void canTake_OnlyUpperRight() {
         BoardLocation pawnLocation = new BoardLocation(0, 0);
         checkersBoard.addPawn(pawnLocation, BLACK);
 
@@ -79,14 +79,14 @@ public class CheckersBoardTest {
     }
 
     @Test
-    public void canTake_UpperBorder() {
+    public void canTake_OnlyLowerLeft() {
         BoardLocation pawnLocation = new BoardLocation(MAXIMUM_COORDINATE, MAXIMUM_COORDINATE);
         checkersBoard.addPawn(pawnLocation, BLACK);
 
-        BoardLocation upperRight = new BoardLocation(MAXIMUM_COORDINATE-1, MAXIMUM_COORDINATE-1);
-        checkersBoard.addPawn(upperRight, WHITE);
+        BoardLocation lowerLeft = new BoardLocation(MAXIMUM_COORDINATE-1, MAXIMUM_COORDINATE-1);
+        checkersBoard.addPawn(lowerLeft, WHITE);
 
-        assertThat(checkersBoard.canTake(BLACK, pawnLocation), containsInAnyOrder( upperRight));
+        assertThat(checkersBoard.canTake(BLACK, pawnLocation), containsInAnyOrder( lowerLeft));
 
     }
 
