@@ -21,6 +21,7 @@ public class SurveyDAO extends AbstractDAO<Survey> {
 	}
 
 	public List<Survey> findByPersonId(int id) {
-		return (List<Survey>) getCurrentSession().createQuery("select s from Survey s where s.person.id = s.id");
+		return (List<Survey>) getCurrentSession().createQuery("select s from Survey s inner join Person  p on p.id = s.person.id" +
+				" where p.id = " + id).list();
 	}
 }
