@@ -46,29 +46,34 @@ public class GameBoard {
 	public boolean hasWon(Colour colour) {
 
 		for (Colour[] column : board) {
-			if (hasFourSuccessive(column, colour)) {
+			if (hasWonVertically(column, colour)) {
 				return true;
 			}
 		}
 		for (int row = 0; row < NR_OF_ROWS; row++) {
-			int amountOfSameColoursFeatured = 0;
-			for (int column = 0; column < NR_OF_COLUMNS; column++) {
-				Colour colour1 = board[column][row];
-				if (colour1 == colour) {
-					amountOfSameColoursFeatured++;
-				} else {
-					amountOfSameColoursFeatured = 0;
-				}
-				if (amountOfSameColoursFeatured == 4) {
-					return true;
-				}
-			}
+			if (hasWonHorizontally(colour, row)) return true;
 		}
 
 		return false;
 	}
 
-	private boolean hasFourSuccessive(Colour[] column, Colour colour) {
+	private boolean hasWonHorizontally(Colour colour, int row) {
+		int amountOfSameColoursFeatured = 0;
+		for (int column = 0; column < NR_OF_COLUMNS; column++) {
+			Colour colour1 = board[column][row];
+			if (colour1 == colour) {
+				amountOfSameColoursFeatured++;
+			} else {
+				amountOfSameColoursFeatured = 0;
+			}
+			if (amountOfSameColoursFeatured == 4) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean hasWonVertically(Colour[] column, Colour colour) {
 		int amountOfSameColoursFeatured = 0;
 		for (Colour colour1 : column) {
 			if (colour1 == null) {
