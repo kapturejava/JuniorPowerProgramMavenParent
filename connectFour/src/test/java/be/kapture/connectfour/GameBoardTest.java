@@ -1,6 +1,6 @@
 package be.kapture.connectfour;
 
-import org.junit.Ignore;
+
 import org.junit.Test;
 
 import static be.kapture.connectfour.Colour.RED;
@@ -147,7 +147,9 @@ public class GameBoardTest {
 		gameBoard.addPiece(3,YELLOW);
 		gameBoard.addPiece(4,RED);
 		gameBoard.addPiece(3,RED);
+		assertThat(gameBoard.hasWon(RED), is(false));
 		gameBoard.addPiece(4,YELLOW);
+		assertThat(gameBoard.hasWon(RED), is(false));
 		gameBoard.addPiece(4,RED);
 		assertThat(gameBoard.hasWon(RED), is(true));
 	}
