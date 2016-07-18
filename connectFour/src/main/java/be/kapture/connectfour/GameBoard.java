@@ -56,24 +56,54 @@ public class GameBoard {
 
 
 		for (int column = 0; column < NR_OF_COLUMNS; column++) {
-			int amountOfSameColoursFeatured = 0;
-			int row = 0;
-			Colour colour1 = board[column][row];
-			while (row < NR_OF_ROWS && colour1 != null) {
-				int rowWhile = row;
-				int columnWhile = column;
-				while (rowWhile + 1 < NR_OF_ROWS && columnWhile + 1 < NR_OF_COLUMNS && colour1 == colour) {
+			if (hasWonDiagonallyBissectriceFirstQuadrant(colour, column)) return true;
+		}
+
+		for (int column = 0; column < NR_OF_COLUMNS; column++) {
+			if (hasWonDiagonallyBissectriceSecondQuadrant(colour, column)) return true;
+		}
+		return false;
+	}
+
+	private boolean hasWonDiagonallyBissectriceSecondQuadrant(Colour colour, int column) {
+		int amountOfSameColoursFeatured = 0;
+		int row = 0;
+		Colour colour1 = board[column][row];
+		while (row < NR_OF_ROWS && colour1 != null) {
+			int rowWhile = row;
+			int columnWhile = column;
+			if (rowWhile >= 3) {
+				while (rowWhile >= 0 && columnWhile + 1 < NR_OF_COLUMNS && colour1 == colour) {
 					amountOfSameColoursFeatured++;
-					colour1 = board[++columnWhile][++rowWhile];
 					if (amountOfSameColoursFeatured == 4) {
 						return true;
 					}
+					colour1 = board[++columnWhile][--rowWhile];
 				}
-				amountOfSameColoursFeatured = 0;
-				row++;
 			}
+			amountOfSameColoursFeatured = 0;
+			colour1 = board[column][++row];
 		}
+		return false;
+	}
 
+	private boolean hasWonDiagonallyBissectriceFirstQuadrant(Colour colour, int column) {
+		int amountOfSameColoursFeatured = 0;
+		int row = 0;
+		Colour colour1 = board[column][row];
+		while (row < NR_OF_ROWS && colour1 != null) {
+			int rowWhile = row;
+			int columnWhile = column;
+			while (rowWhile + 1 < NR_OF_ROWS && columnWhile + 1 < NR_OF_COLUMNS && colour1 == colour) {
+				amountOfSameColoursFeatured++;
+				colour1 = board[++columnWhile][++rowWhile];
+				if (amountOfSameColoursFeatured == 4) {
+					return true;
+				}
+			}
+			amountOfSameColoursFeatured = 0;
+			row++;
+		}
 		return false;
 	}
 
