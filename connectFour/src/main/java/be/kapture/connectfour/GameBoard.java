@@ -54,6 +54,31 @@ public class GameBoard {
 			if (hasWonHorizontally(colour, row)) return true;
 		}
 
+
+		for (int column = 0; column < NR_OF_COLUMNS; column++) {
+
+			int amountOfSameColoursFeatured = 0;
+			for (int row = 0; row < NR_OF_ROWS; row++) {
+				Colour colour1 = board[column][row];
+				if (colour1 == colour && colour1 != null) {
+					int rowWhile = row;
+					int columnWhile = column;
+					while (rowWhile + 1 < NR_OF_ROWS && columnWhile + 1 < NR_OF_COLUMNS && colour1 != null) {
+						colour1 = board[columnWhile++][rowWhile++];
+						if (colour1 == colour) {
+							amountOfSameColoursFeatured++;
+
+							if (amountOfSameColoursFeatured == 4) {
+								return true;
+							}
+						}
+					}
+				} else {
+					amountOfSameColoursFeatured = 0;
+				}
+			}
+		}
+
 		return false;
 	}
 

@@ -135,5 +135,21 @@ public class GameBoardTest {
 		gameBoard.addPiece(4, YELLOW);
 		assertThat(gameBoard.hasWon(YELLOW), is(true));
 	}
+	@Test
+	public void hasWon_Diagonally_Red_RightAbove(){
+		GameBoard gameBoard = new GameBoard();
+		gameBoard.addPiece(1,RED);
+		gameBoard.addPiece(2,RED);
+		gameBoard.addPiece(3,RED);
+		assertThat(gameBoard.hasWon(RED), is(false));
+		gameBoard.addPiece(4,YELLOW);
+		gameBoard.addPiece(2,RED);
+		gameBoard.addPiece(3,YELLOW);
+		gameBoard.addPiece(4,RED);
+		gameBoard.addPiece(3,RED);
+		gameBoard.addPiece(4,YELLOW);
+		gameBoard.addPiece(4,RED);
+		assertThat(gameBoard.hasWon(RED), is(true));
+	}
 
 }
