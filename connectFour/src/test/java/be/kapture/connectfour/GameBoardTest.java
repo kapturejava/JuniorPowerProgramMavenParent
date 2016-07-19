@@ -1,6 +1,7 @@
 package be.kapture.connectfour;
 
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static be.kapture.connectfour.Colour.RED;
@@ -155,7 +156,28 @@ public class GameBoardTest {
 		assertThat(gameBoard.hasWon(RED), is(true));
 	}
 
-	@Test
+    @Ignore
+    @Test
+    public void hasWon_Diagonally_Red_RightAbove_Higher() {
+        GameBoard gameBoard = new GameBoard();
+
+        addColorToGameBoardAtXY(gameBoard, 1, 1,RED);
+        addColorToGameBoardAtXY(gameBoard, 2, 2,RED);
+        addColorToGameBoardAtXY(gameBoard, 3, 3,RED);
+        addColorToGameBoardAtXY(gameBoard, 4, 4,RED);
+
+        assertThat(gameBoard.hasWon(RED), is(true));
+    }
+
+    private void addColorToGameBoardAtXY(GameBoard board, int column, int row, Colour colour){
+        for (int i= 0; i< row; i++){
+             board.addPiece(column, colour.other());
+        }
+        board.addPiece(column, colour);
+    }
+
+
+    @Test
 	public void hasWon_Diagonally_Red_LeftAbove() {
 		GameBoard gameBoard = new GameBoard();
 		gameBoard.addPiece(1, YELLOW);
