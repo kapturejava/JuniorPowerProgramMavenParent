@@ -156,7 +156,6 @@ public class GameBoardTest {
 		assertThat(gameBoard.hasWon(RED), is(true));
 	}
 
-    @Ignore
     @Test
     public void hasWon_Diagonally_Red_RightAbove_Higher() {
         GameBoard gameBoard = new GameBoard();
@@ -165,7 +164,7 @@ public class GameBoardTest {
         addColorToGameBoardAtXY(gameBoard, 2, 2,RED);
         addColorToGameBoardAtXY(gameBoard, 3, 3,RED);
         addColorToGameBoardAtXY(gameBoard, 4, 4,RED);
-
+		assertThat(gameBoard.hasWon(YELLOW), is(true));
         assertThat(gameBoard.hasWon(RED), is(true));
     }
 

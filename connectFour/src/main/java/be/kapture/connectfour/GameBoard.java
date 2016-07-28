@@ -102,7 +102,7 @@ public class GameBoard {
 				}
 			}
 			amountOfSameColoursFeatured = 0;
-			row++;
+			colour1 = board[column][++row];
 		}
 		return false;
 	}
