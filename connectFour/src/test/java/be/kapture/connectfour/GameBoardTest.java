@@ -164,11 +164,22 @@ public class GameBoardTest {
         addColorToGameBoardAtXY(gameBoard, 2, 2,RED);
         addColorToGameBoardAtXY(gameBoard, 3, 3,RED);
         addColorToGameBoardAtXY(gameBoard, 4, 4,RED);
-		assertThat(gameBoard.hasWon(YELLOW), is(true));
         assertThat(gameBoard.hasWon(RED), is(true));
     }
 
-    private void addColorToGameBoardAtXY(GameBoard board, int column, int row, Colour colour){
+	@Test
+	public void hasWon_Diagonally_Red_From01() {
+		GameBoard gameBoard = new GameBoard();
+
+		addColorToGameBoardAtXY(gameBoard, 0, 1,RED);
+		addColorToGameBoardAtXY(gameBoard, 1, 2,RED);
+		addColorToGameBoardAtXY(gameBoard, 2, 3,RED);
+		addColorToGameBoardAtXY(gameBoard, 3, 4,RED);
+		assertThat(gameBoard.hasWon(RED), is(true));
+	}
+
+
+	private void addColorToGameBoardAtXY(GameBoard board, int column, int row, Colour colour){
         for (int i= 0; i< row; i++){
              board.addPiece(column, colour.other());
         }
@@ -192,6 +203,11 @@ public class GameBoardTest {
 		gameBoard.addPiece(3, RED);
 		gameBoard.addPiece(4, RED);
 		assertThat(gameBoard.hasWon(RED), is(true));
+	}
+
+	@Test
+	public void hasWon_List(){
+
 	}
 
 }

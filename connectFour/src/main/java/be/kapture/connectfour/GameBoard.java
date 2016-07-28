@@ -43,35 +43,31 @@ public class GameBoard {
 		return Arrays.stream(board[column]).filter(NOT_NULL).collect(toList());
 	}
 
-	public boolean hasWon(Colour colour) {
-
+	public boolean hasWon(Colour colourToWin) {
 		for (Colour[] column : board) {
-			if (hasWonVertically(column, colour)) {
+			if (hasWonVertically(column, colourToWin)) {
 				return true;
 			}
 		}
 		for (int row = 0; row < NR_OF_ROWS; row++) {
-			if (hasWonHorizontally(colour, row)) return true;
+			if (hasWonHorizontally(colourToWin, row)) return true;
 		}
-
-
 		for (int column = 0; column < NR_OF_COLUMNS; column++) {
-			if (hasWonDiagonallyBissectriceFirstQuadrant(colour, column)) return true;
+			if (hasWonDiagonalUpperRightThatStartsInColumn(colourToWin, column)) return true;
 		}
-
 		for (int column = 0; column < NR_OF_COLUMNS; column++) {
-			if (hasWonDiagonallyBissectriceSecondQuadrant(colour, column)) return true;
+			if (hasWonDiagonallyBisectionSecondQuadrant(colourToWin, column)) return true;
 		}
 		return false;
 	}
 
-	private boolean hasWonDiagonallyBissectriceSecondQuadrant(Colour colour, int column) {
-		int amountOfSameColoursFeatured = 0;
+	private boolean hasWonDiagonallyBisectionSecondQuadrant(Colour colour, int column) {
 		int row = 0;
 		Colour colour1 = board[column][row];
 		while (row < NR_OF_ROWS && colour1 != null) {
 			int rowWhile = row;
 			int columnWhile = column;
+			int amountOfSameColoursFeatured = 0;
 			if (rowWhile >= 3) {
 				while (rowWhile >= 0 && columnWhile + 1 < NR_OF_COLUMNS && colour1 == colour) {
 					amountOfSameColoursFeatured++;
@@ -87,24 +83,44 @@ public class GameBoard {
 		return false;
 	}
 
-	private boolean hasWonDiagonallyBissectriceFirstQuadrant(Colour colour, int column) {
-		int amountOfSameColoursFeatured = 0;
-		int row = 0;
-		Colour colour1 = board[column][row];
-		while (row < NR_OF_ROWS && colour1 != null) {
-			int rowWhile = row;
-			int columnWhile = column;
-			while (rowWhile + 1 < NR_OF_ROWS && columnWhile + 1 < NR_OF_COLUMNS && colour1 == colour) {
-				amountOfSameColoursFeatured++;
-				colour1 = board[++columnWhile][++rowWhile];
-				if (amountOfSameColoursFeatured == 4) {
-					return true;
-				}
+	private boolean hasWonDiagonalUpperRightThatStartsInColumn(Colour colourToWin, int column) {
+		for (int row= 0; row < NR_OF_ROWS; row++){
+			if (board[column][row] == null){
+				return false;
 			}
-			amountOfSameColoursFeatured = 0;
-			colour1 = board[column][++row];
+			if (startsDiagonalWithWinningCombinationOf(colourToWin, column, row)){
+				return true;
+			}
 		}
 		return false;
+	}
+
+	private boolean startsDiagonalWithWinningCombinationOf(Colour colourToWin, int startColumn, int startRow) {
+		int amountOfSameColoursFeatured = 0;
+		for (int column =startColumn, row =startRow; stillOnBoard(column, row) ; column++,row++){
+			if (board[column][row] != colourToWin ) {
+				return false;
+			}
+			if (++amountOfSameColoursFeatured == 4) {
+				return true;
+			}
+
+		}
+
+	/*	int rowWhile = startRow;
+		int columnWhile = startColumn;
+		if (++amountOfSameColoursFeatured == 4) {
+			return true;
+		}
+		while (stillOnBoard(rowWhile, columnWhile) && board[columnWhile][rowWhile] == colourToWin) {
+			rowWhile++;
+			columnWhile++;
+		}*/
+		return false;
+	}
+
+	private boolean stillOnBoard(int columnWhile, int rowWhile) {
+		return rowWhile < NR_OF_ROWS && columnWhile < NR_OF_COLUMNS;
 	}
 
 	private boolean hasWonHorizontally(Colour colour, int row) {
