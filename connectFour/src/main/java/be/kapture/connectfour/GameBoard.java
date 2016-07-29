@@ -15,6 +15,10 @@ public class GameBoard {
 	static final int NR_OF_COLUMNS = 7;
 	private final Colour[][] board = new Colour[NR_OF_COLUMNS][NR_OF_ROWS];
 
+	Colour getColour(int column, int row){
+		return board[column][ row];
+	}
+
 	public void addPiece(int column, Colour colour) {
 		if (column < 0 || column >= NR_OF_COLUMNS) {
 			throw new IllegalArgumentException();
@@ -77,7 +81,7 @@ public class GameBoard {
 					colour1 = board[++columnWhile][--rowWhile];
 				}
 			}
-			amountOfSameColoursFeatured = 0;
+		//	amountOfSameColoursFeatured = 0;
 			colour1 = board[column][++row];
 		}
 		return false;

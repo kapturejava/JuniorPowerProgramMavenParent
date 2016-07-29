@@ -4,8 +4,11 @@ package be.kapture.connectfour;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.List;
+
 import static be.kapture.connectfour.Colour.RED;
 import static be.kapture.connectfour.Colour.YELLOW;
+import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
@@ -205,9 +208,9 @@ public class GameBoardTest {
 		assertThat(gameBoard.hasWon(RED), is(true));
 	}
 
-	@Test
-	public void hasWon_List(){
 
-	}
+
+
+
 
 }
