@@ -37,30 +37,20 @@ public class HibernateUtil {
 		}
 	}
 
-
 	private static ThreadLocal<Session> buildSessionManagers() {
 		ThreadLocal<Session> sessionManagers = new ThreadLocal<>();
-//		System.out.println("sessionFactory.getCurrentSession == null ??");
-//		System.out.println(sessionFactory.getCurrentSession() == null);
 		sessionManagers.set(sessionFactory.getCurrentSession());
 		return sessionManagers;
 	}
 
 	public static Session getSession() {
-//		Objects.requireNonNull(sessionFactory, "sessionFactory was null");
-//		Objects.requireNonNull(sessionManagers, "sessionManagers was null");
-//		System.out.println(sessionManagers.get());
-//		Session session = sessionManagers.get();
-//		Objects.requireNonNull(session, "session was null");
-//		if(!session.isOpen()){
-//			sessionManagers.remove();
-//			session = sessionFactory.getCurrentSession();
-//			sessionManagers.set(session);
-//		}
-//		session.beginTransaction();
-
-        Session session = sessionFactory.openSession();
-
+		Session session = sessionManagers.get();
+		if(!session.isOpen()){
+			sessionManagers.remove();
+			session = sessionFactory.getCurrentSession();
+			sessionManagers.set(session);
+		}
+		session.beginTransaction();
 		return session;
 	}
 
