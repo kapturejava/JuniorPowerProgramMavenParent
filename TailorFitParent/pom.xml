@@ -12,6 +12,7 @@
 	<modules>
 		<module>TailorFit-Back-end</module>
 		<module>TailorFit-Front-end</module>
+		<module>TailorFit-Service</module>
 	</modules>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
