@@ -11,6 +11,7 @@
 	<name>TailorFitParent</name>
 	<modules>
 		<module>TailorFit-Back-end</module>
+		<module>TailorFit-Front-end</module>
 	</modules>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
