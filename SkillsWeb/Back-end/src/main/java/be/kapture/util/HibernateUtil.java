@@ -10,6 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.util.Objects;
 
+@SuppressWarnings("unused")
 public class HibernateUtil {
 
 	private static final SessionFactory sessionFactory = buildSessionFactory();

@@ -15,6 +15,7 @@
         <module>ChessPuzzle</module>
         <module>checkers</module>
         <module>connectFour</module>
+        <module>TailorFitParent</module>
     </modules>
 
 
