@@ -27,4 +27,14 @@ public class Person {
 		return 0;
 	}
 
+	public void setSize(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setGender(Gender female) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
