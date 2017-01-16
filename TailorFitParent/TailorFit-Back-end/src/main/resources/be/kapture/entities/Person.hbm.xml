@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="be.kapture.entities.Person" table="PERSONS">
+	<class name="be.kapture.entities.Person" table="person">
 		<meta attribute="class-description">
 			This class contains the person detail.
 		</meta>
@@ -12,9 +12,11 @@
 			<generator class="native" />
 		</id>
 		<property name="size" column="Size" type="integer" not-null="true" />
-		<property name="gender" column="Gender" type="string"
+		<property name="gender" column="Gender" type="integer"
 			not-null="true" />
-		<property name="name" column="Name" type="string"
+		<property name="firstName" column="FirstName" type="string"
+			not-null="true" />
+		<property name="lastName" column="LastName" type="string"
 			not-null="true" />
 	</class>
 </hibernate-mapping>
