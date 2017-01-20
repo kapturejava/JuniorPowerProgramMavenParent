@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="be.kapture.entities.Person" table="person">
+	<class name="be.kapture.entities.ClothingItem" table="ClothingItem">
 		<meta attribute="class-description">
 			This class contains the person detail.
 		</meta>

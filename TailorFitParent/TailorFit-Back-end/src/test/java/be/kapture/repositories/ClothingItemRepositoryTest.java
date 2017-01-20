@@ -18,7 +18,8 @@ public class ClothingItemRepositoryTest extends AbstractRepositoryTest{
 
 	@Before
 	public void before() {
-		clothingItem = new ClothingItem(125, Color.BLUE);
+		clothingItem = new ClothingItem(125, Color.BLUE.toString());
+		clothingItemRepository.create(clothingItem);
 		id = clothingItem.getId();
 	}
 
@@ -30,18 +31,18 @@ public class ClothingItemRepositoryTest extends AbstractRepositoryTest{
 	@Test
 	public void create() {
 		clothingItemRepository.create(clothingItem);
+		id = clothingItem.getId();
 		assertSame(clothingItem, clothingItemRepository.read(id));
 	}
 	
 	@Test
 	public void read() {
-		clothingItemRepository.create(clothingItem);
 		assertSame(clothingItem, clothingItemRepository.read(id));
 	}
 
 	@Test
 	public void update() {
-		clothingItem.setColor(Color.RED);
+		clothingItem.setColor(Color.RED.toString());
 		clothingItemRepository.update(clothingItem);
 		assertSame(clothingItem, clothingItemRepository.read(id));
 	}

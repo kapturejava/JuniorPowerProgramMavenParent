@@ -15,18 +15,18 @@ public class ClothingItemTest {
 	
 	@Before
 	public void before() {
-		item = new ClothingItem(115, Color.BLUE);
-		otherItem = new ClothingItem(115, Color.BLUE);
+		item = new ClothingItem(115, Color.BLUE.toString());
+		otherItem = new ClothingItem(115, Color.BLUE.toString());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void createClothingItemWithNegativeSize() {
-		item = new ClothingItem(-7, Color.BLUE);
+		item = new ClothingItem(-7, Color.BLUE.toString());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void createClothingItemWithSizeZero() {
-		item = new ClothingItem(0, Color.BLUE);
+		item = new ClothingItem(0, Color.BLUE.toString());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -43,9 +43,9 @@ public class ClothingItemTest {
 		item.setSize(120);
 		assertEquals(item, otherItem);
 		
-		otherItem.setColor(Color.RED);
+		otherItem.setColor(Color.RED.toString());
 		assertNotEquals(item, otherItem);
-		item.setColor(Color.RED);
+		item.setColor(Color.RED.toString());
 		assertEquals(item, otherItem);
 	}
 }

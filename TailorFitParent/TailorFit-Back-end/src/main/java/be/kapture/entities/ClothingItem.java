@@ -8,7 +8,7 @@ public class ClothingItem {
 	
 	private int id;
 	private int size;
-	private Color color;
+	private String color;
 
 	public int getId(){
 		return id;
@@ -18,7 +18,7 @@ public class ClothingItem {
 		this.id = id;
 	}
 	
-	public ClothingItem(int size, Color color) throws IllegalArgumentException{
+	public ClothingItem(int size, String color) throws IllegalArgumentException{
 		setSize(size);
 		setColor(color);
 	}
@@ -27,15 +27,15 @@ public class ClothingItem {
 		this.size = InputUtil.isIntStricltyPositive(size);
 	}
 	
-	public void setColor(Color color){
-		this.color = (Color) InputUtil.isNotNull(color);
+	public void setColor(String color){
+		this.color = InputUtil.isStringEmpty(color);
 	}
 	
 	public int getSize(){
 		return size;
 	}
 	
-	public Color getColor(){
+	public String getColor(){
 		return color;
 	}
 
@@ -66,7 +66,5 @@ public class ClothingItem {
 			return false;
 		return true;
 	}
-	
-	
 	
 }
