@@ -9,46 +9,40 @@ import org.junit.Test;
 import be.kapture.entities.Person;
 import be.kapture.enums.Gender;
 
-public class PersonRepositoryTest extends AbstractRepositoryTest{
+public class PersonRepositoryTest extends AbstractRepositoryTest {
 
-	private PersonRepository personRepository = new PersonRepository();
-	private long id;
-	private Person person;
+    private Person dario = new Person("d", "j", 185, Gender.MALE);
+    private PersonRepository personRepository = new PersonRepository();
+    private long id;
 
-	@Before
-	public void before() {
-		person = new Person("voornaam", "lastname", 180, Gender.MALE);
-		id = person.getId();
-	}
+    @Before
+    public void before() {
+        // person = new Person("voornaam", "lastname", 180, Gender.MALE);
+        personRepository.create(dario);
+        id = dario.getId();
+    }
 
-	@Test
-	public void read_With_Negative_Id_Returns_Null() {
-		assertNull(personRepository.read((long)-1));
-	}
+    @Test
+    public void read_With_Negative_Id_Returns_Null() {
+        assertNull(personRepository.read((long) -1));
+    }
 
-	@Test
-	public void create() {
-		personRepository.create(person);
-		assertSame(person, personRepository.read(id));
-	}
-	
-	@Test
-	public void read() {
-		personRepository.create(person);
-		assertSame(person, personRepository.read(id));
-	}
+    @Test
+    public void create_And_Read() {
+        assertSame(dario, personRepository.read(id));
+    }
 
-	@Test
-	public void update() {
-		person.setFirstName("updateFirstname");
-		personRepository.update(person);
-		assertSame(person, personRepository.read(id));
-	}
+    @Test
+    public void update() {
+        dario.setFirstName("updateFirstname");
+        personRepository.update(dario);
+        assertSame(dario, personRepository.read(id));
+    }
 
-	@Test
-	public void delete() {
-		personRepository.delete(person);
-		assertNull(personRepository.read(id));
-	}
+    @Test
+    public void delete() {
+        personRepository.delete(dario);
+        assertNull(personRepository.read(id));
+    }
 
 }
