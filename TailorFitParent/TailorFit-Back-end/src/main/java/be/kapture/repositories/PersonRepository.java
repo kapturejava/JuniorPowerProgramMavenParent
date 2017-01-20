@@ -12,22 +12,4 @@ public class PersonRepository extends AbstractRepository<Person> {
         super(typeParameterClass);
     }
 
-    public void create(Person person) {
-
-    }
-
-    public Object read(long l) {
-        return null;
-    }
-    //
-    // public void update(Person person) {
-    // // TODO Auto-generated method stub
-    //
-    // }
-    //
-    // public void delete(Person person) {
-    // // TODO Auto-generated method stub
-    //
-    // }
-
 }

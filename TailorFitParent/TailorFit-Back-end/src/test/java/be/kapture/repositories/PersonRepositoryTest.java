@@ -11,20 +11,20 @@ import be.kapture.enums.Gender;
 
 public class PersonRepositoryTest extends AbstractRepositoryTest {
 
-    private Person dario = new Person("d", "j", 185, Gender.MALE);
+    private Person dario;
     private PersonRepository personRepository = new PersonRepository();
-    private long id;
+    private int id;
 
     @Before
     public void before() {
-        // person = new Person("voornaam", "lastname", 180, Gender.MALE);
+        dario = new Person("d", "j", 185, Gender.MALE);
         personRepository.create(dario);
         id = dario.getId();
     }
 
     @Test
     public void read_With_Negative_Id_Returns_Null() {
-        assertNull(personRepository.read((long) -1));
+        assertNull(personRepository.read(-1));
     }
 
     @Test
