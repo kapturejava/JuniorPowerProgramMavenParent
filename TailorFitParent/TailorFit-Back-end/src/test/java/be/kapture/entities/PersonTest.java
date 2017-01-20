@@ -4,6 +4,8 @@ package be.kapture.entities;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -56,27 +58,28 @@ public class PersonTest {
 		person = new Person("firstname", "lastname", 115, null);
 	}
 	
+	@Test
 	public void personEqualsOtherPerson() {
-		assertSame(person, otherPerson);
+		assertEquals(person, otherPerson);
 		
 		otherPerson.setFirstName("otherFirstName");
-		assertNotSame(person, otherPerson);
+		assertNotEquals(person, otherPerson);
 		person.setFirstName("otherFirstName");
-		assertSame(person, otherPerson);
+		assertEquals(person, otherPerson);
 		
 		otherPerson.setLastName("otherFirstName");
-		assertNotSame(person, otherPerson);
+		assertNotEquals(person, otherPerson);
 		person.setLastName("otherFirstName");
-		assertSame(person, otherPerson);
+		assertEquals(person, otherPerson);
 		
 		otherPerson.setSize(115);
-		assertNotSame(person, otherPerson);
+		assertNotEquals(person, otherPerson);
 		person.setSize(115);
-		assertSame(person, otherPerson);
+		assertEquals(person, otherPerson);
 		
 		otherPerson.setGender(Gender.FEMALE);
-		assertNotSame(person, otherPerson);
+		assertNotEquals(person, otherPerson);
 		person.setGender(Gender.FEMALE);
-		assertSame(person, otherPerson);
+		assertEquals(person, otherPerson);
 	}
 }
