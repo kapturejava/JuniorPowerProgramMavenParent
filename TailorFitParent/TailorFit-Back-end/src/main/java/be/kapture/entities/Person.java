@@ -12,7 +12,7 @@ public class Person {
     private Gender gender;
 
     protected Person() {
-        // TODO Auto-generated constructor stub
+
     }
 
     public Person(String firstName, String lastName, int size, Gender gender) throws IllegalArgumentException {
@@ -51,6 +51,22 @@ public class Person {
     public void setGender(Gender gender) {
         this.gender = HelperClass.isEnumNotEmpty(gender);
 
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 
     @Override

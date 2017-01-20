@@ -2,24 +2,16 @@ package be.kapture.repositories;
 
 import org.hibernate.Session;
 import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import be.kapture.entities.Person;
 import be.kapture.util.HibernateUtil;
 
 public abstract class AbstractRepositoryTest {
 
     protected static Session session = HibernateUtil.getSession();
-    // protected Person person = new Person();
 
     protected AbstractRepositoryTest() {
-        // person.setFirstName("firstname");
-        // person.setLastName("lastname");
-    }
 
-    protected void buildAllFields() {
-        // new PersonRepository().create(person);
     }
 
     // @BeforeClass
