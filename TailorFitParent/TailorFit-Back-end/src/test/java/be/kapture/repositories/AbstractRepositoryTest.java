@@ -10,14 +10,15 @@ import be.kapture.util.HibernateUtil;
 public abstract class AbstractRepositoryTest {
 
     protected static Session session = HibernateUtil.getSession();
-
+    
     protected AbstractRepositoryTest() {
 
     }
-
+    
     @BeforeClass
-    public static void beforeClass() {
-        session.beginTransaction();
+    public static void beforeClass(){
+    	session.beginTransaction();
+
     }
 
     @AfterClass

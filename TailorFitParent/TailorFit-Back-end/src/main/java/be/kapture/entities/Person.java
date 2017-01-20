@@ -1,7 +1,7 @@
 package be.kapture.entities;
 
 import be.kapture.enums.Gender;
-import be.kapture.util.HelperClass;
+import be.kapture.util.InputUtil;
 
 public class Person {
 
@@ -23,12 +23,12 @@ public class Person {
     }
 
     public void setFirstName(String firstname) {
-        this.firstName = HelperClass.isStringEmpty(firstname);
+        this.firstName = InputUtil.isStringEmpty(firstname);
 
     }
 
     public void setLastName(String lastname) {
-        this.lastName = HelperClass.isStringEmpty(lastname);
+        this.lastName = InputUtil.isStringEmpty(lastname);
     }
 
     public void setId(int id) {
@@ -40,12 +40,12 @@ public class Person {
     }
 
     public void setSize(int size) {
-        this.size = HelperClass.isIntStricltyPositive(size);
+        this.size = InputUtil.isIntStricltyPositive(size);
 
     }
 
     public void setGender(Gender gender) {
-        this.gender = HelperClass.isEnumNotEmpty(gender);
+        this.gender = (Gender) InputUtil.isNotNull(gender);
 
     }
 

@@ -17,5 +17,6 @@
 		<property name="hbm2ddl.auto">validate</property>
 
 		<mapping resource="be/kapture/entities/Person.hbm.xml" />
+		<mapping resource="be/kapture/entities/ClothingItem.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
