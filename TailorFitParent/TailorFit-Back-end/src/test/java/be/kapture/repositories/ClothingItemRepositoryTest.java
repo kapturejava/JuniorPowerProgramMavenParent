@@ -53,4 +53,10 @@ public class ClothingItemRepositoryTest extends AbstractRepositoryTest{
 		assertNull(clothingItemRepository.read(id));
 	}
 
+	@Override
+	public void create_And_Read() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
