@@ -1,7 +1,5 @@
 package be.kapture.util;
 
-import java.awt.Color;
-
 import be.kapture.enums.Gender;
 
 public class InputUtil {

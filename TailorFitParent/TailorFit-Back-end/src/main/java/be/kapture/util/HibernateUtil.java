@@ -23,6 +23,7 @@ public class HibernateUtil {
 
 			Metadata metadata = new MetadataSources(standardRegistry)
 					.addResource("be/kapture/entities/Person.hbm.xml")
+					.addResource("be/kapture/entities/ClothingItem.hbm.xml")
 					.getMetadataBuilder()
 					.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
 

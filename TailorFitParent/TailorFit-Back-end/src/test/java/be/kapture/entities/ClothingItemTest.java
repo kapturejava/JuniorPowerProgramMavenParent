@@ -1,18 +1,12 @@
 package be.kapture.entities;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-
-import java.awt.Color;
-
-import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import java.awt.Color;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import be.kapture.enums.Gender;
 
 public class ClothingItemTest {
 	
