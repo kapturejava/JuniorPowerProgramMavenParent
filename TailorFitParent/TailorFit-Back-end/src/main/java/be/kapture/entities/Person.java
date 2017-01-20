@@ -5,7 +5,7 @@ import be.kapture.util.InputUtil;
 
 public class Person {
 
-    private long id;
+    private int id;
     private String firstName;
     private String lastName;
     private int size;
@@ -31,16 +31,12 @@ public class Person {
         this.lastName = InputUtil.isStringEmpty(lastname);
     }
 
-    public void setId(long id) {
-
+    public void setId(int id) {
         this.id = id;
-
     }
 
-    public long getId() {
-
+    public int getId() {
         return id;
-
     }
 
     public void setSize(int size) {
