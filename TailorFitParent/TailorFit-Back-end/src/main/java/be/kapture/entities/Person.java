@@ -49,7 +49,7 @@ public class Person {
     }
 
     public void setGender(Gender gender) {
-        this.gender = InputUtil.isEnumNotEmpty(gender);
+        this.gender = (Gender) InputUtil.isNotNull(gender);
 
     }
 

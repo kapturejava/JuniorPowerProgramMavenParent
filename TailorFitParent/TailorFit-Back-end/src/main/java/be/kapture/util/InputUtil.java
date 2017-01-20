@@ -27,18 +27,6 @@ public class InputUtil {
 		}
 		throw new IllegalArgumentException(error);
 	}
-	public static Gender isEnumNotEmpty(Gender gender) {
-		if(gender != null){
-			return gender;
-		}
-		throw new IllegalArgumentException();
-	}
-	public static Gender isEnumNotEmpty(Gender gender, String error) {
-		if(gender != null){
-			return gender;
-		}
-		throw new IllegalArgumentException(error);
-	}
 	public static Object isNotNull(Object obj) {
 		if(obj == null){
 			throw new IllegalArgumentException();
