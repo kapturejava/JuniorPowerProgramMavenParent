@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS Person;
 CREATE TABLE Person (
 	  id int(11) NOT NULL auto_increment,
       Size int(11) NOT NULL,
-       Gender int(11) NOT NULL DEFAULT 0,
+      Gender varchar(50) NOT NULL DEFAULT 'MALE',
       FirstName varchar(50) NOT NULL DEFAULT '',
       LastName varchar(50) NOT NULL DEFAULT '',
       PRIMARY KEY (id)

@@ -12,8 +12,12 @@
 			<generator class="native" />
 		</id>
 		<property name="size" column="Size" type="integer" not-null="true" />
-		<property name="gender" column="Gender" type="integer"
-			not-null="true" />
+		<property name="gender" column="Gender">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">be.kapture.enums.Gender</param>
+				<param name="useNamed">true</param>
+			</type>
+		</property>
 		<property name="firstName" column="FirstName" type="string"
 			not-null="true" />
 		<property name="lastName" column="LastName" type="string"
