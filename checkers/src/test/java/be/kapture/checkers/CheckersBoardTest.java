@@ -79,6 +79,11 @@ public class CheckersBoardTest {
     }
 
     @Test(expected = NullPointerException.class)
+    public void getManTakes_NullLocation() {
+        checkersBoard.getManTakes(null);
+    }
+
+    @Test(expected = NullPointerException.class)
     public void getMoves_NullLocation() {
         checkersBoard.getManMoves(null, WHITE);
     }

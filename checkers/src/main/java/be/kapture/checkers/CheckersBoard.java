@@ -8,7 +8,7 @@ import java.util.List;
 public class CheckersBoard {
 
     public List<PawnLocation> getManMoves(PawnLocation location, Color color) {
-        requireNonNull(location);
+        // requireNonNull(location);
         requireNonNull(color);
 
         List<PawnLocation> pawnLocations = new ArrayList<PawnLocation>();
