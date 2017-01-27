@@ -25,10 +25,11 @@ public class ClothingItemRepository extends AbstractRepository<ClothingItem>{
     	Session session = HibernateUtil.getSession();
     	CriteriaBuilder builder = session.getCriteriaBuilder();
     	CriteriaQuery<ClothingItem> criteria = builder.createQuery(ClothingItem.class);
+    	
     	Root<ClothingItem> clothingItemRoot = criteria.from(ClothingItem.class);
     	criteria.select(clothingItemRoot);
     	criteria.where(builder.greaterThanOrEqualTo(clothingItemRoot.get("size"), s));
-    	List<ClothingItem> results = session.createQuery(criteria).getResultList();
-    	return results;
+    	
+    	return session.createQuery(criteria).getResultList();
     }
 }
