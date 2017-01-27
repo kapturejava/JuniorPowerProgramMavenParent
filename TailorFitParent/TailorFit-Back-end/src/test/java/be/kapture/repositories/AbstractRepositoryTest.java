@@ -9,22 +9,19 @@ import be.kapture.util.HibernateUtil;
 
 public abstract class AbstractRepositoryTest {
 
-    protected static Session session = HibernateUtil.getSession();
-    
     protected AbstractRepositoryTest() {
 
     }
     
     @BeforeClass
     public static void beforeClass(){
-    	session.beginTransaction();
-
+    	HibernateUtil.getSession().getTransaction().begin();
     }
 
     @AfterClass
     public static void afterClass() {
-        session.getTransaction().rollback();
-        session = HibernateUtil.getSession();
+    	HibernateUtil.getSession().getTransaction().rollback();
+    	HibernateUtil.getSession().close();
     }
 
     @Test

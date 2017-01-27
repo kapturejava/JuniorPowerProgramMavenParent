@@ -9,6 +9,7 @@ import static org.junit.Assert.assertFalse;
 import java.awt.Color;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,6 +26,11 @@ public class ClothingItemRepositoryTest extends AbstractRepositoryTest{
 		clothingItem = new ClothingItem(125, Color.BLUE.toString());
 		clothingItemRepository.create(clothingItem);
 		id = clothingItem.getId();
+	}
+	
+	@After
+	public void after() {
+		clothingItemRepository.delete(clothingItem);
 	}
 
 	@Test
@@ -57,12 +63,15 @@ public class ClothingItemRepositoryTest extends AbstractRepositoryTest{
 		assertNull(clothingItemRepository.read(id));
 	}
 
-	public void findClothingItemsBySize(int size){
+	@Test
+	public void findClothingItemsBySize(){
 		List<ClothingItem> results;
-		ClothingItem clothingItem2 = new ClothingItem(150, "");
-		ClothingItem clothingItem3 = new ClothingItem(100, "");
+		ClothingItem clothingItem2 = new ClothingItem(150, "Red");
+		ClothingItem clothingItem3 = new ClothingItem(100, "Yellow");
+		clothingItemRepository.create(clothingItem2);
+		clothingItemRepository.create(clothingItem3);
 		results = clothingItemRepository.findClothingItemsBySize(110);	
-		assertEquals(results.size(), 2);
+		assertEquals(2, results.size());
 		assertTrue(results.contains(clothingItem));
 		assertTrue(results.contains(clothingItem2));
 		assertFalse(results.contains(clothingItem3));

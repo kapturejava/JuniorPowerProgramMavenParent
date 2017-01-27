@@ -1,30 +1,32 @@
 package be.kapture.services;
 
-import java.util.List;
+import static java.util.Objects.requireNonNull;
 
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
+import java.util.List;
 
 import be.kapture.entities.ClothingItem;
 import be.kapture.entities.Person;
 import be.kapture.repositories.ClothingItemRepository;
 import be.kapture.repositories.PersonRepository;
-import be.kapture.util.HibernateUtil;
 
 public class PersonService {
-	private static final PersonRepository PERSON_REPOSITORY = new PersonRepository();
-	private static final ClothingItemRepository CLOTHING_ITEM_REPOSITORY = new ClothingItemRepository(ClothingItem.class);
+	private PersonRepository personRepository;
+	private ClothingItemRepository clothingItemRepository;
 	
-	public Person getPersonById(int id){
-		PERSON_REPOSITORY.read(id);
-		return null;
+	public PersonService(PersonRepository pr, ClothingItemRepository cr){
+		requireNonNull(pr);
+		requireNonNull(cr);
+		this.personRepository = pr;
+		this.clothingItemRepository = cr;
 	}
 	
-	public List<Person> findFittingClothingItemsbyPersonId(int id){
+	public Person getPersonById(int id){
+		return personRepository.read(id);
+	}
+	
+	public List<ClothingItem> findFittingClothingItemsbyPersonId(int id){
 		Person person = getPersonById(id);
-		Session session = HibernateUtil.getSession();
-		return null;
-		
+		return clothingItemRepository.findClothingItemsBySize(person.getSize());
 	} 
 	
 }
