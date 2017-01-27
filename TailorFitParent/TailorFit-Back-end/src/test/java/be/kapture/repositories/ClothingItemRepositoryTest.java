@@ -2,8 +2,12 @@ package be.kapture.repositories;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.awt.Color;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -53,10 +57,15 @@ public class ClothingItemRepositoryTest extends AbstractRepositoryTest{
 		assertNull(clothingItemRepository.read(id));
 	}
 
-	@Override
-	public void create_And_Read() {
-		// TODO Auto-generated method stub
-		
+	public void findClothingItemsBySize(int size){
+		List<ClothingItem> results;
+		ClothingItem clothingItem2 = new ClothingItem(150, "");
+		ClothingItem clothingItem3 = new ClothingItem(100, "");
+		results = clothingItemRepository.findClothingItemsBySize(110);	
+		assertEquals(results.size(), 2);
+		assertTrue(results.contains(clothingItem));
+		assertTrue(results.contains(clothingItem2));
+		assertFalse(results.contains(clothingItem3));
 	}
 
 }

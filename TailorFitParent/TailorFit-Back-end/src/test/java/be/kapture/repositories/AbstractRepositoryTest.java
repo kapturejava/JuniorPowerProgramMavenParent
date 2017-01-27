@@ -28,9 +28,6 @@ public abstract class AbstractRepositoryTest {
     }
 
     @Test
-    public abstract void create_And_Read();
-
-    @Test
     public abstract void update();
 
     @Test
