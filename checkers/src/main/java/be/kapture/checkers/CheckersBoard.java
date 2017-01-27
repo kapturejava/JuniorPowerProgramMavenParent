@@ -1,57 +1,53 @@
 package be.kapture.checkers;
 
-import java.util.*;
+import static java.util.Objects.requireNonNull;
 
-import static be.kapture.checkers.Colour.BLACK;
-import static be.kapture.checkers.Colour.WHITE;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by thiboya on 20/06/2016.
- */
 public class CheckersBoard {
 
-    private boolean workingColourBlack = true;
-    private final Map<Colour, Set<BoardLocation>> boardLocationsMap;
+	public List<PawnLocation> getManMoves(PawnLocation location, Color color) {
+		requireNonNull(location);
+		requireNonNull(color);
 
-    public CheckersBoard(boolean workingColourBlack) {
-        this.workingColourBlack = workingColourBlack;
+		List<PawnLocation> pawnLocations = new ArrayList<PawnLocation>();
+		int nextRow = getNextOrPreviousRowNr(location.getRow(), color);
 
-        boardLocationsMap = new TreeMap<>();
-        boardLocationsMap.put(BLACK, new HashSet<>());
-        boardLocationsMap.put(WHITE, new HashSet<>());
-    }
+		if (!location.isOnLeftBorder()) {
+			pawnLocations.add(new PawnLocation(location.getColumn() - 1, nextRow));
+		}
+		if (!location.isOnRighttBorder()) {
+			pawnLocations.add(new PawnLocation(location.getColumn() + 1, nextRow));
+		}
 
-    public void addPawn(BoardLocation boardLocation, Colour colour) {
-        if (boardLocation.isOnColorBlack() != workingColourBlack) {
-            throw new IllegalArgumentException();
-        }
-        boardLocationsMap.get(colour).add(boardLocation);
-    }
+		return pawnLocations;
+	}
 
-    public List<BoardLocation> canTake(Colour colour, BoardLocation boardLocation) {
+	public List<PawnLocation> getManMoves(PawnLocation location) {
+		throw new UnsupportedOperationException();
+	}
 
-        List<BoardLocation> possibleTakes = new ArrayList<>();
-        List<BoardLocation> diagonalNeighbouringLocations = boardLocation.getDiagonalNeighbouringLocations();
-        Set<BoardLocation> enemyBoardLocations = boardLocationsMap.get(colour.changeColour());
+	private int getNextOrPreviousRowNr(int rowNr, Color color) {
+		if (color == Color.BLACK) {
+			return rowNr - 1;
+		} else {
+			return rowNr + 1;
+		}
 
-        for (BoardLocation diagonalNeighbouringLocation : diagonalNeighbouringLocations) {
-            addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, diagonalNeighbouringLocation);
-        }
-        /*addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() - 1, boardLocation.getY() - 1));
-        addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() - 1, boardLocation.getY() + 1));
-        addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() + 1, boardLocation.getY() - 1));
-        addIfEnemyPawnPresent(enemyBoardLocations, possibleTakes, new BoardLocation(boardLocation.getX() + 1, boardLocation.getY() + 1));*/
+	}
 
-        return possibleTakes;
-    }
+	public List<PawnLocation> getManTakes(PawnLocation pawnLocation) {
+		List<PawnLocation> pawnLocations = new ArrayList<PawnLocation>();
 
-    public int getNrOfPawns() {//TODO
-        return boardLocationsMap.get(BLACK).size() + boardLocationsMap.get(WHITE).size();
-    }
+		if (pawnLocation.getRow() < 8) {
+			pawnLocations.add(new PawnLocation(pawnLocation.getColumn() - 2, pawnLocation.getRow() + 2));
+			pawnLocations.add(new PawnLocation(pawnLocation.getColumn() + 2, pawnLocation.getRow() + 2));
+		}
+		pawnLocations.add(new PawnLocation(pawnLocation.getColumn() + 2, pawnLocation.getRow() - 2));
+		pawnLocations.add(new PawnLocation(pawnLocation.getColumn() - 2, pawnLocation.getRow() - 2));
 
-    private void addIfEnemyPawnPresent(Set<BoardLocation> colourBoardLocations, List<BoardLocation> possibleTakes, BoardLocation testedLocation) {
-        if (colourBoardLocations.contains(testedLocation)) {
-            possibleTakes.add(testedLocation);
-        }
-    }
+		return pawnLocations;
+	}
+
 }
