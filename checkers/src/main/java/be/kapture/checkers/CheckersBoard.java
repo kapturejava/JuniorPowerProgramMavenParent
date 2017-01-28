@@ -13,6 +13,35 @@ public class CheckersBoard {
         pawns = new ArrayList<PawnLocation>();
     }
 
+    /**
+     * 
+     * @param color
+     * @param pawns
+     */
+    public void addPawns(PawnLocation pawn, Color color) {
+        if (isLocationValidToAddPawn(pawn, color)) {
+            pawns.add(pawn);
+        }
+    }
+
+    private boolean isLocationValidToAddPawn(PawnLocation pawn, Color color) {
+        if (!pawns.contains(pawn)) {
+            if (color == Color.BLACK && pawn.getRow() < 4) {
+                return true;
+            } else if (color == Color.WHITE && pawn.getRow() > 5) {
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public List<PawnLocation> getPawns() {
+        return pawns;
+    }
+
     public List<PawnLocation> getManMoves(PawnLocation location, Color color) {
         // requireNonNull(location);
         requireNonNull(color);
@@ -28,22 +57,6 @@ public class CheckersBoard {
         }
 
         return pawnLocations;
-    }
-
-    /**
-     * 
-     * @param pawns
-     */
-    public void addPawns(PawnLocation pawn) {
-        if (pawn.getRow() != 4 && pawn.getRow() != 5) {
-            if (!pawns.contains(pawn)) {
-                pawns.add(pawn);
-            }
-        }
-    }
-
-    public List<PawnLocation> getPawns() {
-        return pawns;
     }
 
     /**

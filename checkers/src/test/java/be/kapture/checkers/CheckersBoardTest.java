@@ -14,11 +14,13 @@ public class CheckersBoardTest {
     @Before
     public void setup() {
         checkersBoard = new CheckersBoard();
-        checkersBoard.addPawns(new PawnLocation(3, 3));
-        checkersBoard.addPawns(new PawnLocation(3, 3));
-        checkersBoard.addPawns(new PawnLocation(5, 7));
-        checkersBoard.addPawns(new PawnLocation(4, 4));
-        checkersBoard.addPawns(new PawnLocation(5, 5));
+        checkersBoard.addPawns(new PawnLocation(3, 3), BLACK);
+        checkersBoard.addPawns(new PawnLocation(3, 3), BLACK);
+        checkersBoard.addPawns(new PawnLocation(5, 3), WHITE);
+        checkersBoard.addPawns(new PawnLocation(5, 7), WHITE);
+        checkersBoard.addPawns(new PawnLocation(7, 7), BLACK);
+        checkersBoard.addPawns(new PawnLocation(4, 4), BLACK);
+        checkersBoard.addPawns(new PawnLocation(5, 5), WHITE);
     }
 
     @Test
