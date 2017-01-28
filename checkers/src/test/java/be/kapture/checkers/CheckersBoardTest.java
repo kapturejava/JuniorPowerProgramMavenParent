@@ -18,6 +18,7 @@ public class CheckersBoardTest {
         checkersBoard = new CheckersBoard();
         checkersBoard.addPawns(new PawnLocation(3, 3), BLACK);
         checkersBoard.addPawns(new PawnLocation(3, 3), BLACK);
+        checkersBoard.addPawns(new PawnLocation(1, 3), BLACK);
         checkersBoard.addPawns(new PawnLocation(5, 3), WHITE);
         checkersBoard.addPawns(new PawnLocation(5, 7), WHITE);
         checkersBoard.addPawns(new PawnLocation(7, 7), BLACK);
@@ -89,7 +90,7 @@ public class CheckersBoardTest {
 
     @Test
     public void addPawnsToBoardOnValidLocation() {
-        assertThat(checkersBoard.getPawns(), contains(new PawnLocation(3, 3), new PawnLocation(5, 7)));
+        assertThat(checkersBoard.getPawns(), contains(new PawnLocation(3, 3), new PawnLocation(1, 3), new PawnLocation(5, 7)));
 
     }
 
@@ -97,10 +98,12 @@ public class CheckersBoardTest {
     public void movePawnOnCheckersboard() {
         List<PawnLocation> pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(0), BLACK);
         checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(0), pawnLocations.get(0));
-        pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(1), WHITE);
+        pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(1), BLACK);
         checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(1), pawnLocations.get(1));
+        pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(2), WHITE);
+        checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(2), pawnLocations.get(1));
 
-        assertThat(checkersBoard.getPawns(), contains(new PawnLocation(2, 2), new PawnLocation(6, 8)));
+        assertThat(checkersBoard.getPawns(), contains(new PawnLocation(2, 2), new PawnLocation(1, 3), new PawnLocation(6, 8)));
     }
 
     @Test(expected = NullPointerException.class)

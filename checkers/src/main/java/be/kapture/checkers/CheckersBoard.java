@@ -25,7 +25,7 @@ public class CheckersBoard {
     }
 
     private boolean isLocationValidToAddPawn(PawnLocation pawn, Color color) {
-        if (!pawns.contains(pawn)) {
+        if (!isLocationOccupied(pawn)) {
             if (color == Color.BLACK && pawn.getRow() < 4) {
                 return true;
             } else if (color == Color.WHITE && pawn.getRow() > 5) {
@@ -38,10 +38,19 @@ public class CheckersBoard {
         return false;
     }
 
+    private boolean isLocationOccupied(PawnLocation pawnLocation) {
+        if (!pawns.contains(pawnLocation)) {
+            return false;
+        }
+        return true;
+    }
+
     public void replacePawnAtSpecificLocation(PawnLocation pawnLocation, PawnLocation pawnLocation2) {
         for (int index = 0; index < pawns.size(); index++) {
             if (pawns.get(index) == pawnLocation) {
-                pawns.set(index, pawnLocation2);
+                if (!isLocationOccupied(pawnLocation2)) {
+                    pawns.set(index, pawnLocation2);
+                }
             }
         }
 
