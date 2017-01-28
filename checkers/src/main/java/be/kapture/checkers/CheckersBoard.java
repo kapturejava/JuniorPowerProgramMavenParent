@@ -38,6 +38,11 @@ public class CheckersBoard {
         return false;
     }
 
+    public void replacePawnAtSpecificLocation(PawnLocation pawnLocation) {
+        // TODO Auto-generated method stub
+
+    }
+
     public List<PawnLocation> getPawns() {
         return pawns;
     }

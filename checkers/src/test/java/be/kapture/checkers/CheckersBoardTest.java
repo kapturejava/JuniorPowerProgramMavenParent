@@ -5,6 +5,8 @@ import static be.kapture.checkers.Color.WHITE;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -84,11 +86,19 @@ public class CheckersBoardTest {
         assertThat(checkersBoard.getManTakes(new PawnLocation(8, 2)), contains(new PawnLocation(6, 4), new PawnLocation(6, 0)));
 
     }
-    
+
     @Test
     public void addPawnsToBoardOnValidLocation() {
         assertThat(checkersBoard.getPawns(), contains(new PawnLocation(3, 3), new PawnLocation(5, 7)));
 
+    }
+
+    @Test
+    public void movePawnOnCheckersboard() {
+        List<PawnLocation> pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(0), BLACK);
+        checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(0));
+
+        assertThat(checkersBoard.getPawns(), contains(new PawnLocation(2, 4), new PawnLocation(5, 7)));
     }
 
     @Test(expected = NullPointerException.class)
