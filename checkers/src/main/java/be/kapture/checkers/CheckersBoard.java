@@ -7,6 +7,12 @@ import java.util.List;
 
 public class CheckersBoard {
 
+    List<PawnLocation> pawns;
+
+    public CheckersBoard() {
+        pawns = new ArrayList<PawnLocation>();
+    }
+
     public List<PawnLocation> getManMoves(PawnLocation location, Color color) {
         // requireNonNull(location);
         requireNonNull(color);
@@ -24,6 +30,27 @@ public class CheckersBoard {
         return pawnLocations;
     }
 
+    /**
+     * 
+     * @param pawns
+     */
+    public void addPawns(PawnLocation pawn) {
+        if (pawn.getRow() != 4 && pawn.getRow() != 5) {
+            if (!pawns.contains(pawn)) {
+                pawns.add(pawn);
+            }
+        }
+    }
+
+    public List<PawnLocation> getPawns() {
+        return pawns;
+    }
+
+    /**
+     * 
+     * @param location
+     * @return
+     */
     public List<PawnLocation> getManMoves(PawnLocation location) {
         throw new UnsupportedOperationException();
     }
@@ -38,6 +65,8 @@ public class CheckersBoard {
     }
 
     public List<PawnLocation> getManTakes(PawnLocation pawnLocation) {
+        requireNonNull(pawnLocation);
+
         List<PawnLocation> pawnLocations = new ArrayList<PawnLocation>();
 
         if (!pawnLocation.isOnUpperBorderTakes()) {

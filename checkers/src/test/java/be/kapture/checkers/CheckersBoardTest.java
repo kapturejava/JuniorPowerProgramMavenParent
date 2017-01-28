@@ -14,6 +14,11 @@ public class CheckersBoardTest {
     @Before
     public void setup() {
         checkersBoard = new CheckersBoard();
+        checkersBoard.addPawns(new PawnLocation(3, 3));
+        checkersBoard.addPawns(new PawnLocation(3, 3));
+        checkersBoard.addPawns(new PawnLocation(5, 7));
+        checkersBoard.addPawns(new PawnLocation(4, 4));
+        checkersBoard.addPawns(new PawnLocation(5, 5));
     }
 
     @Test
@@ -75,6 +80,12 @@ public class CheckersBoardTest {
         assertThat(checkersBoard.getManTakes(new PawnLocation(9, 3)), contains(new PawnLocation(7, 5), new PawnLocation(7, 1)));
 
         assertThat(checkersBoard.getManTakes(new PawnLocation(8, 2)), contains(new PawnLocation(6, 4), new PawnLocation(6, 0)));
+
+    }
+    
+    @Test
+    public void addPawnsToBoardOnValidLocation() {
+        assertThat(checkersBoard.getPawns(), contains(new PawnLocation(3, 3), new PawnLocation(5, 7)));
 
     }
 
