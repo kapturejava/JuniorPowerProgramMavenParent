@@ -96,9 +96,11 @@ public class CheckersBoardTest {
     @Test
     public void movePawnOnCheckersboard() {
         List<PawnLocation> pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(0), BLACK);
-        checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(0));
+        checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(0), pawnLocations.get(0));
+        pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(1), WHITE);
+        checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(1), pawnLocations.get(1));
 
-        assertThat(checkersBoard.getPawns(), contains(new PawnLocation(2, 4), new PawnLocation(5, 7)));
+        assertThat(checkersBoard.getPawns(), contains(new PawnLocation(2, 2), new PawnLocation(6, 8)));
     }
 
     @Test(expected = NullPointerException.class)

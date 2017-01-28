@@ -38,8 +38,12 @@ public class CheckersBoard {
         return false;
     }
 
-    public void replacePawnAtSpecificLocation(PawnLocation pawnLocation) {
-        // TODO Auto-generated method stub
+    public void replacePawnAtSpecificLocation(PawnLocation pawnLocation, PawnLocation pawnLocation2) {
+        for (int index = 0; index < pawns.size(); index++) {
+            if (pawns.get(index) == pawnLocation) {
+                pawns.set(index, pawnLocation2);
+            }
+        }
 
     }
 
