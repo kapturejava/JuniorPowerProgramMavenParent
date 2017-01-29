@@ -2,11 +2,12 @@ package be.kapture.checkers;
 
 import static be.kapture.checkers.Color.BLACK;
 import static be.kapture.checkers.Color.WHITE;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.contains;
-
-import java.util.List;
+import static org.hamcrest.Matchers.hasEntry;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -82,16 +83,22 @@ public class CheckersBoardTest {
     }
 
     @Test
-    public void addPawnsToBoardOnValidLocation() {
-        // checkersBoard.addPawns(new PawnLocation(3, 3), BLACK);
-        // checkersBoard.addPawns(new PawnLocation(3, 3), BLACK);
-        // checkersBoard.addPawns(new PawnLocation(1, 3), BLACK);
-        // checkersBoard.addPawns(new PawnLocation(5, 3), WHITE);
-        // checkersBoard.addPawns(new PawnLocation(5, 7), WHITE);
-        // checkersBoard.addPawns(new PawnLocation(7, 7), BLACK);
-        // checkersBoard.addPawns(new PawnLocation(4, 4), BLACK);
-        // checkersBoard.addPawns(new PawnLocation(5, 5), WHITE);
-        // assertThat(checkersBoard.getPawns(), contains(new PawnLocation(3, 3), new PawnLocation(1, 3), new PawnLocation(5, 7)));
+    public void addPawnsToBoardOnValidLocation() throws LocationOccupiedException {
+        // BLACK 1,7
+        // WHITE 1,3
+        // BLACK 2,6
+        // WHITE 6,2
+        try {
+            checkersBoard.addPawns(new PawnLocation(1, 7), BLACK);
+            checkersBoard.addPawns(new PawnLocation(1, 3), WHITE);
+            checkersBoard.addPawns(new PawnLocation(2, 2), WHITE);
+            checkersBoard.addPawns(new PawnLocation(6, 6), BLACK);
+        } catch (LocationOccupiedException e) {
+            throw e;
+        }
+
+        assertThat(checkersBoard.getPawns(), hasEntry(is(BLACK), contains(new PawnLocation(1, 7), new PawnLocation(6, 6))));
+        assertThat(checkersBoard.getPawns(), hasEntry(is(WHITE), contains(new PawnLocation(1, 3), new PawnLocation(2, 2))));
 
     }
 

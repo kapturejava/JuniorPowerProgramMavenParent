@@ -1,8 +1,8 @@
 package be.kapture.checkers;
 
-import static java.util.Objects.requireNonNull;
 import static be.kapture.checkers.Color.BLACK;
 import static be.kapture.checkers.Color.WHITE;
+import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
