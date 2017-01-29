@@ -1,4 +1,4 @@
-package be.kapture.checkers;
+package be.kapture.checkers.CustomExceptions;
 
 public class LocationOccupiedException extends Exception {
 

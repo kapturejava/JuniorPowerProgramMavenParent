@@ -1,10 +1,10 @@
 package be.kapture.checkers;
 
-import static be.kapture.checkers.Color.BLACK;
-import static be.kapture.checkers.Color.WHITE;
+import static be.kapture.checkers.enums.Color.BLACK;
+import static be.kapture.checkers.enums.Color.WHITE;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.hasEntry;
 import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasEntry;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -12,6 +12,8 @@ import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import be.kapture.checkers.CustomExceptions.*;
 
 public class CheckersBoardTest {
     private CheckersBoard checkersBoard;
