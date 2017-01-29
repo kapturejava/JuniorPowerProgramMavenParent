@@ -1,16 +1,24 @@
 package be.kapture.checkers;
 
 import static java.util.Objects.requireNonNull;
+import static be.kapture.checkers.Color.BLACK;
+import static be.kapture.checkers.Color.WHITE;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CheckersBoard {
 
-    List<PawnLocation> pawns;
+    List<PawnLocation> pawnLocationsBlack;
+    List<PawnLocation> pawnLocationsWhite;
+    Map<Color, List<PawnLocation>> pawns;
 
     public CheckersBoard() {
-        pawns = new ArrayList<PawnLocation>();
+        pawnLocationsBlack = new ArrayList<PawnLocation>();
+        pawnLocationsWhite = new ArrayList<PawnLocation>();
+        pawns = new HashMap<Color, List<PawnLocation>>();
     }
 
     /**
@@ -18,47 +26,73 @@ public class CheckersBoard {
      * @param color
      * @param pawns
      */
-    public void addPawns(PawnLocation pawn, Color color) {
-        if (isLocationValidToAddPawn(pawn, color)) {
-            pawns.add(pawn);
+    public void addPawns(PawnLocation pawn, Color color) throws LocationOccupiedException {
+        try {
+            if (isLocationValidToAddPawn(pawn, color)) {
+                if (color == BLACK) {
+                    pawnLocationsBlack.add(pawn);
+                    pawns.put(color, pawnLocationsBlack);
+                } else if (color == WHITE) {
+                    pawnLocationsWhite.add(pawn);
+                    pawns.put(WHITE, pawnLocationsWhite);
+                }
+            }
+        } catch (LocationOccupiedException ex) {
+            throw ex;
         }
     }
 
-    private boolean isLocationValidToAddPawn(PawnLocation pawn, Color color) {
-        if (!isLocationOccupied(pawn)) {
-            if (color == Color.BLACK && pawn.getRow() < 4) {
+    private boolean isLocationValidToAddPawn(PawnLocation pawn, Color color) throws LocationOccupiedException {
+        if (!isLocationOccupied(pawn, color)) {
+            if (color == BLACK && pawn.getRow() > 5) {
                 return true;
-            } else if (color == Color.WHITE && pawn.getRow() > 5) {
+            } else if (color == WHITE && pawn.getRow() < 4) {
                 {
                     return true;
                 }
             }
+        } else {
+            throw new LocationOccupiedException("Location is occupied");
         }
 
         return false;
     }
 
-    private boolean isLocationOccupied(PawnLocation pawnLocation) {
-        if (!pawns.contains(pawnLocation)) {
-            return false;
+    private boolean isLocationOccupied(PawnLocation pawnLocation, Color color) {
+        List<PawnLocation> pawnList = null;
+        if (color == BLACK) {
+            pawnList = pawns.get(BLACK);
+        } else if (color == WHITE) {
+            pawnList = pawns.get(WHITE);
         }
-        return true;
-    }
-
-    public void replacePawnAtSpecificLocation(PawnLocation pawnLocation, PawnLocation pawnLocation2) {
-        for (int index = 0; index < pawns.size(); index++) {
-            if (pawns.get(index) == pawnLocation) {
-                if (!isLocationOccupied(pawnLocation2)) {
-                    pawns.set(index, pawnLocation2);
+        if (pawnList != null) {
+            for (PawnLocation location : pawnList) {
+                if (location.equals(pawnLocation)) {
+                    return true;
                 }
             }
         }
-
+        return false;
     }
 
-    public List<PawnLocation> getPawns() {
+    // public void replacePawnAtSpecificLocation(PawnLocation pawnLocation, PawnLocation pawnLocation2) {
+    // for (int index = 0; index < pawns.size(); index++) {
+    // if (pawns.get(index) == pawnLocation) {
+    // if (!isLocationOccupied(pawnLocation2)) {
+    // pawns.set(index, pawnLocation2);
+    // }
+    // }
+    // }
+    //
+    // }
+
+    public Map<Color, List<PawnLocation>> getPawns() {
         return pawns;
     }
+
+    // public List<PawnLocation> getPawns() {
+    // return pawns;
+    // }
 
     public List<PawnLocation> getManMoves(PawnLocation location, Color color) {
         // requireNonNull(location);
@@ -118,6 +152,11 @@ public class CheckersBoard {
         }
 
         return pawnLocations;
+    }
+
+    public void clearBoard() {
+        pawns.clear();
+
     }
 
 }
