@@ -4,6 +4,7 @@ import static be.kapture.checkers.Color.BLACK;
 import static be.kapture.checkers.Color.WHITE;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.hasEntry;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -99,6 +100,26 @@ public class CheckersBoardTest {
 
         assertThat(checkersBoard.getPawns(), hasEntry(is(BLACK), contains(new PawnLocation(1, 7), new PawnLocation(6, 6))));
         assertThat(checkersBoard.getPawns(), hasEntry(is(WHITE), contains(new PawnLocation(1, 3), new PawnLocation(2, 2))));
+
+    }
+
+    @Test
+    public void addPawnsToBoardOverColorBorder() throws LocationOccupiedException {
+        // BLACK 1,3
+        // WHITE 1,7
+        // BLACK 2,2
+        // WHITE 6,6
+        try {
+            checkersBoard.addPawns(new PawnLocation(1, 3), BLACK);
+            checkersBoard.addPawns(new PawnLocation(1, 7), WHITE);
+            checkersBoard.addPawns(new PawnLocation(6, 6), WHITE);
+            checkersBoard.addPawns(new PawnLocation(2, 2), BLACK);
+        } catch (LocationOccupiedException e) {
+            throw e;
+        }
+
+        assertThat(checkersBoard.getPawns().entrySet(), empty());
+        assertThat(checkersBoard.getPawns().entrySet(), empty());
 
     }
 
