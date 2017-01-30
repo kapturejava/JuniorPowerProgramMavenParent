@@ -146,18 +146,24 @@ public class CheckersBoardTest {
     }
 
     @Test
-    public void movePawnOnCheckersboard() {
-        // checkersBoard.addPawns(new PawnLocation(3, 3), BLACK);
-        // checkersBoard.addPawns(new PawnLocation(1, 3), BLACK);
-        // checkersBoard.addPawns(new PawnLocation(5, 7), WHITE);
-        //
-        // List<PawnLocation> pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(0), BLACK);
-        // checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(0), pawnLocations.get(0));
-        // pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(1), BLACK);
-        // checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(1), pawnLocations.get(1));
-        // pawnLocations = checkersBoard.getManMoves(checkersBoard.getPawns().get(2), WHITE);
-        // checkersBoard.replacePawnAtSpecificLocation(checkersBoard.getPawns().get(2), pawnLocations.get(1));
-        //
+    public void movePawnOnCheckersboard() throws LocationOccupiedException {
+        // BLACK 3,7 -> 2,6 / down
+        // BLACK 5,9 -> 6,8 / up
+        // WHITE 0,2 -> 1,3 / down
+        // WHITE 7,3 -> 8,4 / up
+        // BLACK 3,7 -> 2,6 / left
+        // BLACK 5,9 -> 6,8 / right
+        // WHITE 0,2 -> 1,3 / left
+        // WHITE 7,3 -> 8,4 / right
+        try {
+            checkersBoard.addPawns(new PawnLocation(3, 7), BLACK);
+            checkersBoard.addPawns(new PawnLocation(5, 9), BLACK);
+            checkersBoard.addPawns(new PawnLocation(2, 7), WHITE);
+            checkersBoard.addPawns(new PawnLocation(5, 7), WHITE);
+        } catch (LocationOccupiedException e) {
+            throw e;
+        }
+
         // assertThat(checkersBoard.getPawns(), contains(new PawnLocation(2, 2), new PawnLocation(1, 3), new PawnLocation(6, 8)));
     }
 
