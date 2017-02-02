@@ -21,12 +21,10 @@ public class HibernateUtil {
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
 					.configure("/hibernate.cfg.xml").build();
 
-			Metadata metadata = new MetadataSources(standardRegistry).addResource("be/kapture/entities/Person.hbm.xml")
-					.addResource("be/kapture/entities/Skill.hbm.xml")
-					.addResource("be/kapture/entities/SkillGroup.hbm.xml")
-					.addResource("be/kapture/entities/SkillNature.hbm.xml")
-					.addResource("be/kapture/entities/Survey.hbm.xml")
-					.addResource("be/kapture/entities/SurveyDetail.hbm.xml").getMetadataBuilder()
+			Metadata metadata = new MetadataSources(standardRegistry)
+					.addResource("be/kapture/entities/Person.hbm.xml")
+					.addResource("be/kapture/entities/ClothingItem.hbm.xml")
+					.getMetadataBuilder()
 					.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
 
 			SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
@@ -51,8 +49,9 @@ public class HibernateUtil {
 			session = sessionFactory.getCurrentSession();
 			sessionManagers.set(session);
 		}
-		session.beginTransaction();
+		if(session.getTransaction() == null){
+			session.beginTransaction();
+		}
 		return session;
 	}
-
 }
