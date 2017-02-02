@@ -12,6 +12,7 @@ public class ClothingItemTest {
 	
 	private ClothingItem item, otherItem;
 	
+	
 	@Before
 	public void before() {
 		item = new ClothingItem(115, Color.BLUE.toString());
