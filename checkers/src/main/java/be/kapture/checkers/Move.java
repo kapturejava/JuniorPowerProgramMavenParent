@@ -1,41 +1,28 @@
 package be.kapture.checkers;
 
+import be.kapture.checkers.enums.Color;
+
 public class Move {
-    private PawnLocation up;
-    private PawnLocation down;
-    private PawnLocation left;
-    private PawnLocation right;
+    private Color color;
+    private PawnLocation direction;
+    private PawnLocation oldPawnLocation;
 
-    public PawnLocation getUp() {
-        return up;
+    public Move(Color color, PawnLocation direction, PawnLocation oldPawnLocation) {
+        this.color = color;
+        this.direction = direction;
+        this.oldPawnLocation = oldPawnLocation;
     }
 
-    public void setUp(PawnLocation up) {
-        this.up = up;
+    public Color getColor() {
+        return color;
     }
 
-    public PawnLocation getDown() {
-        return down;
+    public PawnLocation getDirection() {
+        return direction;
     }
 
-    public void setDown(PawnLocation down) {
-        this.down = down;
-    }
-
-    public PawnLocation getLeft() {
-        return left;
-    }
-
-    public void setLeft(PawnLocation left) {
-        this.left = left;
-    }
-
-    public PawnLocation getRight() {
-        return right;
-    }
-
-    public void setRight(PawnLocation right) {
-        this.right = right;
+    public PawnLocation getOldPawnLocation() {
+        return oldPawnLocation;
     }
 
 }

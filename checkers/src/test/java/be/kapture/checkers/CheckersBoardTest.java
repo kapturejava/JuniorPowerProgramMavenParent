@@ -4,16 +4,16 @@ import static be.kapture.checkers.enums.Color.BLACK;
 import static be.kapture.checkers.enums.Color.WHITE;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasEntry;
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import be.kapture.checkers.CustomExceptions.*;
+import be.kapture.checkers.CustomExceptions.LocationOccupiedException;
 
 public class CheckersBoardTest {
     private CheckersBoard checkersBoard;
@@ -100,8 +100,8 @@ public class CheckersBoardTest {
             throw e;
         }
 
-        assertThat(checkersBoard.getPawns(), hasEntry(is(BLACK), contains(new PawnLocation(1, 7), new PawnLocation(6, 6))));
-        assertThat(checkersBoard.getPawns(), hasEntry(is(WHITE), contains(new PawnLocation(1, 3), new PawnLocation(2, 2))));
+        assertThat(checkersBoard.getPawnsByColor(BLACK), contains(new PawnLocation(1, 7), new PawnLocation(6, 6)));
+        assertThat(checkersBoard.getPawnsByColor(WHITE), contains(new PawnLocation(1, 3), new PawnLocation(2, 2)));
 
     }
 
@@ -120,14 +120,14 @@ public class CheckersBoardTest {
             throw e;
         }
 
-        assertThat(checkersBoard.getPawns().entrySet(), empty());
-        assertThat(checkersBoard.getPawns().entrySet(), empty());
+        assertThat(checkersBoard.getPawnsByColor(BLACK), empty());
+        assertThat(checkersBoard.getPawnsByColor(WHITE), empty());
 
     }
 
     @Test
     public void clearBoard() {
-        checkersBoard.clearBoard();
+        // checkersBoard.clearBoard();
         // assertThat(checkersBoard.getPawns(), hasSize(0));
     }
 
@@ -147,24 +147,30 @@ public class CheckersBoardTest {
 
     @Test
     public void movePawnOnCheckersboard() throws LocationOccupiedException {
-        // BLACK 3,7 -> 2,6 / down
-        // BLACK 5,9 -> 6,8 / up
-        // WHITE 0,2 -> 1,3 / down
-        // WHITE 7,3 -> 8,4 / up
-        // BLACK 3,7 -> 2,6 / left
-        // BLACK 5,9 -> 6,8 / right
-        // WHITE 0,2 -> 1,3 / left
-        // WHITE 7,3 -> 8,4 / right
+        // BLACK 3,7 -> 2,6 - down-left
+        // BLACK 5,9 -> 6,8 - down-right
+        // WHITE 5,5 -> 4,6 - up-left
+        // WHITE 7,3 -> 8,4 - up-right
         try {
             checkersBoard.addPawns(new PawnLocation(3, 7), BLACK);
             checkersBoard.addPawns(new PawnLocation(5, 9), BLACK);
-            checkersBoard.addPawns(new PawnLocation(2, 7), WHITE);
-            checkersBoard.addPawns(new PawnLocation(5, 7), WHITE);
+            checkersBoard.addPawns(new PawnLocation(5, 5), WHITE);
+            checkersBoard.addPawns(new PawnLocation(7, 3), WHITE);
+            List<PawnLocation> blackCheckers = checkersBoard.getPawnsByColor(BLACK);
+            List<PawnLocation> whiteCheckers = checkersBoard.getPawnsByColor(WHITE);
+
+            checkersBoard.movePawn(new Move(BLACK, new PawnLocation(2, 6), blackCheckers.get(0)));
+            checkersBoard.movePawn(new Move(BLACK, new PawnLocation(6, 8), blackCheckers.get(1)));
+
+            checkersBoard.movePawn(new Move(WHITE, new PawnLocation(4, 6), whiteCheckers.get(0)));
+            checkersBoard.movePawn(new Move(WHITE, new PawnLocation(8, 4), whiteCheckers.get(1)));
+
         } catch (LocationOccupiedException e) {
             throw e;
         }
 
-        // assertThat(checkersBoard.getPawns(), contains(new PawnLocation(2, 2), new PawnLocation(1, 3), new PawnLocation(6, 8)));
+        assertThat(checkersBoard.getPawnsByColor(BLACK), contains(new PawnLocation(2, 6), new PawnLocation(6, 8)));
+        assertThat(checkersBoard.getPawnsByColor(WHITE), contains(new PawnLocation(4, 6), new PawnLocation(6, 8)));
     }
 
     @Test(expected = LocationOccupiedException.class)

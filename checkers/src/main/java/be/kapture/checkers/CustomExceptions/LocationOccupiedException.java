@@ -1,6 +1,6 @@
 package be.kapture.checkers.CustomExceptions;
 
-public class LocationOccupiedException extends Exception {
+public class LocationOccupiedException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 

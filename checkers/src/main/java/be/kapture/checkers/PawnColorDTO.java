@@ -11,15 +11,18 @@ public class PawnColorDTO {
 
     private Color color;
     private List<PawnLocation> pawnLocations;
-//    private List<PawnMoveHistory> pawnMoveHistoryList;
+    // private List<PawnMoveHistory> pawnMoveHistoryList;
 
-    private PawnColorDTO(){} //private default constructor
+    // @SuppressWarnings
+    private PawnColorDTO() {
+    } // private default constructor
 
     /**
-     * Stel!  We willen ook een List<PawnMoveHistory> aan deze kleur associëren:
+     * Stel! We willen ook een List<PawnMoveHistory> aan deze kleur associëren:
      * Ofwel maak je een nieuwe Map<Color,List<PawnMoveHistory>>
      * of
      * Je voegt aan deze DTO een List<PawnMoveHistory> class variable toe en je breidt deze constructor daarmee uit
+     * 
      * @param color
      * @param pawnLocations
      */
@@ -28,19 +31,23 @@ public class PawnColorDTO {
         this.pawnLocations = pawnLocations;
     }
 
-    public Color getColor() {
-        return color;
+    public void addPawnLocation(PawnLocation location) {
+        pawnLocations.add(location);
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public Color getColor() {
+        return color;
     }
 
     public List<PawnLocation> getPawnLocations() {
         return pawnLocations;
     }
 
-    public void setPawnLocations(List<PawnLocation> pawnLocations) {
-        this.pawnLocations = pawnLocations;
-    }
+    // public void setColor(Color color) {
+    // this.color = color;
+    // }
+
+    // public void setPawnLocations(List<PawnLocation> pawnLocations) {
+    // this.pawnLocations = pawnLocations;
+    // }
 }

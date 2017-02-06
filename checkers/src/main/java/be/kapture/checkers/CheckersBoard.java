@@ -5,23 +5,19 @@ import static be.kapture.checkers.enums.Color.WHITE;
 import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import be.kapture.checkers.CustomExceptions.*;
+import be.kapture.checkers.CustomExceptions.LocationOccupiedException;
 import be.kapture.checkers.enums.Color;
 
 public class CheckersBoard {
 
-    List<PawnLocation> pawnLocationsBlack;
-    List<PawnLocation> pawnLocationsWhite;
-    Map<Color, List<PawnLocation>> pawns;
+    private PawnColorDTO blackPawns;
+    private PawnColorDTO whitePawns;
 
     public CheckersBoard() {
-        pawnLocationsBlack = new ArrayList<PawnLocation>();
-        pawnLocationsWhite = new ArrayList<PawnLocation>();
-        pawns = new HashMap<Color, List<PawnLocation>>();
+        blackPawns = new PawnColorDTO(BLACK, new ArrayList<PawnLocation>());
+        whitePawns = new PawnColorDTO(WHITE, new ArrayList<PawnLocation>());
     }
 
     /**
@@ -29,15 +25,13 @@ public class CheckersBoard {
      * @param color
      * @param pawns
      */
-    public void addPawns(PawnLocation pawn, Color color) throws LocationOccupiedException {
+    public void addPawns(PawnLocation pawn, Color color) {
         try {
             if (isLocationValidToAddPawn(pawn, color)) {
                 if (color == BLACK) {
-                    pawnLocationsBlack.add(pawn);
-                    pawns.put(color, pawnLocationsBlack);
+                    blackPawns.addPawnLocation(pawn);
                 } else if (color == WHITE) {
-                    pawnLocationsWhite.add(pawn);
-                    pawns.put(WHITE, pawnLocationsWhite);
+                    whitePawns.addPawnLocation(pawn);
                 }
             }
         } catch (LocationOccupiedException ex) {
@@ -45,7 +39,7 @@ public class CheckersBoard {
         }
     }
 
-    private boolean isLocationValidToAddPawn(PawnLocation pawn, Color color) throws LocationOccupiedException {
+    private boolean isLocationValidToAddPawn(PawnLocation pawn, Color color) {
         if (!isLocationOccupied(pawn, color)) {
             if (color == BLACK && pawn.getRow() > 5) {
                 return true;
@@ -62,14 +56,14 @@ public class CheckersBoard {
     }
 
     private boolean isLocationOccupied(PawnLocation pawnLocation, Color color) {
-        List<PawnLocation> pawnList = null;
+        List<PawnLocation> pawnLocations = null;
         if (color == BLACK) {
-            pawnList = pawns.get(BLACK);
+            pawnLocations = blackPawns.getPawnLocations();
         } else if (color == WHITE) {
-            pawnList = pawns.get(WHITE);
+            pawnLocations = whitePawns.getPawnLocations();
         }
-        if (pawnList != null) {
-            for (PawnLocation location : pawnList) {
+        if (pawnLocations != null) {
+            for (PawnLocation location : pawnLocations) {
                 if (location.equals(pawnLocation)) {
                     return true;
                 }
@@ -78,12 +72,13 @@ public class CheckersBoard {
         return false;
     }
 
-    public Map<Color, List<PawnLocation>> getPawns() {
-        return pawns;
-    }
-
+    /**
+     * 
+     * @param location
+     * @return
+     */
     public List<PawnLocation> getManMoves(PawnLocation location, Color color) {
-        // requireNonNull(location);
+        requireNonNull(location);
         requireNonNull(color);
 
         List<PawnLocation> pawnLocations = new ArrayList<PawnLocation>();
@@ -97,15 +92,6 @@ public class CheckersBoard {
         }
 
         return pawnLocations;
-    }
-
-    /**
-     * 
-     * @param location
-     * @return
-     */
-    public List<PawnLocation> getManMoves(PawnLocation location) {
-        throw new UnsupportedOperationException();
     }
 
     private int getNextOrPreviousRowNr(int rowNr, Color color) {
@@ -142,9 +128,16 @@ public class CheckersBoard {
         return pawnLocations;
     }
 
-    public void clearBoard() {
-        pawns.clear();
+    public void movePawn(Move move) {
+        List<PawnLocation> moves = getManMoves(move.getOldPawnLocation(), move.getColor());
 
+    }
+
+    public List<PawnLocation> getPawnsByColor(Color color) {
+        if (color == BLACK) {
+            return blackPawns.getPawnLocations();
+        }
+        return whitePawns.getPawnLocations();
     }
 
 }
