@@ -28,6 +28,30 @@ public class PawnLocation {
         return column;
     }
 
+    public boolean isOnLeftBorder() {
+        return column == MINIMUM;
+    }
+
+    public boolean isOnRighttBorder() {
+        return column == MAXIMUM;
+    }
+
+    public boolean isOnLeftBorderTakes() {
+        return column < 2;
+    }
+
+    public boolean isOnRighttBorderTakes() {
+        return column > 7;
+    }
+
+    public boolean isOnLowerBorderTakes() {
+        return row < 2;
+    }
+
+    public boolean isOnUpperBorderTakes() {
+        return row > 7;
+    }
+
     @Override
     public String toString() {
         return "PawnLocation [column=" + column + ", row=" + row + "]";
@@ -56,30 +80,6 @@ public class PawnLocation {
         if (row != other.row)
             return false;
         return true;
-    }
-
-    public boolean isOnLeftBorder() {
-        return column == MINIMUM;
-    }
-
-    public boolean isOnRighttBorder() {
-        return column == MAXIMUM;
-    }
-
-    public boolean isOnLeftBorderTakes() {
-        return column < 2;
-    }
-
-    public boolean isOnRighttBorderTakes() {
-        return column > 7;
-    }
-
-    public boolean isOnLowerBorderTakes() {
-        return row < 2;
-    }
-
-    public boolean isOnUpperBorderTakes() {
-        return row > 7;
     }
 
 }

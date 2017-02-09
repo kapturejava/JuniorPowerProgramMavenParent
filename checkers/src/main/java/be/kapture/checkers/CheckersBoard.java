@@ -7,6 +7,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import be.kapture.checkers.CustomExceptions.AddPawnOverBorderException;
 import be.kapture.checkers.CustomExceptions.LocationOccupiedException;
 import be.kapture.checkers.enums.Color;
 
@@ -47,12 +48,12 @@ public class CheckersBoard {
                 {
                     return true;
                 }
+            } else {
+                throw new AddPawnOverBorderException("Placed pawn over border");
             }
         } else {
             throw new LocationOccupiedException("Location is occupied");
         }
-
-        return false;
     }
 
     private boolean isLocationOccupied(PawnLocation pawnLocation, Color color) {
@@ -130,6 +131,22 @@ public class CheckersBoard {
 
     public void movePawn(Move move) {
         List<PawnLocation> moves = getManMoves(move.getOldPawnLocation(), move.getColor());
+
+        if (move.existsInMovesList(moves)) {
+            if (move.getColor() == Color.BLACK) {
+                for (int index = 0; index < blackPawns.getPawnLocations().size(); index++) {
+                    if (blackPawns.getPawnLocations().get(index).equals(move.getOldPawnLocation())) {
+                        blackPawns.getPawnLocations().set(index, move.getDirection());
+                    }
+                }
+            } else {
+                for (int index = 0; index < whitePawns.getPawnLocations().size(); index++) {
+                    if (whitePawns.getPawnLocations().get(index).equals(move.getOldPawnLocation())) {
+                        whitePawns.getPawnLocations().set(index, move.getDirection());
+                    }
+                }
+            }
+        }
 
     }
 
