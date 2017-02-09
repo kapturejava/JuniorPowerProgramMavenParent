@@ -133,21 +133,27 @@ public class CheckersBoard {
         List<PawnLocation> moves = getManMoves(move.getOldPawnLocation(), move.getColor());
 
         if (move.existsInMovesList(moves)) {
-            if (move.getColor() == Color.BLACK) {
-                for (int index = 0; index < blackPawns.getPawnLocations().size(); index++) {
-                    if (blackPawns.getPawnLocations().get(index).equals(move.getOldPawnLocation())) {
-                        blackPawns.getPawnLocations().set(index, move.getDirection());
-                    }
+            replacePawnInList(move);
+        }
+
+    }
+
+    private void replacePawnInList(Move move) {
+        if (move.getColor() == Color.BLACK) {
+            List<PawnLocation> pawnLocations = blackPawns.getPawnLocations();
+            for (int index = 0; index < pawnLocations.size(); index++) {
+                if (pawnLocations.get(index).equals(move.getOldPawnLocation())) {
+                    pawnLocations.set(index, move.getDirection());
                 }
-            } else {
-                for (int index = 0; index < whitePawns.getPawnLocations().size(); index++) {
-                    if (whitePawns.getPawnLocations().get(index).equals(move.getOldPawnLocation())) {
-                        whitePawns.getPawnLocations().set(index, move.getDirection());
-                    }
+            }
+        } else {
+            List<PawnLocation> pawnLocations = whitePawns.getPawnLocations();
+            for (int index = 0; index < pawnLocations.size(); index++) {
+                if (pawnLocations.get(index).equals(move.getOldPawnLocation())) {
+                    pawnLocations.set(index, move.getDirection());
                 }
             }
         }
-
     }
 
     public List<PawnLocation> getPawnsByColor(Color color) {
