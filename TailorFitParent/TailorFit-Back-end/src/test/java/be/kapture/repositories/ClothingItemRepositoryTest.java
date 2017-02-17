@@ -2,9 +2,14 @@ package be.kapture.repositories;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.awt.Color;
+import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,6 +26,11 @@ public class ClothingItemRepositoryTest extends AbstractRepositoryTest{
 		clothingItem = new ClothingItem(125, Color.BLUE.toString());
 		clothingItemRepository.create(clothingItem);
 		id = clothingItem.getId();
+	}
+	
+	@After
+	public void after() {
+		clothingItemRepository.delete(clothingItem);
 	}
 
 	@Test
@@ -53,10 +63,18 @@ public class ClothingItemRepositoryTest extends AbstractRepositoryTest{
 		assertNull(clothingItemRepository.read(id));
 	}
 
-	@Override
-	public void create_And_Read() {
-		// TODO Auto-generated method stub
-		
+	@Test
+	public void findClothingItemsBySize(){
+		List<ClothingItem> results;
+		ClothingItem clothingItem2 = new ClothingItem(150, "Red");
+		ClothingItem clothingItem3 = new ClothingItem(100, "Yellow");
+		clothingItemRepository.create(clothingItem2);
+		clothingItemRepository.create(clothingItem3);
+		results = clothingItemRepository.findClothingItemsBySize(110);	
+		assertEquals(2, results.size());
+		assertTrue(results.contains(clothingItem));
+		assertTrue(results.contains(clothingItem2));
+		assertFalse(results.contains(clothingItem3));
 	}
 
 }

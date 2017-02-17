@@ -53,7 +53,7 @@ public class ChessBoardService {
 			List<Tile> todoNext = new ArrayList<>();
 			for (Tile tile : toDo) {
 				List<Tile> tiles = chessBoard.doHorseMove(tile);
-				if (tiles.stream().filter(tile1 -> tile1.equals(endTile)).findAny().isPresent()) {
+				if (tiles.stream().anyMatch(tile1 -> tile1.equals(endTile))) {
 					return numberOfMoves;
 				}
 				for (Tile tile2 : tiles) {

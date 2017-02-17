@@ -66,5 +66,10 @@ public class ClothingItem {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "ClothingItem [size=" + size + ", color=" + color + "]";
+	}
 	
 }

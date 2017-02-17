@@ -1,5 +1,7 @@
 package be.kapture.util;
 
+import be.kapture.repositories.AbstractRepository;
+
 public class InputUtil {
     public static String isStringEmpty(String string) {
         if (string != null && !string.trim().isEmpty()) {
@@ -42,4 +44,16 @@ public class InputUtil {
         }
         return obj;
     }
+	public static AbstractRepository<?> isNotNull(AbstractRepository<?> obj) {
+		if(obj == null){
+			throw new IllegalArgumentException();
+		}
+		return obj;
+	}
+	public static AbstractRepository<?> isNotNull(AbstractRepository<?> obj, String error) {
+		if(obj == null){
+			throw new IllegalArgumentException(error);
+		}
+		return obj;
+	}
 }
