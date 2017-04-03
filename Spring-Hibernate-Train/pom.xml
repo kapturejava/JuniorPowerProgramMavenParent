@@ -17,7 +17,7 @@
         Jo en Jan, dit is jullie Maven parent voor de komende trainingsperiode.
         Referencies:
         http://www.journaldev.com/3524/spring-hibernate-integration-example-tutorial
-        
+
     </description>
 
     <properties>
@@ -73,6 +73,11 @@
             <version>${logback.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>uk.org.lidalia</groupId>
+            <artifactId>slf4j-test</artifactId>
+            <version>1.1.0</version>
+        </dependency>
 
         <!-- Hibernate -->
         <dependency>
@@ -98,5 +103,5 @@
         </dependency>
     </dependencies>
 
-    
+
 </project>
