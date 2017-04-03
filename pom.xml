@@ -16,6 +16,7 @@
         <module>checkers</module>
         <module>connectFour</module>
         <module>TailorFitParent</module>
+        <module>Spring-Hibernate-Train</module>
     </modules>
 
 
