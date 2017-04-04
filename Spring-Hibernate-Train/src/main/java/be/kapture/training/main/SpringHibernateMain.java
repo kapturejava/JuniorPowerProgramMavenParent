@@ -1,11 +1,11 @@
 package be.kapture.training.main;
 
-import java.util.List;
-
+import be.kapture.training.dao.PersonDAO;
+import be.kapture.training.logging.LogMyInfo;
+import be.kapture.training.model.Person;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import be.kapture.training.model.*;
-import be.kapture.training.dao.*;
+import java.util.List;
 
 /**
  * Created by vanmoj1 on 3/04/2017.
@@ -20,6 +20,8 @@ public class SpringHibernateMain {
 
         Person person = new Person();
         person.setName("J"); person.setCountry("Belgium");
+
+        LogMyInfo.log();
 
         personDAO.save(person);
 
