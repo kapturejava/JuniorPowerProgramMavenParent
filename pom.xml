@@ -17,6 +17,7 @@
         <module>connectFour</module>
         <module>TailorFitParent</module>
         <module>Spring-Hibernate-Train</module>
+        <module>TDDKata1</module>
     </modules>
 
 
