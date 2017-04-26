@@ -24,6 +24,18 @@ public class CalculatorTest {
     }
 
     @Test
+    public void testIfTwoStringNumbersAddWithAnyLengthDelimiter() {
+        int sum = calculator.Add("//***\n1***2***3");
+        assertEquals(6, sum);
+    }
+
+    @Test
+    public void testIfStringNumbersBiggerThenThousandAreIgnored() {
+        int sum = calculator.Add("//;\n2;1001");
+        assertEquals(2, sum);
+    }
+
+    @Test
     public void testIfTwoStringNumbersAddWithDefaultDelimiter() {
         int sum = calculator.Add("//;\n10;20");
         assertEquals(30, sum);

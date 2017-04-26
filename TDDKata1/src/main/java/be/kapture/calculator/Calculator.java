@@ -10,6 +10,10 @@ import java.util.regex.Pattern;
  * Created by vanmoj1 on 14/04/2017.
  */
 public class Calculator {
+    private final int MAX_NUMBER = 1000;
+    private final String DEFAULT_DELIMITER = "[\\r\\n]|,";
+    private final String CUSTOM_DELIMITER = "^//(.*?)\\n";
+    private final String NEGATIVE_SIGN = "(.*)-[1-9](.*)";
 
     int Add(String numbers) {
         String[] intNumbers;
@@ -17,25 +21,24 @@ public class Calculator {
         int sum = 0;
 
         if (StringUtils.isNotEmpty(numbers)) {
-            Pattern pattern = Pattern.compile("^//(.*?)\\n");
-            Matcher matcher = pattern.matcher(numbers);
-            if (numbers.contains("-")) {
+            if (numbers.matches(NEGATIVE_SIGN)) {
                 throw new NegativeNumberNotAllowedException();
             }
-            if (matcher.find()) {
-                delimiter = matcher.group(1);
-            }
+            delimiter = getDelimiter(numbers);
             if (!(numbers.contains(",") || numbers.contains("\n"))) {
                 return Integer.parseInt(numbers);
             } else {
                 if (StringUtils.isEmpty(delimiter)) {
-                    intNumbers = numbers.split("[\\r\\n]|,");
+                    intNumbers = numbers.split(DEFAULT_DELIMITER);
                 } else {
                     numbers = StringUtils.substringAfter(numbers, "\n");
                     intNumbers = numbers.split(delimiter);
                 }
                 for (String number : intNumbers) {
-                    sum += Integer.parseInt(number);
+                    if (Integer.parseInt(number) <= MAX_NUMBER) {
+                        sum += Integer.parseInt(number);
+                    }
+
                 }
             }
         } else {
@@ -43,5 +46,23 @@ public class Calculator {
         }
 
         return sum;
+    }
+
+    private String getDelimiter(String regEx) {
+        Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
+        Matcher matcher = pattern.matcher(regEx);
+        String delimiter = null;
+
+        if (matcher.find()) {
+            delimiter = Pattern.quote(matcher.group(1));
+            System.out.println(delimiter);
+        }
+
+        return delimiter;
+    }
+
+    private String[] tokenizer(String numbers, String del) {
+
+        return null;
     }
 }
