@@ -37,6 +37,8 @@
         <property name="annotatedClasses">
             <list>
                 <value>be.kapture.training.model.Person</value>
+                <value>be.kapture.training.model.Customer</value>
+                <value>be.kapture.training.model.Address</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -52,7 +54,15 @@
         <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
     </bean>
 
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
+
     <bean id="personDAO" class="be.kapture.training.dao.PersonDAOImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="customerDAO" class="be.kapture.training.dao.CustomerDAOImpl">
         <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
     </bean>
 </beans>

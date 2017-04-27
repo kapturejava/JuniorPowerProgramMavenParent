@@ -12,8 +12,11 @@ public class Customer {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "name")
+
     private String name;
+
+    @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
     public int getId() {

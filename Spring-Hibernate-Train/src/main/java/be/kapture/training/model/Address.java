@@ -1,10 +1,18 @@
 package be.kapture.training.model;
 
+import javax.persistence.*;
+
 /**
  * Created by vanmoj1 on 3/04/2017.
  */
+@Entity
+@Table(name = "Address")
 public class Address {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String address;
     private String country;
 
