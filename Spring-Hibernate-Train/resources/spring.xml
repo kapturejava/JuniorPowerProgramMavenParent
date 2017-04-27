@@ -8,10 +8,10 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/TestDB" />
-        <property name="username" value="cursist" />
-        <property name="password" value="cursist" />
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/TestDB"/>
+        <property name="username" value="cursist"/>
+        <property name="password" value="cursist"/>
     </bean>
 
     <!-- Hibernate 3 XML SessionFactory Bean definition-->
@@ -33,7 +33,7 @@
     <!-- Hibernate 3 Annotation SessionFactory Bean definition-->
     <bean id="hibernate3AnnotatedSessionFactory"
           class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
                 <value>be.kapture.training.model.Person</value>
@@ -48,7 +48,11 @@
         </property>
     </bean>
 
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
+
     <bean id="personDAO" class="be.kapture.training.dao.PersonDAOImpl">
-        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
     </bean>
 </beans>

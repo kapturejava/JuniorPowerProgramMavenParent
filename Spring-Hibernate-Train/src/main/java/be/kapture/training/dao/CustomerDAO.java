@@ -1,14 +1,12 @@
 package be.kapture.training.dao;
 
-import be.kapture.training.model.*;
-
-import java.util.List;
+import be.kapture.training.model.Customer;
 
 /**
  * Created by vanmoj1 on 3/04/2017.
  */
 public interface CustomerDAO {
-    public void save(Customer c);
 
-    public List<Customer> list();
+    public void create(Customer customer);
+
 }
