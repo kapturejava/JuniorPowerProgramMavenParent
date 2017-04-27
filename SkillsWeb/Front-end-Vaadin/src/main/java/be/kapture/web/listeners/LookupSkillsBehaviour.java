@@ -32,7 +32,7 @@ public class LookupSkillsBehaviour implements ClickListener {
         Notification.show("Not yet implemented.", WARNING_MESSAGE);
 
         // TODO session attribute should eventually contain a real skillset
-        //VaadinSession.getCurrent().setAttribute(be.kapture.entities.Person.class, personDAO.read(consultantName));
+        //VaadinSession.getCurrent().setAttribute(be.kapture.model.Person.class, personDAO.read(consultantName));
 
         VaadinSession.getCurrent().setAttribute("consultant", consultantName);
         UI.getCurrent().setContent(new SkillsetForm(DUMMY_SKILLS));
