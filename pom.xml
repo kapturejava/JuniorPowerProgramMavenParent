@@ -18,6 +18,9 @@
         <module>TailorFitParent</module>
         <module>Spring-Hibernate-Train</module>
         <module>TDDKata1</module>
+        <module>TDDKata2</module>
+        <module>ps-jsf-helloworld</module>
+        <module>BerlinClock</module>
     </modules>
 
 
