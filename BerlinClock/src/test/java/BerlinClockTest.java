@@ -26,11 +26,24 @@ public class BerlinClockTest {
     }
 
     @Test
+    public void testBottomHoursShouldHave4Lamps() {
+        Assert.assertEquals(4, berlinClock.getBottomHours(5).length());
+    }
+
+    @Test
     public void testTopHoursShouldLightRedLampForEvery5Hours() {
         Assert.assertEquals("OOOO", berlinClock.getTopHours(0));
         Assert.assertEquals("RROO", berlinClock.getTopHours(13));
         Assert.assertEquals("RRRR", berlinClock.getTopHours(23));
         Assert.assertEquals("RRRR", berlinClock.getTopHours(24));
+    }
+
+    @Test
+    public void testTopHoursShouldLightRedLampForEveryHourLeftFromTopHours() {
+        Assert.assertEquals("OOOO", berlinClock.getBottomHours(0));
+        Assert.assertEquals("RRRO", berlinClock.getBottomHours(13));
+        Assert.assertEquals("RRRO", berlinClock.getBottomHours(23));
+        Assert.assertEquals("RRRR", berlinClock.getBottomHours(24));
     }
 
 }
