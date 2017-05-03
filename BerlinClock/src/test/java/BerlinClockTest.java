@@ -46,4 +46,25 @@ public class BerlinClockTest {
         Assert.assertEquals("RRRR", berlinClock.getBottomHours(24));
     }
 
+    @Test
+    public void testTopMinutesShouldHave11Lamps() {
+        Assert.assertEquals(11, berlinClock.getTopMinutes(34).length());
+    }
+
+    @Test
+    public void testTopMinutesShouldHave3rd6thAnd9thLampsInRedToIndicateFirstQuarterHalfOrLastQuarter() {
+        String minutes32 = berlinClock.getTopMinutes(32);
+
+        Assert.assertEquals("R", minutes32.substring(2, 3));
+        Assert.assertEquals("R", minutes32.substring(5, 6));
+        Assert.assertEquals("O", minutes32.substring(8, 9));
+    }
+
+    @Test
+    public void testTopMinutesShouldLightYellowLampForEvery5MinutesUnlessItIsFirstQuarterHalfOrLastQuarter() {
+        Assert.assertEquals("OOOOOOOOOOO", berlinClock.getTopMinutes(0));
+        Assert.assertEquals("YYROOOOOOOO", berlinClock.getTopMinutes(17));
+        Assert.assertEquals("YYRYYRYYRYY", berlinClock.getTopMinutes(59));
+    }
+
 }
