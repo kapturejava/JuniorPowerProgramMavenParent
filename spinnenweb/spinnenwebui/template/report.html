@@ -1,0 +1,42 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-3">
+      <h3>Rapportering</h3>
+
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let person of persons">
+          <button (click)="onSelectPerson(person)">{{person.naam}}</button>
+        </li>
+
+      </ul>
+    </div>
+    <div class="col-lg-9">
+
+      <div *ngIf="hasSelectedPerson()">
+        <H1>{{selectedPerson.naam}}</H1>
+      </div>
+
+      <div class="col-lg-3" *ngFor="let data of webData">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <H2 class="panel-title">{{data.categorie}}</H2>
+          </div>
+
+          <div class="panel-body">
+            <div>
+              <div>
+                <canvas baseChart
+                        [datasets]="data.data"
+                        [labels]="data.labels"
+                        [options]="options"
+                        [chartType]="'radar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
