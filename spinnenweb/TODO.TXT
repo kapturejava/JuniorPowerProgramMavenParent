@@ -1,0 +1,6 @@
+- verschil 0 en leeg
+- Spinnenweb obv gegroepeerde items, bv "testing"
+- verschil tss versie voor afnemer en sollicitant (commentaar bv --> laten invullen)
+- Op bovenste lijn ook score
+- File properties toevoegen
+- Tab voor sales - oa 'commercieel profiel'

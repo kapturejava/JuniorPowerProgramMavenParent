@@ -1,0 +1,124 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="sidebar nav nav-pills nav-stacked">
+        <li [ngClass]="{'active': step==1}"><a>Stap 1: Bestand laden</a></li>
+        <li [ngClass]="{'active': step==2}"><a>Stap 2: Validatie</a></li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+
+      <div [hidden]="step!=1" class="panel panel-default">
+        <div class="panel-heading">
+          <H2 class="panel-title">Bestand opladen</H2>
+        </div>
+
+        <div class="panel-body">
+          <div class="form-group">
+
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="naam">Naam</span>
+              <input type="text" class="form-control" placeholder="Voornaam en familienaam van de persoon" aria-describedby="naam" [(ngModel)]="nieuweEvaluatie.naam" required>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="sizing-addon1">Relatie</span>
+
+              <span class="input-group-btn" role="group" aria-label="Relatie met Kapture">
+                <button type="button" class="btn btn-default" [ngClass]="{'btn-primary': nieuweEvaluatie.persoonType=='SOLLICITANT'}" (click)="onSelectRelatie('SOLLICITANT')">Sollicitant</button>
+                <button type="button" class="btn btn-default" [ngClass]="{'btn-primary': nieuweEvaluatie.persoonType=='WERKNEMER'}" (click)="onSelectRelatie('WERKNEMER')">Werknemer</button>
+                <button type="button" class="btn btn-default" [ngClass]="{'btn-primary': nieuweEvaluatie.persoonType=='VASTE_EXTERNE'}" (click)="onSelectRelatie('VASTE_EXTERNE')">Vaste externe</button>
+                <button type="button" class="btn btn-default" [ngClass]="{'btn-primary': nieuweEvaluatie.persoonType=='LOSSE_EXTERNE'}" (click)="onSelectRelatie('LOSSE_EXTERNE')">Losse externe</button>
+                <button type="button" class="btn btn-default" [ngClass]="{'btn-primary': nieuweEvaluatie.persoonType=='VIRTUEEL'}" (click)="onSelectRelatie('VIRTUEEL')">Virtueel persoon</button>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="sizing-addon1">Reden</span>
+              <span class="input-group-btn" role="group" aria-label="Doel van de evaluatie">
+                <button type="button" class="btn btn-default" [ngClass]="{'btn-primary': nieuweEvaluatie.evaluatieDoel=='SOLLICITATIE'}" (click)="onSelectDoel('SOLLICITATIE')">Sollicitatie</button>
+                <button type="button" class="btn btn-default" [ngClass]="{'btn-primary': nieuweEvaluatie.evaluatieDoel=='EVALUATIE'}" (click)="onSelectDoel('EVALUATIE')">Evaluatie</button>
+                <button type="button" class="btn btn-default" [ngClass]="{'btn-primary': nieuweEvaluatie.evaluatieDoel=='BASELINE'}" (click)="onSelectDoel('BASELINE')">Baseline</button>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="bestand">Bestand</span>
+              <input type="file" class="form-control" aria-describedby="bestand" name="file" (change)="onChange($event)" required/>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <button class="btn btn-primary pull-right form-control" (click)="onClick($event)">Verzenden</button>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div [hidden]="step!=2" class="panel panel-default">
+        <div class="panel-heading"><H2 class="panel-title">Valideer de inhoud</H2></div>
+
+        <div class="panel-body">
+          <div *ngIf="evaluatieDocument">
+            <div *ngFor="let categorie of evaluatieDocument.evaluatieCategorieList">
+              <div class="row">
+                <div class="col-md-9">
+                  <h1>{{categorie.naam}}</h1>
+                </div>
+                <div class="col-sm-3">
+                  <span *ngIf="categorie.id == null" class="label label-warning">Nieuw</span>
+                  <button (click)="verwijderCategorie(categorie)" class="glyphicon glyphicon-remove"></button>
+                </div>
+              </div>
+
+              <div *ngFor="let subcategorie of categorie.evaluatieSubcategorieList" class="list-group">
+                <div class="row list-group-item active">
+                  <div class="col-sm-1">&nbsp;</div>
+                  <div class="col-sm-7">{{subcategorie.naam}}</div>
+                  <div class="col-sm-1"><span class="badge">{{scoreTekst(subcategorie.evaluatieScore)}}</span></div>
+                  <div class="col-sm-3">
+                    <span *ngIf="subcategorie.id == null" class="label label-warning">Nieuw</span>
+                    <button (click)="verwijderSubcategorie(categorie, subcategorie)" class="glyphicon glyphicon-remove"></button>
+                  </div>
+                </div>
+
+                <div *ngFor="let skill of subcategorie.evaluatieSkillList">
+                    <div class="row list-group-item">
+                      <div class="col-sm-2">&nbsp;</div>
+                      <div class="col-sm-6">{{skill.naam}}</div>
+                      <div class="col-sm-1"><span class="badge">{{scoreTekst(skill.evaluatieScore)}}</span></div>
+                      <div class="col-sm-3">
+                        <span *ngIf="skill.id == null" class="label label-warning">Nieuw</span>
+                        <button (click)="verwijderSkill(subcategorie, skill)" class="glyphicon glyphicon-remove"></button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" (click)="verstuurGegevens()">Gegevens invoeren</button>
+      </div>
+
+      <div [hidden]="step!=3" class="panel panel-default">
+        <div class="panel-heading"><H2 class="panel-title">Het document is opgeladen</H2></div>
+
+        <div class="panel-body">
+          Het document is met succes opgeladen, en kan teruggevonden worden in de rapporten
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
