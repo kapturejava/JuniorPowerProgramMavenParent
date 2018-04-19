@@ -28,5 +28,6 @@ public class PersonDAOImplTest {
     @Test
     public void listReturnsAListOfPersons() {
         Assert.assertSame(persons, personDAO.list());
+        Mockito.verify(personDAO).list();
     }
 }
