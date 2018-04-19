@@ -13,8 +13,8 @@ public class SpringHibernateMain {
         PersonDAO personDAO = context.getBean(PersonDAO.class);
 
         Person person = new Person();
-        person.setName("Bill");
-        person.setCountry("Estonia");
+        person.setName("Kenji");
+        person.setCountry("Netherlands");
 
         personDAO.save(person);
 
