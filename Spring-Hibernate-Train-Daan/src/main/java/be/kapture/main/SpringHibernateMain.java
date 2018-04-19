@@ -8,17 +8,18 @@ import java.util.List;
 
 public class SpringHibernateMain {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring4.xml");
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("spring4.xml");
 
         PersonDAO personDAO = context.getBean(PersonDAO.class);
 
-//        Person person = new Person();
-//        person.setName("Kenji");
-//        person.setCountry("Netherlands");
-//
-//        personDAO.save(person);
-//
-//        System.out.println("Person::" + person);
+        Person person = new Person();
+        person.setName("Bartelt");
+        person.setCountry("Belgium");
+
+        personDAO.save(person);
+
+        System.out.println("Person::" + person);
 
         List<Person> list = personDAO.list();
 
