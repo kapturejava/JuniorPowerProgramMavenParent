@@ -1,15 +1,13 @@
 package be.kapture.dao;
 
-import be.kapture.model.Person;
+import be.kapture.model.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Transactional
-class PersonDAOImpl implements PersonDAO {
+class CustomerDAOImpl implements CustomerDAO {
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -17,20 +15,11 @@ class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public void save(Person p) {
+    public void save(Customer customer) {
         Session session = this.sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.persist(p);
+        session.persist(customer);
         tx.commit();
         session.close();
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public List<Person> list() {
-        Session session = this.sessionFactory.openSession();
-        List<Person> personList = session.createQuery("from Person").list();
-        session.close();
-        return personList;
     }
 }

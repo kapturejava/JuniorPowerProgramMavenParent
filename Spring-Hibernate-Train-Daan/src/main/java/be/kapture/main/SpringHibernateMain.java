@@ -1,6 +1,9 @@
 package be.kapture.main;
 
+import be.kapture.dao.CustomerDAO;
 import be.kapture.dao.PersonDAO;
+import be.kapture.model.Address;
+import be.kapture.model.Customer;
 import be.kapture.model.Person;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,14 +15,17 @@ public class SpringHibernateMain {
                 new ClassPathXmlApplicationContext("spring4.xml");
 
         PersonDAO personDAO = context.getBean(PersonDAO.class);
+        CustomerDAO customerDAO = context.getBean(CustomerDAO.class);
 
-        Person person = new Person();
-        person.setName("Bartelt");
-        person.setCountry("Belgium");
+        Customer customer = new Customer();
+        customer.setName("Dennis");
+        Address address = new Address("Antwerp", "Belgium");
+        customer.setAddress(address);
 
-        personDAO.save(person);
+        customerDAO.save(customer);
 
-        System.out.println("Person::" + person);
+        System.out.println(customer);
+
 
         List<Person> list = personDAO.list();
 
