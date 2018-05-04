@@ -4,9 +4,7 @@ import be.kapture.model.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
 class CustomerDAOImpl implements CustomerDAO {
     private SessionFactory sessionFactory;
 

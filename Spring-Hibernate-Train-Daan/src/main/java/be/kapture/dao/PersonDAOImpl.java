@@ -4,11 +4,9 @@ import be.kapture.model.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
 class PersonDAOImpl implements PersonDAO {
     private SessionFactory sessionFactory;
 
