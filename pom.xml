@@ -19,6 +19,7 @@
         <module>Spring-Hibernate-Train</module>
         <module>TDDKata1</module>
         <module>spinnenweb</module>
+        <module>spring-boot-tdd</module>
     </modules>
 
 
