@@ -25,11 +25,11 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 public class SimpleIntegrationTest {
 
     @Autowired
-    private TestRestTemplate restTemplate;
+    private TestRestTemplate testRestTemplate;
 
     @Test
     public void getCarsTest() {
-        ResponseEntity<Car> response = restTemplate.getForEntity("/cars/prius", Car.class);
+        ResponseEntity<Car> response = testRestTemplate.getForEntity("/cars/prius", Car.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody().getName()).isEqualTo("prius");
